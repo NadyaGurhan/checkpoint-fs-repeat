@@ -2,7 +2,7 @@ module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
 
 const fs = require('fs');
@@ -31,3 +31,12 @@ function getStats(){
   return rezStat
 }
 // console.log(getStat());
+function writeStats(massivStats){
+  let rezString = ''
+  for (let i = 0; i < massivStats.length; i++) {
+    let promString = [massivStats[i][0],massivStats[i][1]].join(' ')
+    rezString +=promString+'\n'
+  }
+  fs.writeFileSync('./data/stats.txt', rezString.trim())
+  return rezString
+}
