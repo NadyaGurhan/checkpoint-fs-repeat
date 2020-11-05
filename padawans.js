@@ -11,9 +11,9 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  let arr1 = getPadawanNames()
-  let arr2 = getLightsaberScores()
-  let arr3 = []
+  const arr1 = getPadawanNames()
+  const arr2 = getLightsaberScores()
+  const arr3 = []
   for (let i = 0; i < arr1.length; i++) {
     arr3.push([arr1[i], arr2[i]])
   }
@@ -22,9 +22,9 @@ function getStats() {
 
 function writeStats() {
   const fs = require('fs')
-  let stats = getStats();
+  let stats = getStats()
   let str = ''
-  stats.forEach(a => str += `${a[0]} ${a[1]}\n`);
+  stats.forEach(a => str += `${a[0]} ${a[1]}\n`)
   fs.writeFileSync('data/stats.txt', str.slice(0, str.length - 1))
 }
 
@@ -33,4 +33,4 @@ module.exports = {
   getLightsaberScores,
   getStats,
   writeStats,
-};
+}
