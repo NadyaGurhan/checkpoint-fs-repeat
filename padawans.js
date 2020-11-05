@@ -1,31 +1,39 @@
 const fs = require('fs');
-// const getPadawanNames = require('./data/padawans.txt')
-// const getLightsaberScores = require('./data/score.txt')
 
 function getPadawanNames(padToFile) {
   let padavan = fs.readFileSync(padToFile, 'utf-8').trim().split('\n');
   return padavan;
 }
-
-function getLightsaberScores(names) {
-  let score = fs.readFileSync(names, 'utf-8');
-  score = score.map((el) => el + 0);
-  return score;
+function getLightsaberScores(scoreToFile) {
+  let score = fs.readFileSync(scoreToFile, 'utf-8');
+  scores = score.split('\n').map((el) => +el);
+  return scores;
 }
-
-function getStats(tableToFile) {}
+function getStats() {
+  let newScore = [];
+  let padavan = fs
+    .readFileSync('./data/padawans.txt', 'utf-8')
+    .trim()
+    .split('\n');
+  let score = fs.readFileSync('./data/scores.txt', 'utf-8');
+  scores = score.split('\n').map((el) => +el);
+  console.log(score);
+  for (let i = 0; i < padavan.length; i++) {
+    newScore.push([padavan[i], scores[i]]);
+  }
+  return newScore;
+}
+function writeStats() {
+  let newStats = getStats();
+  let newScoreStats = fs.writeFileSync;
+}
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
-
-// write(writeStats){
-//   let score = fs.writeFileSync('./data/stats.txt', 'utf8')
-
-// }
 
 // class
 //   parse()
