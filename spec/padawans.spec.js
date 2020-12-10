@@ -1,7 +1,7 @@
 const fs = require('fs');
 const {
   getPadawanNames,
-  getLightsaberScores,
+  getLightsaberScores, 
   getStats,
   writeStats,
 } = require('../padawans');
