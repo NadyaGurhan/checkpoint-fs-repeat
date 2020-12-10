@@ -26,8 +26,8 @@ const fs = require('fs');
     const dataToSend = getStats();
     let str = '';
     dataToSend.forEach((a) => (str += `${a[0]} ${a[1]}\n`));
-    fs.appendFileSync('data/stats.txt', str.slice(0, str.length - 1));
-    return dataToSend;
+    fs.writeFileSync('data/stats.txt', str.trim());
+    // return dataToSend;
   }
 
 
@@ -35,7 +35,7 @@ const fs = require('fs');
 
 
 const a = writeStats();
-console.log(a);
+// console.log(a);
 
 
 
