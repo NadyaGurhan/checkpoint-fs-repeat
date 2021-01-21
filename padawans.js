@@ -9,13 +9,9 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  const obj = {};
   const name = getPadawanNames();
   const score = getLightsaberScores();
-  for (let i = 0; i < name.length; i++) {
-    obj[name[i]] = score[i];
-  }
-  return Object.entries(obj);
+  return name.map((el, i) => [el, score[i]]);
 }
 
 function writeStats() {
