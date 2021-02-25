@@ -1,0 +1,18 @@
+function () {
+  let names = getPadawanNames();
+  let scores = getLightsaberScores(); // let stats = [];
+
+  const stat = names.map((el, i) => [el, scores[i]]);
+  return stat;
+}
+function () {
+  let names = getPadawanNames();
+  let scores = getLightsaberScores(); // let stats = [];
+
+  const stat = names.map((el, i) => [el, scores[i]]);
+  return stat;
+}
+Revan,99.9,Bastila Shan,92,Jolee Bindo,87,Juhani,82
+Revan,99.9,Bastila Shan,92,Jolee Bindo,87,Juhani,82
+Revan,99.9,Bastila Shan,92,Jolee Bindo,87,Juhani,82
+Revan,99.9,Bastila Shan,92,Jolee Bindo,87,Juhani,82
