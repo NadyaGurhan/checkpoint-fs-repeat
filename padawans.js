@@ -13,17 +13,25 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  
-  // return getPadawanNames().map ( x => x,...getLightsaberScores() )
-  getPadawanNames().forEach ( (el) => el + [...getLightsaberScores()])
+  let names = getPadawanNames();
+  let scores = getLightsaberScores();
 
+  return names.map((elem, i) => [elem, scores[i]]);
 }
+console.log(getStats());
+// .map((elem) => elem.join(",").replace(",", " ")).join("\n"))
 
-console.log(getStats())
+function writeStats() {
+  let tmp = getStats()
+    .map((elem) => elem.join(",").replace(",", " "))
+    .join("\n");
+
+  fs.writeFileSync("data/stats.txt", tmp);
+}
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-  // getStats,
-  // writeStats,
+  getStats,
+  writeStats,
 };
