@@ -1,10 +1,10 @@
 {
   "name": "checkpoint-fs",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Начало работы",
   "main": "index.js",
   "scripts": {
-    "test": "jest spec/*[sS]pec.js -i"
+    "test": "jest -i"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.1.0",
-    "jest": "^26.6.1"
-  }
+    "jest": "^26.6.3"
+  },
+  "dependencies": {}
 }
