@@ -15,11 +15,7 @@ function getLightsaberScores() {
 function getStats() {
   const names = getPadawanNames()
   const scores = getLightsaberScores()
-  const data = []
-  for (let i = 0; i < names.length; i += 1) {
-    data.push([names[i], scores[i]])
-  }
-  return data
+  return names.map((el, i) => [el, scores[i]])
 }
 
 function writeStats() {
