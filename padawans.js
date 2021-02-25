@@ -13,13 +13,17 @@ function getPadawanNames () {
 function getLightsaberScores () {
   return fs.readFileSync(scoresOfPadawans, "utf8")
   .trim()
+  .slice(,-1)
   .split('/n')
   .map(element => Number(element));
   }
 
 function getStats () {
+  const names = getPadawanNames();
+  const scores = getLightsaberScores();
+  return names.map((element, i) => [element, scores[i]]);
+  }
 
-}
 
 function writeStats () {
 
