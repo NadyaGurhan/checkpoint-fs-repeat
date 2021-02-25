@@ -14,9 +14,13 @@ const getLightsaberScores = function () {
 };
 
 const getStats = function () {
-  const names = fs.readFileSync("./padawans.txt", "utf-8").split("\n");
-  const scores = fs.readFileSync("./scores.txt", "utf-8").split("\n");
-  const stats = {};
+  // const names = fs.readFileSync("./padawans.txt", "utf-8").split("\n");
+  // const scores = fs.readFileSync("./scores.txt", "utf-8").split("\n");
+  const names = getPadawanNames();
+  const stats = getLightsaberScores();
+  const stats = names.forEach((name, i) => name[i] + stats[i]);
+
+  return stats;
   //for each first el of names give first elem of scores and save file into a new file
 };
 
