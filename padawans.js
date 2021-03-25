@@ -60,7 +60,8 @@ function getStats () {
 
 function writeStats() {
   let fileStats= '/home/kirill/elbrus/Phase1/checkpoint-fs/data/stats.txt'
-  fs.writeFileSync(fileStats, getStats().join(''),replace());
+  fs.writeFileSync(fileStats, getStats().join('').replace(/,/g, ' '));
+
  // console.log(getStats().join());
   // return dataNames
   }
