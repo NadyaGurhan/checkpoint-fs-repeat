@@ -15,12 +15,23 @@ function getLightsaberScores () {
 // console.log(getLightsaberScores())
 
 
-class getStats {
-  constructor(getPadawanNames, getLightsaberScores) {
-
+function getStats (){
+  let n1 = getLightsaberScores();
+  let n2 = getPadawanNames();
+  let result = [];
+  for (let i = 0; i<4; i++) {
+    let newArr = [];
+    newArr.push(n2[i], n1[i])
+    result.push(newArr)
   }
+  return result
 }
-console.log(getStats())
+
+function writeStats() {
+  fs.mkdir('data')
+}
+
+// console.log(getStats())
 
 // function writeStats {
   
@@ -28,6 +39,6 @@ console.log(getStats())
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-  // getStats,
+  getStats,
   // writeStats,
 };
