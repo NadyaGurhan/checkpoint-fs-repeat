@@ -14,11 +14,19 @@ function getLightsaberScores() {
 
 
 function getStats() {
-  
+  let arr1 = getPadawanNames();
+  let arr2 = getLightsaberScores();
+  let arr3 = [];
+  for (let i = 0; i < arr1.length; i += 1) {
+    arr3.push([arr1[i], arr2[i]])
+  }
+  return arr3;
 }
 
 function writeStats() {
-
+  let text = getStats();
+  console.log(text.join('\n').replace(/\,/g, ' '));
+  fs.writeFileSync('./data/stats.txt', text.join('\n').replace(/\,/g, ' '))
 }
 
 
@@ -28,3 +36,5 @@ module.exports = {
   getStats,
   writeStats,
 };
+
+writeStats()
