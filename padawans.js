@@ -31,7 +31,8 @@ function getStats(){
 
 let arr = []
   for (let i = 0; i < files.length; i++) {
-   arr.push(files[i]+ ',' + file[i])
+    arr.push([])
+   arr[i].push(files[i],file[i])
     
   }
 
