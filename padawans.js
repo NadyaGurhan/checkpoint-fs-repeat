@@ -24,8 +24,8 @@ function getStats() {
 }
 
 function writeStats() {
-  const stats = getStats().join('\n').split(',').join(' ');
-  const data = fs.writeFileSync('data/stats.txt', stats);
+  const stats = getStats().join('\n').split(',').join(' '); // перевод в строку с переносом, убираем запятые, возвращаем в строку с разделением 'пробел'
+  const data = fs.writeFileSync('data/stats.txt', stats); // создаем с помощью write
 }
 
 module.exports = {
