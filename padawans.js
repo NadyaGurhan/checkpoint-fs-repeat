@@ -25,7 +25,7 @@ function getStats() {
 
 function writeStats() {
   const writeArr = getStats()
-    return fs.writeFileSync('./data/stats.txt', writeArr.map((el) => el.join(' ')).join('\n'));
+    return fs.writeFileSync('./data/stats.txt', writeArr.map((elem) => elem.join(' ')).join('\n'));
 }
 writeStats()
 
