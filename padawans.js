@@ -30,7 +30,7 @@ function getStats() {
   }
   return arrNew;
 }
-let stats = getStats();
+let stats = getStats().join('\n').split(',').join(' ');
 
 function writeStats() {
   fs.writeFileSync("./data/stats.txt", `${stats}`);
