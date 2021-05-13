@@ -5,8 +5,7 @@ function getPadawanNames() {
   return padawans
 }
 
-function getLightsaberScores() {
-  
+function getLightsaberScores() {  
   let score = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
   score = score.map((el)=>+el)
   return score
@@ -15,19 +14,14 @@ function getLightsaberScores() {
 function getStats() {
   let names = getPadawanNames();
   let scores = getLightsaberScores();
-  // let table;
   names = names.map((el, i) => ([el, scores[i]]));
-  // console.log(names)
-  return names
-  
+  return names  
 }
 
 function writeStats() {
   let data = getStats();
   data = data.map(el => el.join(' ')).join('\n');
   fs.writeFileSync(`./data/stats.txt`, data);
-  
-  // console.log(typeof data)
 }
 
 module.exports = {
