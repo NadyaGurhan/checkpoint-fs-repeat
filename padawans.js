@@ -1,48 +1,41 @@
 const fs = require('fs')
 
-class getPadawanNames {
-  parse(filename) {
-    let readFile = fs.readFileSync(filename, 'utf-8').trim().split('\n');
-    return readFile;
-  }
+function getPadawanNames(filename) {
+  console.log('filename', filename )
+    let readFile = fs.readFileSync(filename, 'utf-8')
+    return readFile.trim().split('\r\n');
 }
 
-let objPadamans = new getPadawanNames;
-let padavans = objPadamans.parse('./data/padawans.txt');
-console.log(padavans)
+// let objPadamans = new getPadawanNames;
+let padavans = getPadawanNames('./data/padawans.txt');
+// console.log(padavans)s
 
-class getLightsaberScores {
-  parse(filename) {
-    let readFile = fs.readFileSync(filename, 'utf-8').trim().split('\n');
+function getLightsaberScores(filename) {
+    let readFile = fs.readFileSync(filename, 'utf-8').trim().split('\r\n');
     return readFile;
-  }
 }
 
-let objScores = new getPadawanNames;
-let scores = objScores.parse('./data/scores.txt');
-console.log(scores)
+// let objScores = new getPadawanNames;
+let scores = getLightsaberScores('./data/scores.txt');
+// console.log(scores)
 
-class getStats {
-  parse(arrPadavans, arrScores) {
+function getStats(arrPadavans, arrScores) {
     return arrPadavans.map((el, i) =>{
-      return [el, arrScores[i]]
+      return [el, Number(arrScores[i])]
     });
   }
+
+// let objStatus = new getStats;
+let numberScores = getStats(padavans, scores);
+// console.log(numberScores)
+
+function writeStats(filename, array) {
+  return fs.writeFileSync(filename, JSON.stringify(array));
 }
 
-let objStatus = new getStats;
-let numberScores = objStatus.parse(padavans, scores);
-console.log(numberScores)
-
-class writeStats {
-  parse(filename, array) {
-    return fs.writeFileSync(filename, JSON.stringify(array));
-  }
-}
-
-let objWriteStatus = new writeStats;
-let writeStatus = objWriteStatus.parse('./data/stats.txt', numberScores);
-console.log(writeStatus)
+// let objWriteStatus = new writeStats;
+let writeStatus = writeStats('./data/stats.txt', numberScores);
+// console.log(writeStatus)
 
 module.exports = {
   getPadawanNames,
