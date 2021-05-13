@@ -24,9 +24,10 @@ function getStats() {
 
 function writeStats() {
   let data = getStats();
-  // let data = fs.writeFileSync(`./data/stats.txt`, JSON.stringify(getStats()));
+  data = data.map(el => el.join(' ')).join('\n');
+  fs.writeFileSync(`./data/stats.txt`, data);
   
-  console.log(data)
+  // console.log(typeof data)
 }
 
 module.exports = {
