@@ -20,7 +20,7 @@ function getStats() {
 
 function writeStats() {
   stats = getStats().map((elem) => elem.join(',').replace(',', ' ')).join('\n')
-  fs.appendFileSync('data/stats.txt', stats);
+  fs.writeFileSync('data/stats.txt', stats);
 }
 
 module.exports = {
