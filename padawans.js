@@ -21,7 +21,7 @@ function getStats () {
 }
 
 function writeStats(stats){
-  let newStats = stats.map((el) => el.join(' ').split(' '))
+  let newStats = stats.join('\n').split(',').join(' ')
   fs.writeFileSync('data/stats.txt', newStats)
 }
 
