@@ -1,4 +1,5 @@
 const fs = require('fs');
+
 const {
   getPadawanNames,
   getLightsaberScores,
@@ -15,7 +16,7 @@ describe('Статистика о падаванах', () => {
     const names = getLightsaberScores();
     expect(names).toEqual([99.9, 92, 87, 82]);
   });
-  it('getStat возвращает таблицу соответствия падавана и оценки владения световым мечом и сохраняет результат в файл `data/stats.txt`', () => {
+  xit('getStat возвращает таблицу соответствия падавана и оценки владения световым мечом и сохраняет результат в файл `data/stats.txt`', () => {
     const stats = getStats();
     expect(stats).toEqual([
       ['Revan', 99.9],
@@ -24,7 +25,7 @@ describe('Статистика о падаванах', () => {
       ['Juhani', 82],
     ]);
   });
-  it('writeStats сохраняет статистику в файл `data/stats.txt`', () => {
+  xit('writeStats сохраняет статистику в файл `data/stats.txt`', () => {
     const stats = getStats();
     writeStats(stats);
     const data = fs.readFileSync('data/stats.txt', 'utf8');
