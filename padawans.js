@@ -2,10 +2,7 @@
 
 const fs = require("fs");
 function getPadawanNames() {
-  const getName = fs
-    .readFileSync("./data/padawans.txt", "utf-8")
-    .trim()
-    .split("\n");
+  const getName = fs.readFileSync("./data/padawans.txt", "utf-8").trim().split("\n");
   return getName;
 }
 
