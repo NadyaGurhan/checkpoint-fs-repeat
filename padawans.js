@@ -15,7 +15,6 @@ function getLightsaberScores() {
 
 function getStats() {
   const padawansArr = getPadawanNames();
-
   const scoresArr = getLightsaberScores();
 
   const resArr = [];
