@@ -29,16 +29,6 @@ function getStats() {
     return resultArr;
 }
 
-const clearFolder = () => {
-    const files = fs.readdirSync('../task1');
-
-    files.forEach((file) => {
-        if (path.extname(file) === '.txt') {
-            fs.unlinkSync(file);
-        }
-    });
-};
-
 function writeStats() {
     // fs.unlinkSync('./data/stats.txt');
     const stats = getStats();
