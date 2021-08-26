@@ -24,10 +24,11 @@ let getStats = () => {
   for(i = 0; i< arrOfPadawans.length; i++){
     result.push([arrOfPadawans[i],score[i]])
   }
+  writeStats(result)
   return result
 }
 
-let writeStats = (stats) =>{
+function writeStats(stats){
   let result = stats.join('\n').replace(/,/g, ' ')
   fs.writeFileSync('./data/stats.txt', result)
 }
