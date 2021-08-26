@@ -11,10 +11,12 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  //   let arr = [];
-  // let names = getPadawanNames();
-  // let scores = getLightsaberScores();
-
+  let names = getPadawanNames();
+  let scores = getLightsaberScores();
+  for (let i = 0; i < names.length; i++) {
+    names[i] += ', ' + scores[i];
+  }
+  return names;
 }
 
 module.exports = {
