@@ -1,29 +1,46 @@
 const fs = require('fs');
+
 function getPadawanNames() {
-  fs.readFile("./data/padawans.txt", "utf8", function (error, data) {
-    // console.log(data.split('\n').slice(0,4))
-    if (error) throw error
-    return data.split('\n').slice(0, 4);
-  });
+  const padawans = fs.readFileSync("./data/padawans.txt", "utf8");
+  let names = padawans.split('\n');
+
+  return names.splice(0, 4);
 };
+
+
 
 function getLightsaberScores() {
-  fs.readFile("./data/scores.txt", "utf8", function (error, data) {
-    // console.log(data.split('\n').slice(0,4))
-    if (error) throw error
-    return data.split('\n').slice(0, 4);
-  });
+  const lightSaber = fs.readFileSync("./data/scores.txt", "utf8");
+  let result = lightSaber.split('\n');
+  let score = [];
+for (let i = 0; i < result.length; i++) {
+score.push(Number(result[i]))
+  
+} return score;
 }
 
-function getStats() {
-  fs.open('stats.txt', 'w', (err) => {
 
-  });
-  fs.writeFile("./data/stats.txt", function (error, data) {
-    if (error) throw error
-    return data;
-  });
-};
+function getStats() {
+  const padawans = fs.readFileSync("./data/padawans.txt", "utf8");
+  let names = padawans.split('\n');
+ names.splice(0, 4);
+
+ const lightSaber = fs.readFileSync("./data/scores.txt", "utf8");
+ let result = lightSaber.split('\n');
+ let score = [];
+for (let i = 0; i < result.length; i++) {
+score.push(Number(result[i]))
+
+let stats =[];
+for (let i = 0; i < 4; i++) {
+  stats.push(names[i]);
+  stats.push(score[i])
+}
+console.log(stats);
+
+}
+}
+console.log(getStats());
 
 function writeStats() {
 
