@@ -1,40 +1,34 @@
-function getPadawanNames() {
-  const fs = require('fs');
-  const namesPadawans = fs.readFileSync("./data/padawans.txt", "utf8").split("\n").slice(0, 4);
+const fs = require('fs');
 
-console.log(namesPadawans);
+function getPadawanNames() {
+ const namesPadawans = fs.readFileSync("./data/padawans.txt", "utf8").split("\n").splice(0, 4);
+  return namesPadawans;
 }
-getPadawanNames(); 
+console.log(getPadawanNames());
 
 function getLightsaberScores() {
-  const fs = require('fs');
-  const arrScoresPadawans = fs.readFileSync("./data/scores.txt", "utf8").split("\n");
-  const scoresPadawans = arrScoresPadawans.map(Number);
-
-console.log(scoresPadawans);
+  const arrScores = fs.readFileSync("./data/scores.txt", "utf8").split("\n");
+  const scoresPadawans = arrScores.map(Number);
+  return scoresPadawans;
 }
 getLightsaberScores();
 
 function getStats() {
-  const fs = require('fs');
-  const namessPadawans = fs.readFileSync("./data/padawans.txt", "utf8").split("\n").slice(0, 4);
-  const scoressPadawans = fs.readFileSync("./data/scores.txt", "utf8").split("\n");
-
-  const result1 = [];
-  const result2 = [];
-  const result3 = [];
-  const result4 = [];
-  result1.push(namessPadawans[0], scoressPadawans[0]);
-  result2.push(namessPadawans[1], scoressPadawans[1]);
-  result3.push(namessPadawans[2], scoressPadawans[2]);
-  result4.push(namessPadawans[3], scoressPadawans[3]);
-  console.log(result1,result2,result3,result4);
+  const namesPadawans = getPadawanNames();
+  const scoresPadawans = getLightsaberScores();
+  const stats = [];
+ for (let i = 0; i < namesPadawans.length; i += 1) {
+ stats.push([namesPadawans[i], scoresPadawans[i]]);
 }
+ return stats;
+}
+console.log(getStats());
 
-getStats();
 function writeStats() {
-  
+  const stats = getStats();
+  fs.writeFileSync('data/stats.txt', stats.map((el) => el.join(' ')).join('\n'));
 }
+writeStats();
 
 module.exports = {
   getPadawanNames,
