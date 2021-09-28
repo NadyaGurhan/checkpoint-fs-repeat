@@ -6,6 +6,14 @@ function readFile(path) {
   return data.trim().split('\n');
 }
 
+function writeStats(data) {
+  const fs = require('fs');
+  const changedData = data
+    .map((padawan) => padawan.join(' '))
+    .join('\n');
+  fs.writeFileSync('data/stats.txt', changedData);
+}
+
 function getPadawanNames() {
   return readFile('data/padawans.txt');
 }
@@ -21,12 +29,6 @@ function getStats() {
   const path = 'data/stats.txt';
   writeStats(stats);
   return stats;
-}
-
-function writeStats(data) {
-  const fs = require('fs');
-  const changedData = data.map((padawan) => padawan.join(' ')).join('\n');
-  fs.writeFileSync('data/stats.txt', changedData);
 }
 
 module.exports = {
