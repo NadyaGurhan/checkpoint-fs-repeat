@@ -8,11 +8,10 @@ function getPadawanNames() {
 
 function getLightsaberScores() {
   const lightsaberScores = fs.readFileSync('./data/scores.txt', 'utf-8');
-  const result = lightsaberScores.trim().split('\n')
-  const resultNum = []
+  const result = lightsaberScores.trim().split('\n');
+  const resultNum = [];
   for (let i = 0; i < result.length; i++) {
     resultNum.push(Number(result[i]));
-    
   }
   return resultNum;
 }
@@ -30,12 +29,12 @@ function getStats() {
 
 function writeStats() {
   const stats = getStats();
-  for (let i = 0; i < stats.length; i++) {
-    fs.appendFileSync('data/stats.txt', `${stats[i]}\n`, 'utf8');
-  }
+
+  const result = stats.map((padawan) => padawan.join(' ')).join('\n');
+  fs.writeFileSync('data/stats.txt', result);
 }
 
-writeStats();
+
 
 module.exports = {
   getPadawanNames,
