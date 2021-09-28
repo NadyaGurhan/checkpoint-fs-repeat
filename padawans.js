@@ -19,24 +19,25 @@ const getLightsaberScores = () => {
 
 const getStats = () => {
   const newArr = [];
+  const arr1 = getPadawanNames();
+  const arr2 = getLightsaberScores();
 
-  const arr1= getPadawanNames()
-  const arr2= getLightsaberScores()
-
- 
   for (let i = 0; i < arr1.length; i += 1) {
-    newArr.push(`${arr1[i]}, ${Number(arr2[i])}`)
+    newArr.push([`${arr1[i]}`, arr2[i]]);
   }
-  console.log(newArr)
-  return newArr
-   
+
+  console.log(newArr);
+  return newArr;
 };
 
-// getStats(getPadawanNames(), getLightsaberScores())
+const writeStats = () => {
+  const forTest = getStats().join(', \n' );
+  fs.writeFileSync(`${path}stats.txt`, `${forTest}`);
+};
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
