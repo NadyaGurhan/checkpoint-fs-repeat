@@ -6,6 +6,7 @@ const {
   writeStats,
 } = require('../padawans');
 
+
 describe('Статистика о падаванах', () => {
   it('getPadawanNames возвращает список падаванов из файла `data/padawans.txt`', () => {
     const names = getPadawanNames();
@@ -15,6 +16,7 @@ describe('Статистика о падаванах', () => {
     const names = getLightsaberScores();
     expect(names).toEqual([99.9, 92, 87, 82]);
   });
+
   it('getStat возвращает таблицу соответствия падавана и оценки владения световым мечом и сохраняет результат в файл `data/stats.txt`', () => {
     const stats = getStats();
     expect(stats).toEqual([
