@@ -24,15 +24,19 @@ function getLightsaberScores() {
 
 function getStats() {
   const statsArr = [];
-  for (let i = 0; i < padawanList.length; i++) {
+  for (let i = 0; i < padawanList.length; i += 1) {
     statsArr.push([padawanList[i], Number(scoresList[i])]);
   }
   return statsArr;
 }
 
 function writeStats() {
-  const createStatsFile = fs.writeFileSync('./data/stats.txt', `${getStats()}`);
-  return createStatsFile;
+  const arr = [];
+  for (let i = 0; i < padawanList.length; i += 1) {
+    arr.push(padawanList[i] + ' ' + scoresList[i]);
+  }
+  const arr1 = arr.join('\n');
+  fs.writeFileSync('./data/stats.txt', `${arr1}`);
 }
 
 module.exports = {
