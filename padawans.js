@@ -15,6 +15,7 @@ function getPadawanNames() {
 let paddawansList = getPadawanNames();
 
 
+
 function getLightsaberScores() {
   const scoresoutpit = fs.readFileSync('./data/scores.txt', 'utf8');
   const scoresArr = scoresoutpit.split('\n'); 
