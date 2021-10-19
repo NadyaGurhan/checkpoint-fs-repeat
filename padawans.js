@@ -3,15 +3,17 @@ let padawans = fs.readFileSync('./data/padawans.txt', 'utf8')
 let scores = fs.readFileSync('./data/scores.txt', 'utf8')
 
 function getPadawanNames() {
-  let result = padawans.split('\n')
-  result.pop()
+  let result = padawans.split('\n') //проебразуем в массив
+  result.pop() //
   return result
 }
+// console.log(getPadawanNames())
 
 function getLightsaberScores() {
   let result = scores.split('\n').map((el) => +el) // из строки массива делам массив чисел
   return result
 }
+// console.log(getLightsaberScores())
 
 function getStats() {
   let scores = getLightsaberScores()
@@ -24,6 +26,7 @@ function getStats() {
   }
   return main
 }
+// console.log(getStats())
 
 function writeStats() {
   let stats1 = getStats()
