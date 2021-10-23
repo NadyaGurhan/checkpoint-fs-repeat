@@ -4,10 +4,13 @@ const fs = require("fs")
 
 function getPadawanNames() {
   const padawanFile = fs.readFileSync("./data/padawans.txt", "utf8")
-  //console.log(padawanFile)
+  /* 1-й способ */
   let padawanList = padawanFile.split('\n')
   padawanList.pop()
-  //console.log(padawanList)
+
+  /* 2-й способ */
+  //let padawanList = padawanFile.trim().split('\n')
+
   return padawanList
 }
 
@@ -56,14 +59,20 @@ function writeStats() {
   const padawanFile = fs.readFileSync("./data/padawans.txt", "utf8")
   const saberFile = fs.readFileSync("./data/scores.txt", "utf8")
 
-  let padawanList = padawanFile.split('\n')
+  let padawanList = padawanFile.split('\n')  //.trim() - удаляет пустые строки
   padawanList.pop()
 
   let saberScoreList= saberFile.split('\n')
  
+  let statsStr = ''
   for (let i = 0; i < padawanList.length; i++) {
-    //собираем строку
+    let temp = padawanList[i] + ' ' + saberScoreList[i] + '\n'
+    statsStr += temp
   }
+  const stats = statsStr.slice(0, statsStr.length - 1)
+  //console.log(stats);
+  fs.writeFileSync('./data/stats.txt', stats)
+  //проще: fs.writeFileSync('./data/stats.txt', statsStr)
 }
 
 
@@ -71,9 +80,10 @@ function writeStats() {
    getPadawanNames,
    getLightsaberScores,
    getStats,
-//   writeStats,
+   writeStats,
  };
 
 //getPadawanNames()
 //getLightsaberScores()
 //getStats()
+//writeStats()
