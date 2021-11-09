@@ -8,7 +8,13 @@ function getPadawanNames() {
   return list;
 }
 
-function getLightsaberScores() {}
+function getLightsaberScores() {
+  const srrc = './data/scores.txt';
+  const scoreslist = fs.readFileSync(srrc, 'utf-8');
+  const lisst = scoreslist.split('\n');
+  const clean = lisst.pop();
+  return lisst;
+}
 
 function getStats() {}
 
