@@ -27,12 +27,9 @@ function getStats() {
 getStats();
 
 function writeStats() {
-  const names = fs.readFileSync('./data/padawans.txt', 'utf-8').trim().split('\n');
-  console.log(names);
-  const score = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
-  console.log(score);
-  
-  // const result = fs.writeFileSync('./data/stats.txt', data.trim());
+  const stats = getStats().map((x) => x.join(' ')).join('\n');
+
+  const data = fs.writeFileSync('./data/stats.txt', stats);
 }
 writeStats();
 
