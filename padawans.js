@@ -1,17 +1,18 @@
 const fs = require('fs');
-const readData = fs.readFileSync('data/padawans.txt', 'utf8');
 
-function getPadawanNames() {
-  const padawans = readData.split('\n');
-  padawans.pop();
-  return padawans;
+function readFileToArray(filePath) {
+  return fs.readFileSync(filePath, 'utf8')
+    .trim()
+    .split('\n');
 }
 
-const readScores = fs.readFileSync('data/scores.txt', 'utf8');
+function getPadawanNames() {
+  return readFileToArray('data/padawans.txt');
+}
 
 function getLightsaberScores() {
-  const scores = readScores.split('\n');
-  return scores.map((item) => Number(item));
+  return readFileToArray('data/scores.txt')
+    .map((item) => Number(item));
 }
 
 function getStats() {
@@ -21,18 +22,16 @@ function getStats() {
   for (let i = 0; i < padawans.length; i += 1) {
     table.push([padawans[i], scores[i]]);
   }
-  // fs.writeFileSync('data/stats.txt', `${table}`);
   return table;
 }
 
 function writeStats() {
-  const stats = getStats();
-  const res = stats.join('\n');
-  const newRes = res.replace(',', ' ');
-  fs.writeFileSync('data/stats.txt', `${newRes}`);
+  const statsArr = getStats();
+  const statrStr = statsArr
+    .join('\n')
+    .replace(/,/g, ' ');
+  fs.writeFileSync('data/stats.txt', `${statrStr}`);
 }
-
-writeStats();
 
 module.exports = {
   getPadawanNames,
