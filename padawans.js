@@ -1,28 +1,18 @@
 const fs = require('fs');
-const { get } = require('https');
-let padawans = fs.readFileSync(`${__dirname}/data/padawans.txt`, 'utf-8')
-let scores = fs.readFileSync(`${__dirname}/data/scores.txt`, 'utf-8')
-
 function getPadawanNames(){
- let x = padawans.split('\n');
- let y = x.pop()
- return x;
+  return fs.readFileSync(`${__dirname}/data/padawans.txt`, 'utf-8').trim().split('\n')
 }
 
 function getLightsaberScores(){
-  let x = scores.split('\n')
-  for (let i = 0; i < x.length; i++){
-    x[i] = +x[i]
-  }
-  return x;
+  return fs.readFileSync(`${__dirname}/data/scores.txt`, 'utf-8').split('\n').map((el) => el = Number(el));
 }
 
 function getStats(){
-
+  return getPadawanNames().map((item, i) => item = [item, getLightsaberScores()[i]])
 }
 
 function writeStats(){
-
+  fs.writeFileSync(`${__dirname}/data/stats.txt`, getStats().join('\n').replace(/,/g, ' '))
 }
 
 module.exports = {
