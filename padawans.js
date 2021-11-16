@@ -1,20 +1,23 @@
-/* eslint-disable no-plusplus */
 /* eslint-disable linebreak-style */
+/* eslint-disable no-plusplus */
+
 // let w;
 function getPadawanNames() {
+  // eslint-disable-next-line global-require
   const fs = require('fs');
-  const x = fs.readFileSync("./data/padawans.txt", "utf-8").split('\r\n')
+  const x = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\r\n');
   x.pop();
   return x;
 }
 // getPadawanNames()
 
 function getLightsaberScores() {
+  // eslint-disable-next-line global-require
   const fs = require('fs');
-  const q = fs.readFileSync("./data/scores.txt", "utf-8").split('\r\n')
+  const q = fs.readFileSync('./data/scores.txt', 'utf-8').split('\r\n');
   // q.pop();
-  let y = [];
-  q.forEach(elem => y.push(Number(elem)));
+  const y = [];
+  q.forEach((elem) => y.push(Number(elem)));
   return y;
 }
 
@@ -32,15 +35,23 @@ function getStats() {
 function writeStats() {
   const w = getStats();
   // let string = '';
-  const fs = require("fs");
-  let filePath = './data/stats.txt';
+  // eslint-disable-next-line global-require
+  const fs = require('fs');
+  const filePath = './data/stats.txt';
+  const data = fs.readFileSync(filePath, 'utf8');
+  let str = '';
   for (let i = 0; i < 4; i++) {
     if (i === 0) {
     // string += `${x[i]} ${y[i]}\n`;
-      fs.appendFileSync(filePath, `${w[i].join(' ')}`, 'utf-8');
-    } else fs.appendFileSync(filePath, `\n${w[i].join(' ')}`, 'utf-8');
+      str += `${w[i].join(' ')}`;
+      // fs.appendFileSync(filePath, `${w[i].join(' ')}`, 'utf-8');
+    } else {
+      // fs.appendFileSync(filePath, `\n${w[i].join(' ')}`, 'utf-8');
+      str += `${w[i].join(' ')}`;
+    }
   }
- // return string
+  fs.writeFileSync(str, data);
+  // return string
 }
 
 module.exports = {
