@@ -23,10 +23,9 @@ function getStats() {
 }
 
 function writeStats() {
-
+  const stats = getStats().map((el) => el.join(' ')).join('\n');
+  return fs.writeFileSync('./data/stats.txt', stats);
 }
-
-writeStats();
 
 module.exports = {
   getPadawanNames,
