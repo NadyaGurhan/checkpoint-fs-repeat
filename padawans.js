@@ -13,10 +13,13 @@ function getLightsaberScores() {
   const scores = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n').map((el) => Number(el));
   return scores;
 }
-let array = [];
+
+
+
 function getStats() {
-  const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n');
-  const scores = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n').map((el) => Number(el));
+  let array = [];
+  const padawans = getPadawanNames();
+  const scores = getLightsaberScores();
   for (let i = 0; i < 4; i++) {
     let arr = [];
     arr.push(padawans[i], scores[i]);
@@ -26,9 +29,18 @@ function getStats() {
 }
 
 function writeStats() {
-
+  const stats = getStats();
+  const filePath = './data/stats.txt';
+  const txtData = stats.join('\n').replaceAll(',', ' ')
+  return fs.writeFileSync(filePath, txtData)
 }
 
+// function writeStats() {
+//   return fs.writeFileSync(
+//     './data/stats.txt',
+//     `${getStats().join('\n').replaceAll(',', ' ')}`,
+//   );
+// };
 
 module.exports = {
   getPadawanNames,
