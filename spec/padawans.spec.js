@@ -8,6 +8,8 @@ const {
 
 describe('Статистика о падаванах', () => {
   it('getPadawanNames возвращает список падаванов из файла `data/padawans.txt`', () => {
+    // const filePath = './data/padawan.txt'; 
+    // const getPadawanNames = fs.readFileSync(filePath, "utf8");
     const names = getPadawanNames();
     expect(names).toEqual(['Revan', 'Bastila Shan', 'Jolee Bindo', 'Juhani']);
   });

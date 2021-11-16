@@ -2,7 +2,7 @@
   "name": "checkpoint-fs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "padawan.js",
   "scripts": {
     "test": "jest spec/*[sS]pec.js -i"
   },
