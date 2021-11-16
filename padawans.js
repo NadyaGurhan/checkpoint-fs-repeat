@@ -16,26 +16,23 @@ return score;
 }
 
 function getStats() {
-  const score = fs
-  .readFileSync('./data/scores.txt', 'utf-8')
-.split('\n')
-.map((el)=> Number(el));
-  padaw = fs
-.readFileSync('./data/padawans.txt', 'utf-8')
-.split('\n');
+  let array = [];
+  const padawanses = getPadawanNames();
+const scores = getLightsaberScores();
   
   for (let i = 0; i < 4; i++){
     let arr =[];
-    arr.push(padaw[i], score[i]);
+    arr.push(padawanses[i], scores[i]);
   array.push(arr);
   }
   return array;
 }
 
 function writeStats() {
-  let str = array.join('\n');
-  return fs
-  .writeFileSync('./data/stats.txt', str);
+  const stats = getStats();
+  const filePath = './data/stats.txt';
+  let str = stats.join('\n').replace(/,/g, ' ');
+  return fs.writeFileSync(filePath, str);
 }
 
 module.exports = {
