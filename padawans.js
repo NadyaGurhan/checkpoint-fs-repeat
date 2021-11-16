@@ -30,17 +30,15 @@ function getStats() {
 }
 
 function writeStats() {
-  const x = getPadawanNames();
-  // eslint-disable-next-line no-shadow
-  const y = getLightsaberScores();
+  const w = getStats();
   // let string = '';
   const fs = require("fs");
   let filePath = './data/stats.txt';
   for (let i = 0; i < 4; i++) {
-    if (x[i] !== 3) {
+    if (i === 0) {
     // string += `${x[i]} ${y[i]}\n`;
-      fs.appendFileSync(filePath, `${x[i]} ${y[i]}\n`, 'utf-8');
-    } else fs.appendFileSync(filePath, `${x[i]} ${y[i]}`, 'utf-8');
+      fs.appendFileSync(filePath, `${w[i].join(' ')}`, 'utf-8');
+    } else fs.appendFileSync(filePath, `\n${w[i].join(' ')}`, 'utf-8');
   }
  // return string
 }
