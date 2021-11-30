@@ -19,7 +19,7 @@ describe('Статистика о падаванах', () => {
     const stats = getStats();
     expect(stats).toEqual([
       ['Revan', 99.9],
-      ['Bastila Shan', 92],
+      ['Bastila Shan', 92], 
       ['Jolee Bindo', 87],
       ['Juhani', 82],
     ]);
