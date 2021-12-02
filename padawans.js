@@ -13,7 +13,8 @@ function getPadawanNames() {
     });
   return names;
 }
-console.log(getPadawanNames());
+// console.log(getPadawanNames());
+const names = getPadawanNames();
 
 function getLightsaberScores() {
   const scores = [];
@@ -28,14 +29,31 @@ function getLightsaberScores() {
     });
   return scores;
 }
-console.log(getLightsaberScores());
+// console.log(getLightsaberScores());
+const scores = getLightsaberScores();
 
-function getStats() {}
-// function writeStats() {}
+function getStats() {
+  const result = names.reduce((acc, elem, index) => {
+    acc.push([elem, Number(scores[index])])
+    return acc;
+  }, []);
+  return result;
+}
+// console.log(getStats());
+function writeStats() {
+  const result = names.reduce((acc, elem, index) => {
+    acc.push([elem, Number(scores[index])])
+    return acc;
+  }, []);
+  let data = result.join('\n').replace(/\,/g, ' ');
+  console.log(data);
+  return fs.writeFileSync('./data/stats.txt', data, () => console.log('file saved!'));
+}
+console.log(writeStats());
 
-// module.exports = {
-//   getPadawanNames,
-//   getLightsaberScores,
-//   getStats,
-//   writeStats,
-// };
+module.exports = {
+  getPadawanNames,
+  getLightsaberScores,
+  getStats,
+  writeStats,
+};
