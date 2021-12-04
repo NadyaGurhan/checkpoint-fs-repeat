@@ -1,56 +1,36 @@
-const { readFileSync, open, writeFileSync, appendFileSync } = require('fs');
+const {
+  readFileSync, open, writeFileSync, appendFileSync,
+} = require('fs');
 
-const getPadawanNames = () => {
-  const all = [];
-  readFileSync('./data/padawans.txt', 'utf-8').toString().split('\n').map((item) => {
-    if (item === '') {
-      return;
-    }
-    all.push(item);
-  });
+const getPadawanNames = () => readFileSync('./data/padawans.txt', 'utf-8').split('\n').filter((line) => line !== '');
 
-  return all;
-};
-
-const getLightsaberScores = () => {
-  const all = [];
-  readFileSync('./data/scores.txt', 'utf-8').toString().split('\n').map((item, i) => {
-    if (i === 0) {
-      all.push(parseFloat(item));
-      return;
-    }
-    all.push(+item);
-  });
-  // console.log(all)
-  return all;
-};
+const getLightsaberScores = () => readFileSync('./data/scores.txt', 'utf-8').split('\n').map((item) => +item);
 
 const getStats = () => {
   const resault = [];
-  const path = './data/stats.txt';
   const names = getPadawanNames();
   const scores = getLightsaberScores();
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 4; i += 1) {
     if (names[i] === '' || scores[i] === '') {
       return;
     }
-    resault.push([names[i], scores[i]]);
+    resault.push([names[i], +scores[i]]);
   }
-  const fileStats = appendFileSync(path, resault);
-  // writeFileSync('./data/stats.txt', resault);
-  console.log(resault);
   return resault;
 };
 
-getPadawanNames();
-getLightsaberScores();
-getStats();
+const writeStats = () => {
+  const resault = getStats();
+  const newRes = resault.map((item) => item.join(' '));
+  writeFileSync('./data/stats.txt', newRes.join('\n'));
+  return newRes.join('\n');
+};
+
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // getStats,
-  // writeStats,
+  writeStats,
 };
