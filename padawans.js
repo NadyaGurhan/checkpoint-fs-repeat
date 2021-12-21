@@ -35,7 +35,7 @@ function getStats() {
 
 function writeStats() {
     let str = getStats().join('\n')
-    fs.writeFileSync("./stats.txt", str);
+    fs.writeFileSync(__dirname + "/data/stats.txt", str);
 }
 
 getStats()
