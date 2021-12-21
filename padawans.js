@@ -9,8 +9,7 @@ function getPadawanNames() {
 
 
 function getLightsaberScores() {
-return scores.split('\n')
-console.log(scores);
+return scores.split('\n').map(parseFloat)
 }
 function getStats() {
   const newScores = getLightsaberScores()
