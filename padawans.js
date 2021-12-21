@@ -24,13 +24,26 @@ function getStats() {
     stats.push([padnames[i],scoresnames[i]]);
  }
  result = stats.toString('\n')
- fs.writeFileSync( 'stats.txt', result, 'utf-8')
+ //fs.writeFileSync( 'stats.txt', result, 'utf-8')
  return stats
+}
+
+
+function writeStats() {
+  const padnames = padawans.split('\n').filter(Boolean)
+  const scoresnames = scores.split('\n').map (i => +i)
+  data = []
+  for(let i=0;i<padnames.length;i++){
+    data.push([padnames[i] + ' ' + scoresnames[i]]);
+ }
+ result = data.toString('\n').split(",").join("\n")
+ fs.writeFileSync( __dirname + '/data/stats.txt', result, 'utf-8')
+ return data
 }
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  //writeStats,
+  writeStats,
 };
