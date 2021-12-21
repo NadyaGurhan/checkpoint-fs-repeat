@@ -1,11 +1,10 @@
 const fs = require('fs');
-const arr = require('../p1-random-profile-generator/generatePerson');
 const padawans = fs.readFileSync( __dirname + '/data/padawans.txt', "utf8")
 const scores = fs.readFileSync( __dirname + '/data/scores.txt', "utf8")
 //const stat = fs.readFileSync( __dirname + '/data/stats.txt', "utf8")
 
 function getPadawanNames() {
-  const names = padawans.split('\n').filter(Boolean)
+  const names = padawans.trim().split('\n')
    
   return names
 }
@@ -17,8 +16,8 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  const padnames = padawans.split('\n').filter(Boolean)
-  const scoresnames = scores.split('\n').map (i => +i)
+  const padnames = padawans.trim().split('\n')
+  const scoresnames = scores.split('\n').map (i => Number(i))
   stats = []
   for(let i=0;i<padnames.length;i++){
     stats.push([padnames[i],scoresnames[i]]);
@@ -31,7 +30,7 @@ function getStats() {
 
 function writeStats() {
   const padnames = padawans.split('\n').filter(Boolean)
-  const scoresnames = scores.split('\n').map (i => +i)
+  const scoresnames = scores.split('\n').map (i => Number(i))
   data = []
   for(let i=0;i<padnames.length;i++){
     data.push([padnames[i] + ' ' + scoresnames[i]]);
