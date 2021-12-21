@@ -17,11 +17,12 @@ function getStats() {
 }
 function writeStats() {
   const stats = getStats()
-  const textToWrite = stats.map(item => item.join(' ')).join('\n')
+  const textToWrite = stats
+      .map(item => item.join(' '))
+      .join('\n')
   fs.writeFileSync(__dirname+pathToData+'stats.txt',textToWrite,'utf8')
 }
 
-writeStats()
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
