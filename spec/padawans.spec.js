@@ -9,6 +9,7 @@ const {
 describe('Статистика о падаванах', () => {
   it('getPadawanNames возвращает список падаванов из файла `data/padawans.txt`', () => {
     const names = getPadawanNames();
+    console.log(names)
     expect(names).toEqual(['Revan', 'Bastila Shan', 'Jolee Bindo', 'Juhani']);
   });
   it('getPadawanScores возвращает оценки владения световым мечом из файла `data/scores.txt`', () => {
