@@ -14,10 +14,7 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  const arr3 = [];
-  for (let i = 0; i < padawans.length; i += 1) {
-    arr3[i] = [padawans[i], +scores[i]];
-  }
+  const arr3 = padawans.map((item, index) => [item, +scores[index]]);
   const content = arr3.reduce((accum, item) => `${accum + item.join(' ')}\n`, '');
   fs.writeFileSync('data/stats.txt', content);
   return arr3;
