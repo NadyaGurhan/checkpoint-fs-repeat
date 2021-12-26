@@ -22,7 +22,10 @@ function getStats() {
 
 function writeStats() {
   const content = padawans.reduce((accum, item, index) => `${accum + item} ${scores[index]}\n`, '');
-  fs.writeFileSync('data/stats.txt', content);
+  const arr = content.split('\n');
+  arr.pop();
+  const content2 = arr.join('\n');
+  fs.writeFileSync('data/stats.txt', content2);
 }
 
 module.exports = {
