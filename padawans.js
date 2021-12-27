@@ -20,11 +20,23 @@ function getStats() {
   }
   return result
 }
+ function writeStats() {
+  const names = padawans.trim().split('\n')
+  const numbers = scores.split('\n').map(parseFloat)
+  let result = ''
+  for (let i = 0; i < names.length; i++) {
+    let tmp = ''
+    tmp = names[i] + ' ' + numbers[i] + '\n' 
+    result += tmp
+  }
+  let stats = fs.writeFileSync('data/stats.txt', result.trim())
+  return result
+ }
 
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
