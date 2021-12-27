@@ -4,7 +4,7 @@ const {
   getLightsaberScores,
   getStats,
   writeStats,
-} = require('../data/padawan');
+} = require('../padawans.js');
 
 describe('Статистика о падаванах', () => {
   it('getPadawanNames возвращает список падаванов из файла `data/padawans.txt`', () => {
