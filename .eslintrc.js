@@ -16,5 +16,7 @@ module.exports = {
     'jest',
   ],
   rules: {
+    'no-plusplus': 'off',
+    'no-param-reassign': 'off',
   },
 };
