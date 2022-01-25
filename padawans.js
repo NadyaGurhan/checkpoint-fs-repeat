@@ -41,8 +41,6 @@ function writeStats(){
   fs.writeFileSync('data/stats.txt', result);
 }
 
-
-
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
