@@ -6,28 +6,32 @@ const scores = fs.readFileSync('./data/scores.txt', 'utf8');
 function getPadawanNames() {
   return padavans.slice(0, -1).split('\n');
 }
-console.log(getPadawanNames());
+//console.log(getPadawanNames());
 
 function getLightsaberScores() {
   return scores.split('\n').map((i) => i * 1);
 }
-console.log(getLightsaberScores());
+//console.log(getLightsaberScores());
 
 function getStats() {
-  let arr = [];
-  let padavans = getPadawanNames();
-  let scores = getLightsaberScores();
+  const arr = [];
+  const padavans = getPadawanNames();
+  const scores = getLightsaberScores();
   for (let i = 0; i < padavans.length; i++) {
     let arrMin = [];
     arrMin.push(padavans[i], scores[i]);
-    arr.push(arrMin)
+    arr.push(arrMin);
   }
   return arr;
 }
-console.log(getStats());
+//console.log(getStats());
 
-
-
+function writeStats() {
+  const arr = getStats();
+  const newArr = arr.map((el) => el.join(' ')).join('\n');
+  fs.writeFileSync('./data/stats.txt', `${newArr}`);
+}
+//console.log(writeStats());
 
 
 
@@ -35,5 +39,5 @@ module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
