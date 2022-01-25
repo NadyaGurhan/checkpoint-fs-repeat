@@ -16,7 +16,10 @@ function getLightsaberScores(){
   const scores = './data/scores.txt'
   const readFile = fs.readFileSync(scores, 'utf8');
   const sortA = readFile.split('\n');
- 
+
+  for(let i in sortA){
+    sortA[i] = Number(sortA[i])
+  }
   return sortA;
 }
 
