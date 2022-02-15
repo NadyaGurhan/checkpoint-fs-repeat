@@ -32,14 +32,15 @@ function writeStats() {
   let scoresArr1 = scores1.split('\n');
   let padawanArr1 = padawan1.split('\n');
   for (let i = 0; i <= scoresArr1.length; i++ ){
-    if (i === scores.length - 1){
-      fs.appendFileSync(`./data/stats.txt`, `${padawanArr1[i]` + ' ' + `scoresArr1[i]`}`)
-    }else{
-      fs.appendFileSync(`./data/stats.txt`, `${padawanArr1[i]` + ' ' + `scoresArr1[i]`}\n`)
-    }
+    if (i === scores.length - 1)
+      fs.appendFileSync(`./data/stats.txt`, `${padawanArr1[i] + ' ' + scoresArr1[i]}`);
+    else
+      fs.appendFileSync(`./data/stats.txt`, `${padawanArr1[i] + ' ' + scoresArr1[i]}\n`);
+    
   }
-
 }
+
+
 
 
 module.exports = {
