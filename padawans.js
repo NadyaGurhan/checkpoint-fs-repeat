@@ -18,17 +18,25 @@ function getLightsaberScores(){
 }
 
 function getStats(){
-  let arrName = arr
-  let arrScore = arr1
-  for (let i = 0; i < arrName.length; i++){
-  
+  let names = getPadawanNames();
+  let scores = getLightsaberScores();
+  let result = [];
+  for (let i = 0; i < names.length; i += 1) {
+    result.push([names[i], scores[i]]);
   }
+  return result;
 }
+
+function writeStats(){
+  const nl = getStats().join('\n');
+  const fileName = './data/stats.txt';
+  return fs.writeFileSync(fileName, nl.replaceAll(',', ' '));
+  }
 
 
 module.exports = {
   getPadawanNames,  
   getLightsaberScores,
   getStats,
- // writeStats,
+  writeStats,
 };
