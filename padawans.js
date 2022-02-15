@@ -3,14 +3,19 @@ const readPadawans = fs.readFileSync("./data/padawans.txt", "utf8");
 const readScores = fs.readFileSync("./data/scores.txt", "utf8");
 
 function getPadawanNames() {
-  let names = [];
-  readPadawans.split("\n");
-  console.log(readPadawans);
+  return readPadawans.split("\n").filter((el) => el);
 }
-getPadawanNames();
+
+function getLightsaberScores() {
+  return readScores
+    .split("\n")
+    .filter((el) => el)
+    .map((s) => +s);
+}
+
 module.exports = {
-  // getPadawanNames,
-  // getLightsaberScores,
+  getPadawanNames,
+  getLightsaberScores,
   // getStats,
   // writeStats,
 };
