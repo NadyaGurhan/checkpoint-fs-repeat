@@ -12,6 +12,7 @@ function getLightsaberScores() {
   }
   return res;
 }
+
 function getStats() {
   let res = [];
   for (let i = 0; i < scores.length; i++) {
@@ -22,13 +23,12 @@ function getStats() {
 function writeStats() {
   fs.writeFileSync(`./data/stats.txt`, ``);
   for (let i = 0; i < scores.length; i++) {
-    if (i < scores.length -1) {
+    if (i === scores.length - 1)
+      fs.appendFileSync(`./data/stats.txt`, `${pads[i] + ' ' + scores[i]}`);
+    else
       fs.appendFileSync(`./data/stats.txt`, `${pads[i] + ' ' + scores[i]}\n`);
-    }
-    else {fs.appendFileSync(`./data/stats.txt`, `${pads[i] + ' ' + scores[i]}`)}}
+  }
 }
-  
-
 
 module.exports = {
   getPadawanNames,
