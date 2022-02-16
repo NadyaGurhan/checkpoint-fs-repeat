@@ -21,9 +21,10 @@ function getStats() {
 }
 
 function writeStats() {
-  const nl = getStats();
-  let str = nl.join('\n').replaceAll(',', ' ');
-  return fs.writeFileSync('./data/stats.txt', str);
+    const nl = getStats();
+    let str = nl.join('\n').replaceAll(',', ' ');
+    console.log(str)
+    // return fs.writeFileSync('./data/stats.txt', str);
 }
 
 
