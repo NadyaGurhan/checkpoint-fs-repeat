@@ -1,1 +1,4 @@
-Revan,99.9Revan,99.9/nBastila Shan,92Revan,99.9/nBastila Shan,92/nJolee Bindo,87Revan,99.9/nBastila Shan,92/nJolee Bindo,87/nJuhani,82Revan,99.9Revan,99.9/nBastila Shan,92Revan,99.9/nBastila Shan,92/nJolee Bindo,87Revan,99.9/nBastila Shan,92/nJolee Bindo,87/nJuhani,82Revan,99.9Revan,99.9/nBastila Shan,92Revan,99.9/nBastila Shan,92/nJolee Bindo,87Revan,99.9/nBastila Shan,92/nJolee Bindo,87/nJuhani,82Revan,99.9Revan,99.9Revan,99.9
+Revan 99.9
+Bastila Shan 92
+Jolee Bindo 87
+Juhani 82
