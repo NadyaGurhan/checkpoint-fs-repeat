@@ -20,6 +20,7 @@ function getStats() {
 	const arr = []
 	const padavans = getPadawanNames()
 	const scores = getLightsaberScores()
+  
 	for (let i = 0; i < padavans.length; i++) {
 		const arrMin = []
 		arrMin.push(padavans[i], scores[i])
