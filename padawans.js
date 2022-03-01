@@ -8,6 +8,13 @@ function getPadawanNames() {
 	return padawansList
 }
 
+function getLightsaberScores() {
+	const scores = fs
+		.readFileSync('./data/scores.txt', 'utf-8')
+		.split('\n')
+		.map(el => Number(el))
+	return scores
+}
 
 module.exports = {
 	getPadawanNames,
