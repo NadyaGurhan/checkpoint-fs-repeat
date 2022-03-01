@@ -16,6 +16,19 @@ function getLightsaberScores() {
 	return scores
 }
 
+
+function getStats() {
+	const arr = []
+	const padavans = getPadawanNames()
+	const scores = getLightsaberScores()
+	for (let i = 0; i < padavans.length; i++) {
+		let arrMin = []
+		arrMin.push(padavans[i], scores[i])
+		arr.push(arrMin)
+	}
+	return arr
+}
+
 module.exports = {
 	getPadawanNames,
 	getLightsaberScores,
