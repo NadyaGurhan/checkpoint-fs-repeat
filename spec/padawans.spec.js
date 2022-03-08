@@ -7,11 +7,11 @@ const {
 } = require('../padawans');
 
 describe('Статистика о падаванах', () => {
-  it('getPadawanNames возвращает список падаванов из файла `data/padawans.txt`', () => {
+  it(fs.readFileSync('./data/padawans.txt', "utf8") => {
     const names = getPadawanNames();
     expect(names).toEqual(['Revan', 'Bastila Shan', 'Jolee Bindo', 'Juhani']);
   });
-  it('getPadawanScores возвращает оценки владения световым мечом из файла `data/scores.txt`', () => {
+  it(fs.readFileSync('./data/scores.txt', "utf8") => {
     const names = getLightsaberScores();
     expect(names).toEqual([99.9, 92, 87, 82]);
   });
