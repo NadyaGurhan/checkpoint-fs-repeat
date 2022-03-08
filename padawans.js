@@ -6,15 +6,15 @@ function getPadawanNames (path) {
 };
 
 // getPadawanScores возвращает оценки владения световым мечом из файла `data/scores.txt'
-function getPadawanScores (path) {
+function getLightsaberScores (path) {
   return  fs.readFileSync(path,'utf-8').trim().split('\n');
 };
 
 // getStats возвращает таблицу соответствия падавана и оценки владения световым мечом
-function getStats (padawans, scores) {
+function getStats (names, scores) {
   let stats = [];
-  for (let i = 0; i < padawans.length; i += 1){
-    stats.push([padawans[i],scores[i]]);
+  for (let i = 0; i < names.length; i += 1){
+    stats.push([names[i],scores[i]]);
   }
   return stats;
 }
@@ -23,19 +23,21 @@ function getStats (padawans, scores) {
 // writeStats сохраняет статистику в файл `data/stats.txt'
 function writeStats (statsArr, path) {
   for (let i = 0; i < statsArr.length; i += 1) {
-    fs.appendFileSync(path, `${statsArr[i]}\n`);
+    fs.appendFileSync(path, `${statsArr[i].join(' ')}\n`);
   }
 }
 
 
 module.exports = {
   getPadawanNames,
-  getPadawanScores,
+  getLightsaberScores,
   getStats,
   writeStats,
 };
 
-//writeStats (stats,'data/stats.txt')
-//padawans = getPadawanNames('data/padawans.txt')
-//scores = getPadawanScores('data/scores.txt')
-//stats = getStats (padawans, scores)
+
+/*
+names = getPadawanNames('data/padawans.txt')
+scores = getLightsaberScores('data/scores.txt')
+stats = getStats (names, scores)
+writeStats (stats,'data/stats.txt')*/
