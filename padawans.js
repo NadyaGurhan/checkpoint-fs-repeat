@@ -3,8 +3,7 @@ const fs = require('fs')
 const padawans = fs.readFileSync('./data/padawans.txt', 'utf8').split('\n').slice(0,4)
 const scores = fs.readFileSync('./data/scores.txt', 'utf8').split('\n')
 
-console.log(padawans);
-console.log(scores);
+
 function getPadawanNames() {
   let total = [];
 for(let i = 0; i < padawans.length; i++) {
@@ -25,15 +24,13 @@ function getStats() {
 return padawans.map((value, index) => [value, +scores[index]])}
 
 function writeStats() {
+  if(fs.existsSync(`data/stats.txt`)) {
+    fs.unlinkSync(`data/stats.txt`)
+  }
  let text = getStats();
- const result = text.reduce((acc, cur) => {
-   let total;
-   total += (acc, cur)
-  return total
-},);
+const arrtext = text.join('\n').split(',').join(' ')
 
- let data = fs.appendFileSync(`data/stats.txt`, result)
- return data
+fs.appendFileSync(`data/stats.txt`, arrtext)
 }
 
 module.exports = {
