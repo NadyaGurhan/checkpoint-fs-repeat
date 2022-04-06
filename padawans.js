@@ -13,11 +13,17 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  return padavans
+  let i = -1;
+  const padavansArr = padawans.trim().split(('\n'));
+  const scoresArr = scores.split('\n').sort((a, b) => b - a).map((it) => Number(it));
+  const stats = padavansArr.map((el, i) => [el, scoresArr[i]]);
+  return stats;
 }
 
 function writeStats() {
-  return padavans
+  let stats = getStats();
+  let padavans = fs.writeFileSync('./data/stats.txt', stats.map((el) => el.join(' ')).join('\n'), 'utf8');
+  return padavans;
 }
 
 module.exports = {
