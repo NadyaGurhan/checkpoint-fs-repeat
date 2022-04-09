@@ -35,12 +35,14 @@ function getStats() {
     return stat;
 }
 
-const stats = getStats().join("\n");
 
-function writeStats() {
+
+
+function writeStats(stats) {
+    stats = getStats().map(arr => arr[0] + " " + arr[1]).join("\n");
     return fs.writeFileSync('data/stats.txt', stats);
 }
-console.log('Revan 99.9\nBastila Shan 92\nJolee Bindo 87\nJuhani 82', stats);
+
 module.exports = {
     getPadawanNames,
     getLightsaberScores,
