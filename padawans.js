@@ -47,3 +47,9 @@ module.exports = {
   getStats,
   writeStats,
 };
+
+function myForEach (arr, cb) {
+  for (let i = 0; i < arr.length; i += 1) {
+    cb(arr[i]);
+  }
+}
