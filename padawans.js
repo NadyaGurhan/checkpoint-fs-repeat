@@ -5,6 +5,8 @@ const scores = fs.readFileSync('data/scores.txt', 'utf8').split('\n').filter(str
 const scoresNum = []
 const stats = []
 
+
+
 for (let i = 0; i < scores.length; i += 1) {
   scoresNum.push(parseFloat(scores[i], 10))
 }
@@ -31,7 +33,12 @@ function getStats() {
 }
 
 function writeStats() {
+  let exp = `${names[0]} ${scoresNum[0]}`;
+  for (let i = 1; i < names.length; i += 1) {
+    exp += `\n${names[i]} ${scoresNum[i]}`;
+  }
 
+  fs.writeFileSync('data/stats.txt', exp);
 }
 
 module.exports = {
