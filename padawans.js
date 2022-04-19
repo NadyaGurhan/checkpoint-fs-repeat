@@ -15,8 +15,6 @@ function getPadawanNames() {
   return newPadawans;
 }
 
-console.log(getPadawanNames());
-
 function getLightsaberScores() {
   const scores = [];
   for (let i = 0; i < dataScores.split('\n').length; i += 1) {
@@ -40,8 +38,14 @@ function getStats() {
 }
 
 function writeStats() {
-  const text = getStats();
-  fs.writeFile('./data/stats.txt', text, (err) => {
+  const arr = getStats();
+  let text = '';
+  for (let i = 0; i < arr.length; i += 1) {
+    const el = arr[i].join(' ');
+    text = `${text}${el}\n`;
+  }
+  text = text.trim();
+  fs.writeFileSync('./data/stats.txt', text, (err) => {
     if (err) {
       console.log('Error');
     }
