@@ -35,6 +35,6 @@ function getStats() {
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-  // getStats,
+  getStats,
   // writeStats,
 };
