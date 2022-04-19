@@ -34,9 +34,7 @@ function getLightsaberScores(arr = scores) {
 function getStats(arr1 = padawans, arr2 = scores) {
   const output = [];
   for (let i = 0; i < arr2.length; i++) {
-    for (let j = 0; j < arr1.length; j++) {
-      output.push(arr1[i], arr2[j]);
-    }
+    output.push([arr1[i], Number(arr2[i])]);
   }
   return output;
 }
