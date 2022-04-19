@@ -25,12 +25,8 @@ function getStats() {
 
 function writeStats() {
   const stats = getStats();
-  const res = stats.map((el) => {
-    return el.join(', ');
-  });
-  console.log(res);
-  
-  fs.appendFileSync('data/stats.txt', res, 'utf-8');
+  const res = stats.map((el) => el[0] + ' ' + el[1]).join('\n');
+  fs.appendFileSync('data/stats.txt', `${res}`);
 }
 
 module.exports = {
