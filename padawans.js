@@ -4,13 +4,13 @@ module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-//   writeStats,
+  writeStats,
 };
 
-const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8').toString().split('\n');
-const scores = fs.readFileSync('./data/scores.txt', 'utf-8').toString().split('\n');
+const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8').trim().split('\n');
+const scores = fs.readFileSync('./data/scores.txt', 'utf-8').trim().split('\n');
 
-console.log(padawans);
+// console.log(padawans);
 
 function getPadawanNames(arr = padawans) {
   const output = [];
@@ -39,4 +39,15 @@ function getStats(arr1 = padawans, arr2 = scores) {
   return output;
 }
 
-console.log(getStats());
+// console.log(getStats());
+
+function writeStats(arr = getStats(), path = './data/stats.txt') {
+  let str = '';
+  for (let i = 0; i < arr.length; i++) {
+    str += `${arr[i].join(' ')}\n`;
+  }
+  fs.writeFileSync(path, str.trim());
+  return str;
+}
+
+console.log(writeStats());
