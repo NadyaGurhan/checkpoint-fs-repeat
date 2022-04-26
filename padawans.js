@@ -4,13 +4,17 @@ const fs = require('fs');
 
 function getPadawanNames() {
   let padawans = fs.readFileSync("./data/padawans.txt","utf-8")
-  let arr = padawans.slice(" ")
+  let arr = padawans.split("\n")
+  arr.pop()
+  console.log(arr);
   return arr
 }
 
 function getLightsaberScores() {
   let scores = fs.readFileSync("./data/scores.txt","utf-8")
-  let arr = scores.slice(" ")
+  let arr = scores.split("\n")
+  arr.pop()
+  console.log(arr);
   return arr
 }
 
@@ -37,6 +41,10 @@ function writeStats(){
   }
 }
 // getPadawanNames()
+
+// getPadawanNames()
+// getLightsaberScores()
+
 
 
 module.exports = {
