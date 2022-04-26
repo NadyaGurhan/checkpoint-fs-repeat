@@ -19,13 +19,13 @@ function getStats() {
   return res
 }
 
-// function writeStats() {
-//   return "hello"
-// }
-// module.exports = {
-//   getPadawanNames,
-//   getLightsaberScores,
-//   getStats,
-//   writeStats,
-// };
+function writeStats() {
+  return "hello"
+}
+module.exports = {
+  getPadawanNames,
+  getLightsaberScores,
+  getStats,
+  writeStats,
+};
 
