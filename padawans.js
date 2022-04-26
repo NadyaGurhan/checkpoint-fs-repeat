@@ -13,10 +13,17 @@ function getLightsaberScores() {
     .map((el) => Number(el));
     return scores
 }
+function getStats() {
+const padawan = getPadawanNames();
+const scores = getLightsaberScores();
+return padawan.map((el, i) => el.push(scores[i]))
+
+
+} 
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-  // getStats,
-  // writeStats,
+  getStats,
+  writeStats,
 };
