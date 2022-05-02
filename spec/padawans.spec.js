@@ -5,7 +5,7 @@ const {
   getStats,
   writeStats,
 } = require('../padawans');
-// console.log(getPadawanNames);
+console.log(getPadawanNames);
 describe('Статистика о падаванах', () => {
   it('getPadawanNames возвращает список падаванов из файла `data/padawans.txt`', () => {
     const names = getPadawanNames();
