@@ -27,22 +27,12 @@ function getStats(){
 // const readFile = fs.readFileSync('./data/padawans.txt', 'utf8').toString()
 // const readScores = fs.readFileSync('./data/scores.txt', 'utf8').toString()
 
-for (let i = 0; i < getPadName.length; i++) {
-getPadName[i].concat(getScoreName[i])
+let newArr = []
+
+for (let i = 0; i < getScoreName.length; i++) {
+newArr.push([getPadName[i], getScoreName[i]])
 }
-console.log(newArr)
-
-
-// let newArr = []
-// for (let i = 0; i < getPadName; i++) {
-//   newArr.push(i)
-//   for (let j = 0; j < getScoreName; j++) {
-//     newArr.push(j)
-//   }
-  
-// }
-
-
+return newArr
 }
 getStats()
 
