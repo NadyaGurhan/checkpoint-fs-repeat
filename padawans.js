@@ -1,4 +1,5 @@
-const fs = require('fs')
+const fs = require('fs');
+const { get } = require('http');
 
 function getPadawanNames() {
   let read = fs.readFileSync('./data/padawans.txt', 'utf-8')
@@ -18,10 +19,17 @@ function getLightsaberScores() {
 
 }
 console.log(getLightsaberScores());
+
+let a = getPadawanNames()
+let b = getLightsaberScores()
 function getStats() {
-  let read = fs.readFileSync('./data/padawans.txt', 'utf-8')
-  let score = fs.readFileSync('./data/score.txt', 'utf-8')
+  let arr = []
+  for (let i = 0; i < a.length; i += 1) {
+    arr.push([a[i], b[i]])
+  }
+  return arr
 }
+console.log(getStats());
 
 module.exports = {
   getPadawanNames,
