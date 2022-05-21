@@ -36,7 +36,12 @@ return newArr
 }
 getStats()
 
+
 function writeStats(){
+
+const data = getStats()
+const dataWrite = data.map(item => item.join(' ')).join('\n')
+const newFile = fs.writeFileSync('./data/stats.txt', dataWrite)
 
 }
 writeStats()
