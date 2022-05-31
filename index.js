@@ -1,3 +1,5 @@
+
+
 const fs=require('fs');
 let getPadawanNames = function getPadawanNames() {
   let arr=[];
@@ -9,10 +11,4 @@ let getPadawanNames = function getPadawanNames() {
   
 }
 
-
-module.exports = {
-  getPadawanNames,
-  //getLightsaberScores,
-  //getStats,
-  //writeStats,
-};
+console.log(getPadawanNames());
