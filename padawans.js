@@ -1,15 +1,8 @@
-const { resolveSoa } = require('dns');
 const fs = require('fs');
 
 function getPadawanNames() {
-  const arr = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n')
-  let newArr = []
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] !== '') {
-      newArr.push(arr[i])
-    }
-  }
-  return newArr
+  const arr = fs.readFileSync('./data/padawans.txt', 'utf-8').trim().split('\n')
+  return arr
 }
 console.log(getPadawanNames());
 
@@ -26,7 +19,7 @@ console.log(getLightsaberScores());
 
 function getStats() {
   const arrScore = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n')
-  const arrPadawans = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n').filter(el => el)
+  const arrPadawans = fs.readFileSync('./data/padawans.txt', 'utf-8').trim().split('\n').filter(el => el)
   let res = []
   for (let i = 0; i < arrPadawans.length; i++) {
     res.push([arrPadawans[i], +arrScore[i]])
@@ -35,8 +28,11 @@ function getStats() {
 }
 console.log(getStats());
 
-function writeStats() {
 
+function writeStats() {
+  let file = fs.writeFileSync('./data/stats.txt', getStats())
+
+  return file
 }
 console.log(writeStats());
 
