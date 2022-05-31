@@ -1,12 +1,12 @@
 const fs = require('fs')
-let filePath1 = "./data/padawans.txt"
-let data1 = fs.readFileSync('./data/padawans.txt')
+let padawans= fs.readFileSync('./data/padawans.txt').split('n')
 
-function getPadawanNames(data1){
-let result = data1.toString()
-let result1 = result.split('/n')
-return result1
+function getPadawanNames(){
+let result = padawans;
+
+
 }
+
 
 function getLightsaberScores(){
 
