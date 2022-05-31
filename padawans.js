@@ -36,9 +36,9 @@ function writeStats() {
 	let stats = getStats();
 	const result = []
 	for (let i = 0; i < stats.length; i++) {
-		result.push(stats[i].join(''))
+		result.push(stats[i].join(' '))
 	}
-	fs.writeFileSync('./data/stats.txt', ' ', 'utf-8');
+	fs.writeFileSync('./data/stats.txt', '', 'utf-8');
 	for (let j = 0; j < result.length; j++) {
 		if (j == 0) {
 			fs.appendFileSync(`./data/stats.txt`, `${result[j]}`, 'utf-8');
