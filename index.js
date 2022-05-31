@@ -1,5 +1,14 @@
+const fs=require('fs');
+let getPadawanNames = function getPadawanNames() {
+  
+  let names=fs.readFileSync('./data/padawans.txt','utf8');
+  names=names.split('\n').slice(0,4);
+  return names; 
+}
 
+console.log(getPadawanNames());
 
+/*
 const fs=require('fs');
 let getPadawanNames = function getPadawanNames() {
   let arr=[];
@@ -12,3 +21,5 @@ let getPadawanNames = function getPadawanNames() {
 }
 
 console.log(getPadawanNames());
+*/
+
