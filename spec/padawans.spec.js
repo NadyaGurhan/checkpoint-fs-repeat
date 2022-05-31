@@ -1,8 +1,19 @@
 const fs = require('fs');
 const {
-  getPadawanNames,
-  getLightsaberScores,
-  getStats,
+ function getPadawanNames(name) {
+  const arr = [];
+  for (let i = 0; i <= name; i += 1) { 
+   const padaw = fs.readFileSync('data/padawans.txt', 'utf8')
+  }
+  return arr;
+}
+  function getLightsaberScores() {
+     fs.readFileSync('data/scores.txt', 'utf8')
+  }
+
+  function getStats () {
+    
+  }
   writeStats,
 } = require('../padawans');
 
@@ -31,3 +42,8 @@ describe('Статистика о падаванах', () => {
     expect(data).toBe('Revan 99.9\nBastila Shan 92\nJolee Bindo 87\nJuhani 82');
   });
 });
+
+module.exports = { getPadawanNames };
+module.exports = { getLightsaberScores };
+module.exports = { getStats };
+module.exports = { writeStats };
