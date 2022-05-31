@@ -19,10 +19,9 @@ arr.push(padawan)
 }
 
 const writeStats = (stats) => {
-  fs.appendFileSync(`./data/stas.txt`,`${stats.join('\n')}`,'utf-8')
+  fs.appendFileSync(`./data/stas.txt`,`${stats.map(a=>a.join(' ')).join('\n')}`,'utf-8')
 }
-
-//writeStats(getStats())
+writeStats(getStats());
 
 module.exports = {
   getPadawanNames,
