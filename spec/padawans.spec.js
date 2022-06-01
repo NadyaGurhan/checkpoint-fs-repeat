@@ -1,6 +1,5 @@
 const fs = require('fs');
-let getPadawanNames=fs.readFileSync('./data/padawans.txt', 'utf8');
-let getPadawanScores=fs.readFileSync('./data/scores.txt', 'utf8');
+
 
 const {
   getPadawanNames,
@@ -27,7 +26,7 @@ describe('Статистика о падаванах', () => {
       ['Juhani', 82],
     ]);
   });
-  let writeStat=fs.writeFileSync('data/stats.txt', stats,'utf8')
+  
   it('writeStats сохраняет статистику в файл `data/stats.txt`', () => {
     const stats = getStats();
     writeStats(stats);
