@@ -30,11 +30,10 @@ function getStats() {
 let stats=getStats()
 
 function writeStats (){
-  let stats=getStats().join('\n').split(',').join(' ').trim()
+  let stats=getStats().join('\n').split(',').join(' ')
   let stat=fs.writeFileSync ('data/stats.txt', stats,'utf8')
-  // return stats
-  }
-  // console.log(writeStats())
+   }
+
 
  
 
