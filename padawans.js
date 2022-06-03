@@ -4,7 +4,7 @@ let padawans= fs.readFileSync('./data/padawans.txt').split('n')
 function getPadawanNames(){
 let result = padawans;
 
-
+wafbawjbfk
 }
 
 
