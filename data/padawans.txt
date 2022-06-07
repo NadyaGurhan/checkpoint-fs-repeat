@@ -1,12 +1,4 @@
-const {
-  getPadawanNames,
-  getLightsaberScores,
-  getStats,
-  writeStats,
-} = require('../padawans');
-
 Revan
 Bastila Shan
 Jolee Bindo
 Juhani
-
