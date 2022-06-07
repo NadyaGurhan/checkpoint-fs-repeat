@@ -7,7 +7,7 @@ function getPadawanNames() {
 
 console.log(getPadawanNames());
 
-//'getPadawanScores возвращает оценки владения световым мечом из файла `data/scores.txt`
+// 'getPadawanScores возвращает оценки владения световым мечом из файла `data/scores.txt`
 
 function getLightsaberScores() {
   const scores = fs.readFileSync('./data/scores.txt', 'utf-8');
@@ -16,7 +16,7 @@ function getLightsaberScores() {
 
 console.log(getLightsaberScores());
 
-//'getStats возвращает таблицу соответствия падавана и оценки владения световым мечом'
+// 'getStats возвращает таблицу соответствия падавана и оценки владения световым мечом'
 
 function getStats() {
   return getPadawanNames().map((name, i) => [name, getLightsaberScores()[i]]);
@@ -29,7 +29,7 @@ function writeStats() {
   fs.writeFileSync(
     'data/stats.txt',
     getStats()
-      .map((el) => el.join(',').split(',').join(' '))
+      .map((el) => el.join(' '))
       .join('\n'),
   );
 }
