@@ -19,18 +19,20 @@ console.log(getLightsaberScores());
 //'getStats возвращает таблицу соответствия падавана и оценки владения световым мечом'
 
 function getStats() {
-  return getPadawanNames().map((name, i) => {
-    return [name, getLightsaberScores()[i]];
-  });
+  return getPadawanNames().map((name, i) => [name, getLightsaberScores()[i]]);
 }
 
 console.log(getStats());
 
 // 'writeStats сохраняет статистику в файл `data/stats.txt`'
-function writeStats () {
-  fs.writeFileSync('data/stats.txt', getStats().map(el => el.join(',').split(',').join(' ')).join('\n'))
+function writeStats() {
+  fs.writeFileSync(
+    'data/stats.txt',
+    getStats()
+      .map((el) => el.join(',').split(',').join(' '))
+      .join('\n'),
+  );
 }
-
 
 module.exports = {
   getPadawanNames,
