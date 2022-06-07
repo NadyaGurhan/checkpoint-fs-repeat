@@ -25,7 +25,7 @@ function getStats() {
 
 function writeStats() {
   let result = getStats().map((item) => item.join(' ')).join('\n');
-  fs.appendFileSync('./data/stats.txt', result);
+  fs.writeFileSync('./data/stats.txt', result);
 }
 
   module.exports = {
@@ -34,5 +34,3 @@ function writeStats() {
     getStats,
     writeStats,
   };
-
-
