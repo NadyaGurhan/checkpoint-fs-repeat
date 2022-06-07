@@ -34,19 +34,18 @@ function getStats() {
   }) 
   return (statsArr);
 }
-getStats()
 
 function writeStats(){
   try {
     getStats().forEach((name, i) => {
-     return fs.appendFileSync('data/stats.txt', i >= getStats().length-1? name.join(" ") : name.join(" ") +"\n")
+     return fs.appendFileSync('data/stats.txt', i < getStats().length - 1? name.join(" ") + "\n": name.join(" "));
     })
   } catch (err) {
     console.error(err);
   }
 
 }
-writeStats()
+
 
 
 module.exports = {
