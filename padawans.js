@@ -36,5 +36,9 @@ function writeStats() {
   let str = ''
   let returnStr = ''
   arrStats.forEach((itemSt, index) => {
-    str += itemSt.join(' ')})
+    str += itemSt.join(' ')
+    str += '\n'
+  })
+  returnStr = str.slice(0, (str.length - 1))
+  fs.writeFileSync('./data/stats.txt', returnStr)
 }
