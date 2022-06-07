@@ -5,3 +5,6 @@ module.exports = {
   getStats,
   writeStats,
 };
+
+const fs = require('fs')
+
