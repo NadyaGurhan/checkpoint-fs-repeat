@@ -15,7 +15,7 @@ for (let i = 0; i < lightsaberScores.length; i++) {
 const padawanNames = Array.from(fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n'));
 padawanNames.splice(4, 1);// 
 let stats = [];
-for(let i = 0; i < padawanNames.length; i++){
+for (let i = 0; i < padawanNames.length; i++) {
   let arr = [];
   arr.push(padawanNames[i]);
   arr.push(lightsaberScores[i]);
@@ -51,16 +51,37 @@ function getStats() {
   padawanNames.splice(4, 1);// 
 
   let stats = [];
-for(let i = 0; i < padawanNames.length; i++){
-  let arr = [];
-  arr.push(padawanNames[i]);
-  arr.push(lightsaberScores[i]);
-  stats[i] = arr;
-}
-return stats;
+  for (let i = 0; i < padawanNames.length; i++) {
+    let arr = [];
+    arr.push(padawanNames[i]);
+    arr.push(lightsaberScores[i]);
+    stats[i] = arr;
+  }
+  return stats;
 }
 
 function writeStats() {
+  const lightsaberScores = Array.from(fs.readFileSync('./data/scores.txt', 'utf-8').split('\n'));
+  for (let i = 0; i < lightsaberScores.length; i++) {
+    lightsaberScores[i] = Number(lightsaberScores[i]);
+  }
+
+  const padawanNames = Array.from(fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n'));
+  padawanNames.splice(4, 1);// 
+
+  let stats = [];
+  for (let i = 0; i < padawanNames.length; i++) {
+    let arr = [];
+    arr.push(padawanNames[i]);
+    arr.push(lightsaberScores[i]);
+    stats[i] = arr;
+  }
+  let newstr = '';
+for(let i = 0; i < stats.length; i++){
+ newstr += `${padawanNames[i]} ${lightsaberScores[i]}\n`;
+}
+
+return newstr;
 
 }
 module.exports = {
