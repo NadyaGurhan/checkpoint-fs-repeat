@@ -29,9 +29,9 @@ function getStats() {
 
 
   
-function writeStats(){
+function writeStats() {
   const fs = require('fs');
-  const neww = getStats().toString();
+  const neww = getStats().map((el) => el.join(' ')).join('\n');
   const file = fs.writeFileSync('./data/stats.txt', neww);
 }
 
