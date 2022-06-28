@@ -6,18 +6,34 @@ function getPadawanNames(){
 }
 
 function getLightsaberScores() {
-// let arr2 = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
-// let score = [];
-// for(let i = 0; i < arr2.length; i++) {
-//   score.push(arr2[i])
+  let arr = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n')
+  let arrScores = [];
+  for (let i = 0; i < arr.length; i++) {
+    arrScores.push(Number(arr[i]));
+  }
+  return arrScores;
 }
 
 function getStats(){
-
+  const names = getPadawanNames();
+  const scores = getLightsaberScores();
+  let stats = [];
+for (let i = 0; i < names.length; i++) {
+  stats.push([names[i], scores[i]]);
+  }
+  return stats;
 }
 
 function writeStats() {
-
+  const names = getPadawanNames();
+  const scores = getLightsaberScores();
+  let result = '';
+  for (let i = 0; i < names.length; i++) {
+    result += names[i] + ' ' + scores[i] + '\n';
+    let final = result.slice(0, (result.length - 1)
+    }
+  return fs.writeFileSync('./data/stats.txt', final);
+  }
 }
 
 
