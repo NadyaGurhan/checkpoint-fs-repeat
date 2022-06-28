@@ -8,7 +8,7 @@ const  getPadawanNames  = () => {
 
 }
 
-module.exports = {
+module.exports = { 
   getPadawanNames,
   getLightsaberScores,
   getStats,
