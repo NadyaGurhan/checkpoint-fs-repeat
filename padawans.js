@@ -1,3 +1,4 @@
+
 const fs = require('fs');
 
 function getPadawanNames(){
@@ -21,7 +22,6 @@ function writeStats(){
   const lines = fs.readFileSync('./data/padawans.txt', 'utf8');
   return(lines);
 }
-
 
 module.exports = {
   getPadawanNames,
