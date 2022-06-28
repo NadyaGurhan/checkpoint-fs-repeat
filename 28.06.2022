@@ -1,0 +1,34 @@
+Методы массивов 
+
+forEach ничего не возвращает !!!
+split  
+join 
+slice возвращает новый массив 
+splice мутирует массив исходный 
+concat склеивает массивы (...arr) 
+reverse  мутрует 
+
+ Callback - функция 
+ every (true ; false )
+  arr.every (el => el > 0)
+function chek(x) {
+    return x > 0
+}
+some (даже когда один элемент выполняется ) > true 
+filter  новый массив возвращает 
+сonst arr5 = [{name:'max',age:20, id:1},{}]
+
+find возвращает итерируемый элемент 
+
+findIndex примитивы и сложные 
+ indexOf
+ lastIndexOf
+
+ map ((el,i, arr) =>el 
+ 
+ JSON.stringify
+ JSON.parse 
+
+sort мутирует исходный массив 
+
+reduce применяет 
