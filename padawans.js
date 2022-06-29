@@ -30,11 +30,11 @@ function writeStats() {
   let result = '';
   for (let i = 0; i < names.length; i++) {
     result += names[i] + ' ' + scores[i] + '\n';
-    let final = result.slice(0, (result.length - 1)
     }
+    let final = result.slice(0, (result.length - 1))
   return fs.writeFileSync('./data/stats.txt', final);
   }
-}
+
 
 
 module.exports = {
