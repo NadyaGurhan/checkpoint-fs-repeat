@@ -10,7 +10,7 @@ function getPadawanNames() {
   const data = fs.readFileSync(PATH.padawans, 'utf-8').split('\n');
   return data.filter((el) => {
     if (el) return true;
-    return '';
+    return false;
   });
 }
 
