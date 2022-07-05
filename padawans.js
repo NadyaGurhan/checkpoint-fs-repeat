@@ -23,12 +23,10 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  const stats = [];
   const padawansNames = getPadawanNames();
   const padawansScores = getLightsaberScores();
 
-  padawansNames.map((padawan, index) => stats.push([padawan, padawansScores[index]]));
-  return stats;
+  return padawansNames.map((padawan, index) => [padawan, padawansScores[index]]);
 }
 
 function writeStats() {
