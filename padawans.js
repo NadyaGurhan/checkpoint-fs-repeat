@@ -30,7 +30,6 @@ function getStats() {
   padawansNames.map((padawan, index) => stats.push([padawan, padawansScores[index]]));
   return stats;
 }
-console.log(getStats());
 
 function writeStats() {
   const dataRaw = getStats();
