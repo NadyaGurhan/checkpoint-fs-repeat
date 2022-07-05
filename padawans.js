@@ -17,7 +17,7 @@ function getPadawanNames() {
 function getLightsaberScores() {
   const data = fs.readFileSync(PATH.scores, 'utf-8').split('\n');
   return data.map((el) => {
-    if (el) return +el;
+    if (+el >= 0) return +el;
     return '';
   });
 }
