@@ -1,0 +1,4 @@
+function getStats() {
+  const concatPadawan = padavansList.concat(scoreOfKnife);
+  console.log(concatPadawan);
+}
