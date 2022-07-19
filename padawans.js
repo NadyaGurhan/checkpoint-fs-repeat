@@ -1,21 +1,28 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('fs')
 
-function getPadawanNames(file) {
-  const namesFile = fs.readFileSync(path.join(__dirname, `../${file}`), 'utf-8');
-  const names = [];
-  return names.push(namesFile);
+getPadawanNames = () => {
+  const names = fs.readFileSync('./data/padawans.txt', 'utf8').split('\n')
+  return names.slice(0, names.length - 1)
 }
 
-function getLightsaberScores(file) {
-  return fs.readFileSync(path.join(__dirname, `../${file}`), 'utf-8');
+getLightsaberScores = () => {
+  const scores = fs.readFileSync('./data/scores.txt', 'utf8').split('\n')
+  return scores.map(Number)
 }
 
-function getStats(file) {
-  return fs.readFileSync(path.join(__dirname, `../${file}`), 'utf-8');
+getStats = () => {
+  const namesArr = getPadawanNames()
+  const scoresArr = getLightsaberScores()
+  const newArr = []
+  namesArr.forEach((el, i) => {
+    newArr.push([namesArr[i], scoresArr[i]])
+  });
+  return newArr
 }
 
-const writeStats = () => fs.appendFileSync('./data/stats.txt');
+writeStats = () => {
+  fs.appendFileSync('./data/stats.txt', getStats().map((el) => el.join(' ')).join('\n'))
+}
 
 module.exports = {
   getPadawanNames,
