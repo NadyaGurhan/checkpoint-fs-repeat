@@ -10,7 +10,7 @@ function getPadawanNames() {
 
 function getLightsaberScores() {
   const score = scale.split('\n');
-  const allScore = scoreArr.map(Number);
+  const allScore = score.map(Number);
   return allScore;
 }
 console.log(getLightsaberScores());
