@@ -2,8 +2,8 @@ const fs = require('fs');
 const {
   getPadawanNames,
   getLightsaberScores,
-  getStats,
-  writeStats,
+  // getStats,
+  // writeStats,
 } = require('../padawans');
 
 describe('Статистика о падаванах', () => {
