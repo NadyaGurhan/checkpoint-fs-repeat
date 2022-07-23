@@ -2,13 +2,13 @@ const fs = require('fs');
 
 function getPadawanNames() {
   const names = fs.readFileSync('./data/padawans.txt', 'utf8').trim().split('\n');
-  names.pop();
-  return `${names}`;
+  return names;
 }
 
 function getLightsaberScores() {
-  const res = fs.readFileSync('./data/scores.txt', 'utf8').trim().split('\n');
-  return `${res}`;
+  const res = fs.readFileSync('./data/scores.txt', 'utf8').split('\n').map((sc) => +sc);
+  // console.log(res);
+  return res;
 }
 
 function getStats() {
@@ -19,11 +19,12 @@ function getStats() {
 }
 
 function writeStats() {
-  const stats = getStats();
-  for (let i = 0; i < stats.length; i++) {
-    fs.writeFileSync('./data/stats.txt', `${stats[i]}\n`);
-  }
+  const stats = getStats().join('\n').replace(/,/gmi, ' ');
+  fs.appendFileSync('./data/stats.txt', `${stats}`);
+  // console.log(stats);
 }
+// console.log(writeStats());
+
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
