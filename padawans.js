@@ -1,47 +1,34 @@
 const fs = require('fs')
 module.exports = {
-  // getPadawanNames,
-  // getLightsaberScores,
+  getPadawanNames,
+  getLightsaberScores,
   getStats,
   // writeStats,
 };
 
 
-// const namesStr = fs.readFileSync('data/padawans.txt', 'utf8');
-// console.log(namesStr)
-// const namesArr = namesStr.trim().split('\n');
-// console.log(namesArr)
+const namesStr = fs.readFileSync('data/padawans.txt', 'utf8');
+console.log(namesStr)
+const namesArr = namesStr.trim().split('\n');
+console.log(namesArr)
+
+function getPadawanNames(){
+  return namesArr
+}
+console.log(getPadawanNames())
+
+const scoresStr = fs.readFileSync('data/scores.txt', 'utf8');
+console.log(scoresStr)
+const scoresArr = scoresStr.trim().split('\n');
+console.log(scoresArr)
+let arrOfNum = scoresArr.map((el) => +(el))
+console.log(arrOfNum)
 
 
-// function getPadawanNames(){
-//   return namesArr
-// }
-// console.log(getPadawanNames())
-
-// const scoresStr = fs.readFileSync('data/scores.txt', 'utf8');
-// console.log(scoresStr)
-// const scoresArr = scoresStr.trim().split('\n');
-// console.log(scoresArr)
-// let arrOfNum = scoresArr.map((el) => +(el))
-// console.log(arrOfNum)
-
-
-// function getLightsaberScores() {
-// return arrOfNum;
-// }
-// console.log(getLightsaberScores());
-
-// const namesStr = fs.readFileSync('data/padawans.txt', 'utf8');
-// console.log(namesStr)
-// const namesArr = namesStr.trim().split('\n');
-// console.log(namesArr)
-
-// const scoresStr = fs.readFileSync('data/scores.txt', 'utf8');
-// console.log(scoresStr)
-// const scoresArr = scoresStr.trim().split('\n');
-// console.log(scoresArr)
-// let arrOfNum = scoresArr.map((el) => +(el))
-// console.log(arrOfNum)
+function getLightsaberScores() {
+return arrOfNum;
+}
+console.log(getLightsaberScores());
 
 
 function getStats(){
@@ -68,14 +55,15 @@ console.log(getStats())
 
 
 
-const stats = getStats();
-const filePath = 'data/stats.txt'
-fs.writeFileSync(filePath)
+// const stats = getStats();
+// const filePath = 'data/stats.txt'
 
-   function writeStats(stats) {
+// fs.writeFileSync(filePath)
 
-    return
-   }
+//    function writeStats(stats) {
+
+//     return
+//    }
 
 
-console.log(getStats())
+// console.log(getStats())
