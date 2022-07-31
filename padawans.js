@@ -1,69 +1,70 @@
-const fs = require('fs')
+const fs = require('fs');
+
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
 
+function getPadawanNames() {
+  const namesStr = fs.readFileSync('data/padawans.txt', 'utf8');
+  const namesArr = namesStr.trim().split('\n');
 
-const namesStr = fs.readFileSync('data/padawans.txt', 'utf8');
-console.log(namesStr)
-const namesArr = namesStr.trim().split('\n');
-console.log(namesArr)
-
-function getPadawanNames(){
-  return namesArr
+  return namesArr;
 }
-console.log(getPadawanNames())
-
-const scoresStr = fs.readFileSync('data/scores.txt', 'utf8');
-console.log(scoresStr)
-const scoresArr = scoresStr.trim().split('\n');
-console.log(scoresArr)
-let arrOfNum = scoresArr.map((el) => +(el))
-console.log(arrOfNum)
-
 
 function getLightsaberScores() {
-return arrOfNum;
+  const scoresStr = fs.readFileSync('data/scores.txt', 'utf8');
+
+  const scoresArr = scoresStr.trim().split('\n');
+
+  const arrOfNum = scoresArr.map((el) => +(el));
+
+  return arrOfNum;
 }
-console.log(getLightsaberScores());
-
-
-function getStats(){
 let result1 = [];
-result1.push(namesArr[0],arrOfNum[0])
-console.log(result1)
-let result2 = [];
-result2.push(namesArr[1],arrOfNum[1])
-console.log(result2)
-let result3 = [];
-result3.push(namesArr[2],arrOfNum[2])
-console.log(result3)
-let result4 = [];
-result4.push(namesArr[3],arrOfNum[3])
-console.log(result4)
 
-let newArr = [];
-newArr.push(result1, result2, result3, result4)
+function getStats() {
+  const result1 = [];
 
+  const names = getPadawanNames();
+  const scores = getLightsaberScores();
 
-  return newArr
+  result1.push(names[0], scores[0]);
+
+  const result2 = [];
+
+  result2.push(names[1], scores[1]);
+
+  const result3 = [];
+  result3.push(names[2], scores[2]);
+
+  const result4 = [];
+  result4.push(names[3], scores[3]);
+
+  const statsArr = [];
+  statsArr.push(result1, result2, result3, result4);
+  return statsArr;
 }
-console.log(getStats())
 
+function writeStats(stats) {
+  if (fs.existsSync('./data/stats.txt')) {
+    fs.unlinkSync('./data/stats.txt');
+  }
+  const NEWstats = getStats();
 
+  const result1 = NEWstats[0].join(' ');
+  const result2 = NEWstats[1].join(' ');
+  const result3 = NEWstats[2].join(' ');
+  const result4 = NEWstats[3].join(' ');
 
-// const stats = getStats();
-// const filePath = 'data/stats.txt'
+  const newData = [];
 
-// fs.writeFileSync(filePath)
+  newData.push(result1, result2, result3, result4);
 
-//    function writeStats(stats) {
+  const filePath = 'data/stats.txt';
+  const data = newData.join('\n');
 
-//     return
-//    }
-
-
-// console.log(getStats())
+  return fs.appendFileSync(filePath, data, 'utf-8');
+}
