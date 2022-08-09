@@ -24,10 +24,17 @@ function getLightsaberScores() {
 
 
 function getStats() {
-
-
-
+  const Arr = []
+  const names = getPadawanNames();
+  const scores = getLightsaberScores();
+  for (let i = 0; i < (names.length, scores.length); i++) {
+    Arr.push([`${names[i]}, ${scores[i]}`]);
+  }
+  return Arr;
 }
+
+
+
 
 
 
