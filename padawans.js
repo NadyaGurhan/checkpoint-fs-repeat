@@ -8,8 +8,7 @@ function getPadawanNames() {
   return res;
 }
 
-
-function getLightsaberScores () {
+function getLightsaberScores() {
   const res = scores.split('\n');
   const final = res.map(Number);
   return final;
@@ -22,8 +21,8 @@ function getStats() {
   const res = resPad.map((item, i) => [item, resScores[i]]);
   return res;
 }
-getStats()
-// console.log(getStats());
+getStats();
+
 
 function writeStats() {
   // const stat = getStats();
