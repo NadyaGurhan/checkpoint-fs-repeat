@@ -3,12 +3,12 @@ const { get } = require('https');
 
 
 function getPadawanNames() {
-    const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n').splice(0, 4);
+    const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n').filter(el => el !== '');
     return padawans;
 }
 
 function getLightsaberScores() {
-    const scores = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n').splice(0, 4).map(elem => elem = +elem);
+    const scores = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n').filter(el => el !== '').map(elem => elem = +elem);
     return scores;
 }
 
@@ -29,7 +29,7 @@ function writeStats() {
 
     let str = '';
     for (let i = 0; i < content.length; i++) {
-        if (i == content.length-1) {
+        if (i == content.length - 1) {
             str += `${content[i].join(' ')}`;
         } else {
             str += `${content[i].join(' ')}\n`;
