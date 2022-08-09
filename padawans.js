@@ -6,8 +6,11 @@ const scores = fs.readFileSync(path.join(__dirname, 'data', 'scores.txt'), 'utf8
 
 function getPadawanNames() {
   let result = padawans.split('\n');
-  return result.slice(0,4);
+  let result_0 = result[0];
+  let resultLength = result.length-1;
+  return result.slice(result_0, resultLength);
 }
+console.log(getPadawanNames());
 
 
 function getLightsaberScores(){
