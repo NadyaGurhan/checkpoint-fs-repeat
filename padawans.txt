@@ -1,0 +1,16 @@
+function getLightsaberScores() {
+  const scoreArr = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
+  let newScore = [];
+  scoreArr.forEach(el => newScore.push(Number(el)));
+  return newScore;
+}function getLightsaberScores() {
+  const scoreArr = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
+  let newScore = [];
+  scoreArr.forEach(el => newScore.push(Number(el)));
+  return newScore;
+}function getLightsaberScores() {
+  const scoreArr = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
+  let newScore = [];
+  scoreArr.forEach(el => newScore.push(Number(el)));
+  return newScore;
+}
