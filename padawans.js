@@ -29,14 +29,9 @@ function getStats() {
 }
 
 function writeStats() {
-  let arr = [];
-  for (let i = 0; i < names.length; i++) {
-    arr.push([names[i], +scores[i]]);
-  }
-  const str = `${arr.join('\n')}`;
-  console.log(str);
-  fs.writeFileSync(`./data/stats.txt`, str);
-  return str;
+  const stats = getStats();
+  let result = stats.join('\n').split(',').join(' ');
+  fs.writeFileSync('./data/stats.txt', result, 'utf-8');
 }
 
 module.exports = {
