@@ -31,9 +31,9 @@ function getStats() {
 function writeStats() {
   let arr = [];
   for (let i = 0; i < names.length; i++) {
-    arr.push([names[i],+scores[i]]);
+    arr.push([names[i], +scores[i]]);
   }
-  const str = `${names.join('\n')}`;
+  const str = `${arr.join('\n')}`;
   console.log(str);
   fs.writeFileSync(`./data/stats.txt`, str);
   return str;
