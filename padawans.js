@@ -1,14 +1,12 @@
-const fs = require('fs')
+const fs = require('fs');
 
 const getPadawanNames = () => fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n');
 
-const getLightsaberScores = () => {
-  return fs.readFileSync('./data/scores.txt', 'utf-8').split('\n').map((el) => Number(el));
-}
+const getLightsaberScores = () => fs.readFileSync('./data/scores.txt', 'utf-8').split('\n').map((el) => Number(el));
 
 function getStats() {
-  const names = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n');
-  const scores = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n').map((el) => Number(el));
+  const names = getPadawanNames();
+  const scores = getLightsaberScores();
   return names.map((el, i) => [el, scores[i]]);
 }
 
