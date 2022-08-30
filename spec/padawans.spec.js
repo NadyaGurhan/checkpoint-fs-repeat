@@ -1,15 +1,14 @@
 const fs = require('fs');
-const {
-  getPadawanNames,
-  getLightsaberScores,
-  getStats,
-  writeStats,
-} = require('../padawans');
+// const { TestScheduler } = require('jest');
+const getPadawanNames = require('../padawans');
+const getLightsaberScores = require('../padawans');
+const getStats = require('../padawans');
+const writeStats = require('../padawans');
 
 describe('Статистика о падаванах', () => {
   it('getPadawanNames возвращает список падаванов из файла `data/padawans.txt`', () => {
-    const names = getPadawanNames();
-    expect(names).toEqual(['Revan', 'Bastila Shan', 'Jolee Bindo', 'Juhani']);
+    
+    expect(getPadawanNames()).toEqual(['Revan', 'Bastila Shan', 'Jolee Bindo', 'Juhani']);
   });
   it('getPadawanScores возвращает оценки владения световым мечом из файла `data/scores.txt`', () => {
     const names = getLightsaberScores();
