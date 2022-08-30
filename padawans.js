@@ -7,21 +7,27 @@ function getPadawanNames() {
 function getLightsaberScores() {
   const read = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
   const res = read.map((el) => Number(el));
-  console.log(res);
+  // console.log(res);
   return res;
 }
 
 function getStats() {
   const padawans = getPadawanNames();
   const score = getLightsaberScores();
-  const res = padawans.map((el, index) => `${el}``+${score[index]}`);
+  const res = padawans.map((el, index) => [el, score[index]]);
   console.log(res);
-  return res;
+  // return res;
+}
+
+function writeStats() {
+  const text = getStats().map((el) => el.join(' ')).join('\n');
+  const write = fs.writeFileSync('./data/stats.txt', text, 'utf-8');
+  // return write;
 }
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
