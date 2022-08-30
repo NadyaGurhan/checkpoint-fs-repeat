@@ -38,7 +38,7 @@ function writeStats() {
   }, '');
   fs.appendFileSync('./data/stats.txt', `${res}`, 'utf8');
 }
-
+console.log(writeStats());
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
