@@ -5,3 +5,13 @@ module.exports = {
   getStats,
   writeStats,
 };
+
+
+
+function getPadawanNames(){
+
+ fs.readFileSync('data/padawans.txt', 'utf8')
+}
+console.log(getPadawanNames())
+
+
