@@ -1,35 +1,30 @@
 const fs = require('fs');
 
 function getPadawanNames() {
-  const padawans = fs.readFileSync('data/padawans.txt', 'utf8').split('\n');
-  delete padawans[4];
-  return padawans;
+  return fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n').splice(0, 4);
 }
 
 function getLightsaberScores() {
-  const padawansScores = fs.readFileSync('data/scores.txt', 'utf8').split('\n');
-  for (let i = 0; i < padawansScores.length; i += 1) {
-    padawansScores[i] = Number(padawansScores[i]);
-  }
-  return padawansScores;
+  return fs.readFileSync('./data/scores.txt', 'utf-8').split('\n').map((el) => +el);
 }
 
 function getStats() {
-	let arrayStats = [];
-  for (let i = 0; i < 4; i += 1) {
-    arrayStats.push(getPadawanNames());
-    arrayStats.push(getLightsaberScores());
-		for (let j = 0; j < arrayStats.length; j += 1) {
-			delete arrayStats[i][j];
-		}
-	}
-	return arrayStats;
+  const names = getPadawanNames();
+  const scores = getLightsaberScores();
+  const stats = [];
+  for (let i = 0; i < names.length; i += 1) {
+    stats.push([names[i], scores[i]]);
+  }
+  return stats;
 }
-getStats();
+
+function writeStats() {
+  return fs.writeFileSync('./data/stats.txt', `${getStats().join('\n').split(',').join(' ')}`);
+}
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
