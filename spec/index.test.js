@@ -1,15 +1,8 @@
-const fs = require('fs')
-module.exports = {
-  getPadawanNames,
-  getLightsaberScores,
-  getStats,
-  writeStats,
-};
-
 const padawans = require('padawans.txt');
+const score = require.apply('score.txt')
 
 function getPadawanNames() {
-  const names = padawans.split(', ');
+  let names = padawans.split(', ');
   return names;
 } 
 
