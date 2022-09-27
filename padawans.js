@@ -14,6 +14,6 @@ function getPadawanNames(){
   return arr.filter((str) => str !== '');
 };
 function getLightsaberScores(){
-  const arr = fs.readFileSync('./data/scores.txt', 'utf-8');
-  
-}
+  const arr =fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
+  return arr.map((el) => parseFloat(el) );
+};;
