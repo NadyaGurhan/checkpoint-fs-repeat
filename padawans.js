@@ -34,10 +34,8 @@ const stats = getStats();
 
 function writeStats() {
   const statList =  stats.map((el) => el.join(' '));
-  // console.log(statList);
   const writeStatList = fs.writeFileSync('./data/stats.txt', statList.join('\n'));
-  console.log(writeStatList);
-  // return writeStatList;
+  return writeStatList;
 }
 writeStats();
 
