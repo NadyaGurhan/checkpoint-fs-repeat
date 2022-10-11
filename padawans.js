@@ -5,7 +5,10 @@ const getPadawanNames = () => {
  return res.split('\n')
 
 }
-const getLightsaberScores = () => fs.readFileSync('./data/scores.txt','utf-8')
+const getLightsaberScores = () => {
+  res = fs.readFileSync('./data/scores.txt','utf-8')
+  return res.split('\n')
+}
 const getStats = (getPadawanNames,getLightsaberScores) => {
   const newNames = getPadawanNames.split('\n')
   const newScore = getLightsaberScores.split('\n')
