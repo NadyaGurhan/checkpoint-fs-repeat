@@ -1,32 +1,21 @@
 const fs = require('fs');
-// let fileNames = "./data/padawans.txt";
-// let data = fs.readFileSync(fileNames, "utf8");
-// console.log(data);
-// data = data + "my text";
-// fs.writeFileSync(fileNames, data);
 
-function getPadawanNames () {
-  let arr = [];
-  let fileNames = ("./data/padawans.txt");
-  let data = fs.readFileSync(fileNames, "utf8");
-  console.log(data);
-  for(let i =0; i < data.length; i++){
-    arr.push(data[i])
-  }
- return arr;
+function getPadawanNames() {
+  let m = fs.readFileSync("data/padawans.txt", "utf8");
+ return m.split('\n');
 }
-function getLightsaberScores () {
+// function getLightsaberScores () {
 
-}
-function getStats (){
+// }
+// function getStats (){
 
-}
-function writeStats (){
+// }
+// function writeStats (){
 
-}
+// }
 module.exports = {
   getPadawanNames,
-  getLightsaberScores,
-  getStats,
-  writeStats,
+  // getLightsaberScores,
+  // getStats,
+  // writeStats,
 };
