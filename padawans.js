@@ -25,19 +25,17 @@ function getStats() {
   }
   return finalStats;
 }
-console.log(getStats());
 
 function writeStats() {
   const mass = getStats();
   const newMass = [];
   for (let i = 0; i < mass.length; i++) {
-    newMass.push(mass[i].join(','));
-    console.log(mass[i])
+    newMass.push(mass[i].join(' '));
   }
-  console.log(newMass);
   const str = newMass.join('\n');
   fs.writeFileSync('./data/stats.txt', str, 'utf-8');
 }
+writeStats();
 
 module.exports = {
   getPadawanNames,
