@@ -27,12 +27,12 @@ function getStats() {
 }
 
 function writeStats() {
-  
+  fs.appendFileSync(__dirname + '/data/scores.txt', getStats(), "utf-8")
 }
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
