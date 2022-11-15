@@ -7,25 +7,18 @@ module.exports = {
   writeStats,
 };
 
+const names = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n').slice(0, -1);
+const scores = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n').map((el) => +el);
+
 function getPadawanNames() {
-  const names = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n');
-  names.pop();
   return names;
 }
 
 function getLightsaberScores() {
-  const arr = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
-  const scores = arr.map((el) => +el);
   return scores;
 }
 
 function getStats() {
-  const names = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n');
-  names.pop();
-
-  const arr = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
-  const scores = arr.map((el) => +el);
-
   const stats = Array.from({ length: names.length }, () => []);
 
   for (let i = 0; i < names.length; i += 1) {
@@ -37,12 +30,6 @@ function getStats() {
 }
 
 function writeStats() {
-  const names = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n');
-  names.pop();
-
-  const arr = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
-  const scores = arr.map((el) => +el);
-
   const stats = Array.from({ length: names.length }, () => []);
 
   for (let i = 0; i < names.length; i += 1) {
