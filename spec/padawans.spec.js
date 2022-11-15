@@ -1,10 +1,13 @@
 const fs = require('fs');
 const {
   getPadawanNames,
-  getLightsaberScores,
   getStats,
   writeStats,
-} = require('../padawans');
+} = require('../data/padawans');
+
+const {
+  getLightsaberScores,
+} = require('../data/scores')
 
 describe('Статистика о падаванах', () => {
   it('getPadawanNames возвращает список падаванов из файла `data/padawans.txt`', () => {
@@ -25,9 +28,19 @@ describe('Статистика о падаванах', () => {
     ]);
   });
   it('writeStats сохраняет статистику в файл `data/stats.txt`', () => {
-    const stats = getStats();
+    const stats = writeStats();
     writeStats(stats);
     const data = fs.readFileSync('data/stats.txt', 'utf8');
     expect(data).toBe('Revan 99.9\nBastila Shan 92\nJolee Bindo 87\nJuhani 82');
   });
 });
+
+module.exports = {
+  getPadawanNames,
+  getLightsaberScores,
+  getStats,
+  writeStats,
+
+
+
+}
