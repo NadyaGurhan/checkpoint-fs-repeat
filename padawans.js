@@ -1,4 +1,5 @@
-const fs = require('fs')
+const fs = require('fs');
+const { resourceLimits } = require('worker_threads');
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
@@ -26,7 +27,12 @@ function getLightsaberScores() {
 console.log(getLightsaberScores());
 
 function getStats() {
-
+  const jedi = getPadawanNames();
+  const score = getLightsaberScores();
+  const result = [];
+  for (let i = 0; i < jedi.length; i++) {
+    result.push([jedi[i], score[i]]);
+  } return result;
 }
 
 function writeStats() {
