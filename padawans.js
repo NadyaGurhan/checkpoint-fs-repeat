@@ -16,11 +16,6 @@ const removeEmptyElem = (arr) => {
 
 const getPadawanNames = () => {
   removeEmptyElem(padawansList);
-  // for (let i = 0; i < padawansList.length; i += 1) {
-  //   if (padawansList[i] === '') {
-  //     padawansList.splice(i, 1);
-  //   }
-  // }
 
   return padawansList;
 };
@@ -32,13 +27,39 @@ const getLightsaberScores = () => {
   return scoresList;
 };
 
-const getStats = () => {};
+const getStats = () => {
+  const stats = [];
+  removeEmptyElem(padawansList);
+  for (let i = 0; i < padawansList.length; i += 1) {
+    stats[i] = [padawansList[i], +scoresList[i]];
+  }
+
+  return stats;
+};
+
+const writeStats = () => {
+  removeEmptyElem(padawansList);
+  fs.writeFileSync('./data/stats.txt', '');
+  for (let i = 0; i < padawansList.length; i += 1) {
+    if (i < padawansList.length - 1) {
+      fs.appendFileSync(
+        './data/stats.txt',
+        `${padawansList[i]} ${scoresList[i]}\n`
+      );
+    } else {
+      fs.appendFileSync(
+        './data/stats.txt',
+        `${padawansList[i]} ${scoresList[i]}`
+      );
+    }
+  }
+};
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
 
-console.log(getStats());
+console.log(writeStats());
