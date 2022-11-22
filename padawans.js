@@ -61,5 +61,3 @@ module.exports = {
   getStats,
   writeStats,
 };
-
-console.log(writeStats());
