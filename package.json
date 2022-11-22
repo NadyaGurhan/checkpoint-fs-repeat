@@ -23,5 +23,9 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^26.5.3",
     "jest": "^28.1.1"
-  }
+  },
+  "files.autoSave": "afterDelay",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+      }
 }
