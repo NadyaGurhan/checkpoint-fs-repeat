@@ -6,12 +6,21 @@ const padawansList = padawans.split('\n');
 const scores = fs.readFileSync('./data/scores.txt', 'utf-8');
 const scoresList = scores.split('\n');
 
-const getPadawanNames = () => {
-  for (let i = 0; i < padawansList.length; i += 1) {
-    if (padawansList[i] === '') {
-      padawansList.splice(i, 1);
+const removeEmptyElem = (arr) => {
+  for (let i = 0; i < arr.length; i += 1) {
+    if (arr[i] === '') {
+      arr.splice(i, 1);
     }
   }
+};
+
+const getPadawanNames = () => {
+  removeEmptyElem(padawansList);
+  // for (let i = 0; i < padawansList.length; i += 1) {
+  //   if (padawansList[i] === '') {
+  //     padawansList.splice(i, 1);
+  //   }
+  // }
 
   return padawansList;
 };
