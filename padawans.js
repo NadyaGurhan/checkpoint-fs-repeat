@@ -1,7 +1,5 @@
 const fs = require('fs');
 
-// console.log(fs.readFileSync('./data/padawans.txt', 'utf8'));
-
 function getPadawanNames() {
   const padawan = fs.readFileSync('./data/padawans.txt', 'utf-8');
   return padawan.split('\n').slice(0, -1);
