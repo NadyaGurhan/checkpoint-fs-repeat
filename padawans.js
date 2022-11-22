@@ -1,24 +1,35 @@
 const fs = require('fs');
 
+const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8');
+const padawansList = padawans.split('\n');
+
+const scores = fs.readFileSync('./data/scores.txt', 'utf-8');
+const scoresList = scores.split('\n');
+
 const getPadawanNames = () => {
-  const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8');
-  const padawansList = padawans.split('\n');
-  padawansList.splice(padawansList.length - 1, 1);
+  for (let i = 0; i < padawansList.length; i += 1) {
+    if (padawansList[i] === '') {
+      padawansList.splice(i, 1);
+    }
+  }
 
   return padawansList;
 };
 
 const getLightsaberScores = () => {
-  const scores = fs.readFileSync('./data/scores.txt', 'utf-8');
-  const scoresList = scores.split('\n');
-  // scoresList = scoresList.
+  for (let i = 0; i < scoresList.length; i += 1) {
+    scoresList[i] = +scoresList[i];
+  }
+  return scoresList;
 };
+
+const getStats = () => {};
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-  // getStats,
+  getStats,
   // writeStats,
 };
 
-console.log(getLightsaberScores());
+console.log(getStats());
