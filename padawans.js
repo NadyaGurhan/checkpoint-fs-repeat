@@ -21,11 +21,11 @@ function getLightsaberScores() {
 getLightsaberScores();
 
 function getStats() {
-  let padawans = getPadawanNames();
-  let saberScores = getLightsaberScores();
-  let result = [];
+  const padawans = getPadawanNames();
+  const saberScores = getLightsaberScores();
+  const result = [];
   for (let i = 0; i < padawans.length; i += 1) {
-    result.push(padawans[i].split(',').concat(saberScores[i]));
+    result.push([padawans[i], saberScores[i]]);
   }
   return result;
 }
@@ -33,8 +33,11 @@ function getStats() {
 getStats();
 
 function writeStats() {
-  let result = getStats();
-  const data = fs.writeFileSync('./data/stats.txt', `${result.join(' ')}\n`);
+  const result = getStats();
+  const data = fs.writeFileSync(
+    './data/stats.txt',
+    `${result.join('\n').split(',').join(' ')}`
+  );
   return data;
 }
 
