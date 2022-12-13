@@ -20,11 +20,9 @@ function getLightsaberScores() {
 function getStats() {
   const pad = getPadawanNames();
   const scr = getLightsaberScores();
-  const all = [...pad, ...scr];
   const newArr = [];
-  // res.push([pad[i], scr[i]])
-  console.log(all.map((el) => el));
-  for (let i = 0; i < all.length; i++) {
-    console.log(newArr.push(pad[i], scr[i]));
+  for (let i = 0; i < pad.length; i++) {
+    newArr.push([pad[i], scr[i]]);
   }
+  return newArr;
 }
