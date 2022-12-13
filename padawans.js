@@ -3,12 +3,7 @@ const fs = require('fs');
 function getPadawanNames() {
   const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8');
   const padawansArray = padawans.split('\n');
-  arr = [];
-  padawansArray.map((el) => {
-    if (el.length > 0) {
-      arr.push(el);
-    }
-  });
+  const arr = padawansArray.filter((el) => el.length > 0);
   return arr;
 }
 
@@ -24,23 +19,14 @@ function getStats() {
   const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8');
   const scoresArray = scores.split('\n');
   const padawansArray = padawans.split('\n');
-  const scoresArr = [];
-  const padawansArr = [];
-  padawansArray.map((el) => {
-    if (el.length > 0) {
-      padawansArr.push(el);
-    }
-  });
-  scoresArray.map((el) => {
-    if (el.length > 0) {
-      scoresArr.push(parseFloat(el));
-    }
-  });
+  const scoresArr = scoresArray
+    .filter((el) => el.length > 0)
+    .map((el) => parseFloat(el));
+  const padawansArr = padawansArray.filter((el) => el.length > 0);
   const arr = [];
   padawansArr.forEach((el, i) => {
     arr.push([el, scoresArr[i]]);
   });
-
   return arr;
 }
 
