@@ -46,8 +46,12 @@ function getStats() {
 
 function writeStats(stats) {
   fs.writeFileSync('data/stats.txt', '');
-  stats.map((el) => {
-    fs.appendFileSync('data/stats.txt', `\n${el.join(' ')}`);
+  stats.forEach((el, i) => {
+    if (i === 0) {
+      fs.appendFileSync('data/stats.txt', `${el.join(' ')}`);
+    } else {
+      fs.appendFileSync('data/stats.txt', `\n${el.join(' ')}`);
+    }
   });
 }
 
