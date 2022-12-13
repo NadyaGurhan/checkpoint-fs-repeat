@@ -12,17 +12,25 @@ function getLightsaberScores() {
   return lvl.map((el) => Number(el));
 }
 
-// function getStats() {
+function getStats() {
+  const names = getPadawanNames();
+  const score = getLightsaberScores();
+  const arr = [];
 
-// }
+  names.map((el, i) => arr.push([el, score[i]]));
+  return arr;
+}
 
-// function writeStats() {
+console.log(getStats());
 
-// }
+function writeStats() {
+  const heroScore = getStats().join('\n').replace(/,/g, ' ');
+  fs.writeFileSync('./data/stats.txt', heroScore);
+}
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-  // getStats,
-  // writeStats,
+  getStats,
+  writeStats,
 };
