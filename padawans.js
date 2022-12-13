@@ -21,9 +21,11 @@ function getStats() {
   }
   return arrDone;
 }
-getStats();
-function writeStats() {
+console.log(getStats());
 
+function writeStats(stats) {
+  const result = stats.map((el) => el.join(' ')).join('\n');
+  fs.writeFileSync('data/stats.txt', result);
 }
 
 module.exports = {
