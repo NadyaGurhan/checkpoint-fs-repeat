@@ -1,4 +1,5 @@
 const fs = require('fs');
+const _ = require('lodash');
 
 function getPadawanNames() {
   const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8');
@@ -15,30 +16,16 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  const scores = fs.readFileSync('./data/scores.txt', 'utf-8');
-  const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8');
-  const scoresArray = scores.split('\n');
-  const padawansArray = padawans.split('\n');
-  const scoresArr = scoresArray
-    .filter((el) => el.length > 0)
-    .map((el) => parseFloat(el));
-  const padawansArr = padawansArray.filter((el) => el.length > 0);
-  const arr = [];
-  padawansArr.forEach((el, i) => {
-    arr.push([el, scoresArr[i]]);
-  });
-  return arr;
+  const scores = getLightsaberScores();
+  const names = getPadawanNames();
+  return _.zip(names, scores);
 }
 
 function writeStats(stats) {
-  fs.writeFileSync('data/stats.txt', '');
-  stats.forEach((el, i) => {
-    if (i === 0) {
-      fs.appendFileSync('data/stats.txt', `${el.join(' ')}`);
-    } else {
-      fs.appendFileSync('data/stats.txt', `\n${el.join(' ')}`);
-    }
-  });
+  const statsStr = stats
+    .map((el) => el.join(' '))
+    .join('\n');
+  fs.writeFileSync('data/stats.txt', statsStr);
 }
 
 console.log(writeStats(getStats()));
