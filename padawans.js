@@ -1,28 +1,33 @@
 const fs = require("fs");
+const { EOL } = require("os");
 
 function getPadawanNames() {
-  const readNames = fs.readFileSync("./data/padawans.txt", "utf-8");
-  return readNames.split('\n');
+  return fs.readFileSync("./data/padawans.txt", "utf-8").split(EOL);
 }
 
 function getLightsaberScores() {
-  const readScores = fs.readFileSync("./data/scores.txt", "utf-8");
-  let scores = [];
-  return scores.push(parseInt(readScores[i]));
+  return fs
+    .readFileSync("./data/scores.txt", "utf-8")
+    .split(EOL)
+    .map((i) => Number(i));
 }
 
 function getStats() {
-  let stats = [];
-  for (let i=0; i < readNames.length; i += 1) {
-    stats.push(readNames[i]);
-    for (let j = 0; j < scores.length; j += 1) {
-      stats[i].push(readScores[j]);
-    }
-  }
-  return stats;
+  let names = getPadawanNames();
+  let scores = getLightsaberScores();
+  return names.map((el, i) => [names[i], scores[i]]);
 }
 
-function writeStats() {}
+function writeStats() {
+  let stats = getStats();
+  stats.forEach((el) => {
+    if (!fs.existsSync("./data/stats.txt")) {
+      fs.writeFileSync("./data/stats.txt", `${el[0]} ${el[1]}`);
+    } else {
+      fs.appendFileSync("./data/stats.txt", `\n${el[0]} ${el[1]}`);
+    }
+  });
+}
 
 module.exports = {
   getPadawanNames,
