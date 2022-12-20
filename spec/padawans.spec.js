@@ -1,12 +1,13 @@
 const fs = require('fs');
+
 const {
   getPadawanNames,
   getLightsaberScores,
-  getStats,
-  writeStats,
+  
 } = require('../padawans');
 
 describe('Статистика о падаванах', () => {
+  
   it('getPadawanNames возвращает список падаванов из файла `data/padawans.txt`', () => {
     const names = getPadawanNames();
     expect(names).toEqual(['Revan', 'Bastila Shan', 'Jolee Bindo', 'Juhani']);
