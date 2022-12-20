@@ -32,17 +32,11 @@ function getStats() {
   const scoresArr = scores.split('\n');
 
   const arr = [];
-  const arr2 = [];
-  const arr3 = [];
 
   for (let index = 0; index < padawansArr.length - 1; index++) {
-    arr.push(padawansArr[index]);
-    arr2.push(+scoresArr[index]);
-    arr3.concat(arr, arr2);
-
-    // console.log(arr3)
+    arr.push([padawansArr[index], +scoresArr[index]]);
   }
-  return arr3;
+  return arr;
 }
 
 function writeStats(arr3) {
