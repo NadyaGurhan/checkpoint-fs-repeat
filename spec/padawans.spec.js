@@ -1,4 +1,5 @@
 const fs = require('fs');
+const randomProfile = require('random-profile-generator');
 const {
   getPadawanNames,
   getLightsaberScores,
@@ -10,11 +11,18 @@ describe('Статистика о падаванах', () => {
   it('getPadawanNames возвращает список падаванов из файла `data/padawans.txt`', () => {
     const names = getPadawanNames();
     expect(names).toEqual(['Revan', 'Bastila Shan', 'Jolee Bindo', 'Juhani']);
+    // const res = fs.readFileSync('./padawans.txt', 'utf-8');
+    // console.log(res);
+    console.log(names);
   });
+
   it('getPadawanScores возвращает оценки владения световым мечом из файла `data/scores.txt`', () => {
     const names = getLightsaberScores();
     expect(names).toEqual([99.9, 92, 87, 82]);
+    const marks = fs.readFileSync('./scores.txt', 'utf-8');
+    console.log(marks);
   });
+
   it('getStats возвращает таблицу соответствия падавана и оценки владения световым мечом', () => {
     const stats = getStats();
     expect(stats).toEqual([
@@ -29,5 +37,6 @@ describe('Статистика о падаванах', () => {
     writeStats(stats);
     const data = fs.readFileSync('data/stats.txt', 'utf8');
     expect(data).toBe('Revan 99.9\nBastila Shan 92\nJolee Bindo 87\nJuhani 82');
+    const newFile = fs.writeFileSync('data/stats.txt', data, stats);
   });
 });
