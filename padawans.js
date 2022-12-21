@@ -2,37 +2,51 @@ const fs = require("fs");
 
 function getPadawanNames() {
   let padawans = fs.readFileSync(__dirname + "/data/padawans.txt", "utf8");
-  let arr = padawans.split("\n");
-  return arr;
+  let fixedPadawans = padawans.split("\n");
+  return fixedPadawans;
 }
 
 // console.log(getPadawanNames());
 
 function getLightsaberScores() {
   let scores = fs.readFileSync(__dirname + "/data/scores.txt", "utf8");
-  let arr1 = scores.split("\n");
-  return arr1.map((item) => +item);
+  let fixedScore = scores.split("\n");
+  return fixedScore.map((item) => +item);
 }
 // console.log(getLightsaberScores());
 
 function getStats() {
-  let padawans = fs.readFileSync(__dirname + "/data/padawans.txt", "utf8");
-  let arr = padawans.split("\n");
-  let scores = fs.readFileSync(__dirname + "/data/scores.txt", "utf8");
-  let arr1 = scores.split("\n").map((item) => +item);
+  let arr = getPadawanNames();
+  let arr1 = getLightsaberScores();
   let combArr = [];
 
-      combArr = arr.concat(arr1);
-  
+  for (let i = 0; i < arr.length; i++) {
+    combArr.push([arr[i], arr1[i]]);
   }
+
   return combArr;
 }
 
-console.log(getStats());
+// console.log(getStats());
+
+function writeStats() {
+  let newArr = getStats();
+  // let fixedItem = [];
+  // for (let i = 0; i < newArr.length; i++) {
+  //   let result = newArr[i].join(" ");
+  //   fixedItem.push(result);
+  // }
+  let fixedItem = newArr.map((item) => item.join(" "));
+  let data = fixedItem.join("\n");
+  let statisticFile = fs.writeFileSync(`./data/stats.txt`, data);
+  return statisticFile;
+}
+
+console.log(writeStats());
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
