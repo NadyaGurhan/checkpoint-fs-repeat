@@ -1,12 +1,5 @@
 const fs = require('fs');
 
-module.exports = {
-  getPadawanNames,
-  getLightsaberScores,
-  getStats,
-  // writeStats,
-};
-
 function getPadawanNames() {
   const padav = fs.readFileSync('data/padawans.txt', 'utf-8');
   return padav.split('\n').slice(0, 4);
@@ -26,3 +19,19 @@ function getStats() {
   }
   return newArr;
 }
+
+function writeStats() {
+  const stats = getStats().map((el) => el.join(' ')).join('\n');
+  console.log(stats);
+  const res = fs.writeFileSync('./data/stats.txt', stats, 'utf-8');
+  return res;
+}
+
+writeStats();
+
+module.exports = {
+  getPadawanNames,
+  getLightsaberScores,
+  getStats,
+  writeStats,
+};
