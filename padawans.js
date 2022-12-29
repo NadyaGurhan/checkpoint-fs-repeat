@@ -17,8 +17,8 @@ function getLightsaberScores() {
 getLightsaberScores();
 
 function getStats() {
-const padawans = getPadawanNames();
-const lightsaberScores = getLightsaberScores();
+  const padawans = getPadawanNames();
+  const lightsaberScores = getLightsaberScores();
 
   const stats = [];
   for (let i = 0; i < padawans.length; i += 1) {
@@ -29,9 +29,16 @@ const lightsaberScores = getLightsaberScores();
 
 getStats();
 
+function writeStats() {
+  const data = getStats().join('\n').replace(/[,]/g, ' ');
+  console.log(data);
+  fs.writeFileSync('data/stats.txt', data);
+}
+writeStats();
+
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
