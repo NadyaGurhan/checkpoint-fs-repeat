@@ -14,12 +14,17 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  getPadawansNames().
+  const stat = [];
+  const sabers = getLightsaberScores();
+  const padawans = getPadawanNames();
+  for (let i = 0; i < sabers.length; i += 1) {
+    stat[i] = [padawans[i], sabers[i]];
+  }
   return stat;
 }
 
 function writeStats() {
-  fs.appendFileSync(`/data/stats.txt`, `${getStats()[i]}\n`)
+  fs.appendFileSync('/data/stats.txt', `${getStats()[i]}\n`);
 }
 
 module.exports = {
