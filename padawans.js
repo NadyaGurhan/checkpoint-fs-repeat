@@ -21,11 +21,20 @@ function getStats() {
 }
 console.log(getStats());
 
-//function writeStats{}
+function writeStats() {
+  const arrayStats = getStats();
+  arrayStats.map((el) => {
+    if (!fs.existsSync(`${__dirname}/data/stats.txt`)) {
+      fs.writeFileSync(`${__dirname}/data/stats.txt`, `${el[0]} ${el[1]}`);
+    } else {
+      fs.appendFileSync(`${__dirname}/data/stats.txt`, `\n${el[0]} ${el[1]}`);
+    }
+  });
+}
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  //writeStats,
+  writeStats,
 };
