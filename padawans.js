@@ -39,14 +39,19 @@ function getStats() {
   }
 }
 
+
 // let arr = [];
 // arr.push(padawans[0]);
 // arr.push(scores[0]);
 console.log(getStats());
 
-// module.exports = {
-//   getPadawanNames,
-//   getLightsaberScores,
-//   getStats,
-//   writeStats,
-// };
+function writeStats() {
+  return fs.writeFileSync('.data/stats.txt', getStats(), 'utf8')
+}
+
+module.exports = {
+  getPadawanNames,
+  getLightsaberScores,
+  getStats,
+  writeStats,
+};
