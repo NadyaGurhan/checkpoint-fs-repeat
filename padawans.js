@@ -9,9 +9,9 @@ console.log(getPadawanNames());
 
 function readDataFromTxtFile(fileName) {
   return fs
-    .readFileSync(`../data/${fileName}`, "utf-8")
+    .readFileSync(`./data/${fileName}`, "utf-8")
     .split("\n")
-    .slice(0)
+    .slice()
     .map((el) => el.split(", "));
 }
 console.log(readDataFromTxtFile("padawans.txt"));
