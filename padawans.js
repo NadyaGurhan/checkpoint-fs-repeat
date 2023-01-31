@@ -20,10 +20,7 @@ function getLightsaberScores() {
 function getStats() {
   const pad = getPadawanNames();
   const light = getLightsaberScores();
-  const data = []
-  for (let i = 0; i < pad.length; i++) {
-    data.push([pad[i], light[i]])
-  }
+  const data = pad.map((el, i) => [el, light[i]])
   return data;
 }
 
