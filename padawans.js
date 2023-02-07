@@ -10,13 +10,13 @@ module.exports = {
   writeStats,
 };
 function getPadawanNames() {
-  const padaw = names.split(",");
+  const padaw = names.split("  ");
   return padaw;
 }
 console.log(getPadawanNames());
 
 function getLightsaberScores() {
-  const score = padsco.split(",");
+  const score = padsco.split(" ");
   return score;
 }
 console.log(getPadawanNames());
