@@ -4,7 +4,7 @@ const {
   getLightsaberScores,
   getStats,
   writeStats,
-} = require('../padawans');
+} = require('./index');
 
 describe('Статистика о падаванах', () => {
   it('getPadawanNames возвращает список падаванов из файла `data/padawans.txt`', () => {
@@ -31,3 +31,4 @@ describe('Статистика о падаванах', () => {
     expect(data).toBe('Revan 99.9\nBastila Shan 92\nJolee Bindo 87\nJuhani 82');
   });
 });
+
