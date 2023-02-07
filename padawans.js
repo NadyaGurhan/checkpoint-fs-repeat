@@ -32,10 +32,9 @@ function getStats() {
 }
 
 function writeStats() {
-  const text = getStats()
-    .map((el) => {
-      el.join(' ');
-    })
-    .join('\n');
-  fs.writeFileSync('./data/stats.txt', text);
+
+  const filePath = `./data/stats.txt`;
+  const text = getStats().join('\n')
+  .replaceAll(',', ' ');
+  return fs.writeFileSync(filePath, text);
 }
