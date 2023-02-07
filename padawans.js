@@ -14,9 +14,9 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  names = getPadawanNames();
-  scores = getLightsaberScores();
-  let res = [];
+  const names = getPadawanNames();
+  const scores = getLightsaberScores();
+  const res = [];
   for (ind in names) {
     res.push([names[ind], scores[ind]]);
   }
@@ -28,9 +28,6 @@ function writeStats() {
   let res = getStats().map((el) => el.join(' '));
   fs.writeFileSync(__dirname + '/data/stats.txt', res.join('\n'));
 }
-console.log(getPadawanNames());
-console.log(getLightsaberScores());
-console.log(getStats());
 
 module.exports = {
   getPadawanNames,
