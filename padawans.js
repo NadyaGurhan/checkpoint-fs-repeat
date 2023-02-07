@@ -25,17 +25,18 @@ function getLightsaberScores() {
 function getStats() {
   const data = output.split("\n");
   const datik = outputik.split("\n").map((el) => Number(el));
-  let arr = [];
+  let arr=
+  [];
   for (let i = 0; i < data.length; i++) {
-    arr.push(data[i], datik[0]).map();
+    arr.push(data[i], datik[i]);
+ 
   }
-  return arr;
-}
+  return arr
 console.log(getStats());
 
 function writeStats() {
   const datikk = getStats();
   const filePath = "data/stats.txt";
-  fs.writeFileSync(filePath, data.join("\n"));
+  fs.writeFileSync(filePath, datikk.join("\n"));
 }
-// console.log(writeStats());
+console.log(writeStats());
