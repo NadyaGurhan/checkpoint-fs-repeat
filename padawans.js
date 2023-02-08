@@ -14,33 +14,30 @@ function getPadawanNames() {
 }
 
 function getLightsaberScores() {
-  const result = [];
-  scores.forEach((e) => result.push(+e));
-  return result;
+  // const result = [];
+  // scores.forEach((e) => result.push(+e));
+  // return result;
+  const data1 = fs.readFileSync('./data/scores.txt', 'utf8');
+  return data1.trim().split('\n').map((el) => Number(el));
 }
 
 function getStats() {
-  const result = [];
-  padawans.map((el, i) => {
-    result.push([el]);
-    result[i].push(+scores[i]);
-  });
-  return result;
+  // const result = [];
+  // padawans.map((el, i) => {
+  //   result.push([el]);
+  //   result[i].push(+scores[i]);
+  // });
+  // return result;
+  return padawans.map((el, i) => [padawans[i], +scores[i]]);
 }
 
 const savePath = './data/stats.txt';
 
-function writeStats() {
-  const arr = getStats();
-  const newArr = [];
-  let result;
-  arr.forEach(() => {
-    newArr.join(',');
-  });
-  // newArr.forEach((el) => {
-  // result.join()
-  // })
+function writeStats(stats) {
+  return fs.writeFileSync('./data/stats.txt', stats.map((stat) => stat.join(' ')).join('\n'));
 }
+
+// console.log(writeStats());
 
 module.exports = {
   getPadawanNames,
