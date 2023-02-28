@@ -1,16 +1,9 @@
 const fs = require("fs");
 
-module.exports = {
-  getPadawanNames,
-  // getLightsaberScores,
-  // getStats,
-  // writeStats,
-};
-
-function getPadawanNames() {
+const getPadawanNames = () => {
   const name = fs
     .readFileSync("./data/padawans.txt", "utf8")
     .split("\n")
     .slice(0, 4);
   return name;
-}
+};
