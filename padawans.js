@@ -10,14 +10,36 @@ function getPadawanNames() {
 
 function getLightsaberScores() {
   const scoresArr = padawanScores.split('\n');
-  const resScoresArr = scoresArr.map(elem => Number(elem));
+  const resScoresArr = scoresArr.map((elem) => Number(elem));
   return resScoresArr;
 }
+
+function getStats() {
+  const statsArr = [];
+  const nameArr = padawanNames.split('\n').slice(0, 4);
+  const scoresArr = padawanScores.split('\n');
+  const resScoresArr = scoresArr.map((elem) => Number(elem));
+  for (let i = 0; i < nameArr.length; i += 1) {
+    const statsArrEl = [];
+    statsArrEl.push(nameArr[i]);
+    statsArrEl.push(resScoresArr[i]);
+    statsArr.push(statsArrEl);
+  }
+  return statsArr;
+}
+
+function writeStats() {
+  const content = getStats();
+  const resArr = content.map((el) => el.join(' '));
+  const finalArr = resArr.join('\n');
+  return fs.writeFileSync('./data/stats.txt', finalArr, 'utf8');
+}
+
+writeStats()
+
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
   writeStats,
 };
-// Я не понимаю, почему не проходят успешно тесты по первым двум функциям. 
-// Если вывести их результат в консоль, он соответствует тому, что указано в резудьтатах тестов.
