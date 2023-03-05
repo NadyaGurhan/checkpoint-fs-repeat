@@ -17,9 +17,25 @@ function getLightsaberScores() {
   return result;
 }
 
+function getStats() {
+  const result = {};
+  for (let i = 0; i < padawans.length; i++) {
+    result[`${padawans[i]}`] = +scores[i];
+  }
+  return Object.entries(result);
+}
+
+function writeStats(item) {
+  fs.writeFileSync(
+    `${__dirname}/data/stats.txt`,
+    item.join('\n').replaceAll(',', ' '),
+    'utf-8'
+  );
+}
+
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-  // getStats,
-  // writeStats,
+  getStats,
+  writeStats,
 };
