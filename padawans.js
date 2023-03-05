@@ -1,36 +1,35 @@
 const fs = require('fs');
 
-const padawansNames = ['Revan', 'Bastila Shan', 'Jolee Bindo', 'Juhani'];
+const padawansNames = fs
+  .readFileSync('./data/padawans.txt', 'utf-8')
+  .split('\n');
+// padawansNames.push(data);
 
 function getPadawanNames() {
-  return padawansNames;
+  return padawansNames.slice(0, -1);
 }
 
-const padawansScores = [99.9, 92, 87, 82];
-
 function getLightsaberScores() {
-  return padawansScores;
+  const padawansScores = fs
+    .readFileSync('./data/scores.txt', 'utf-8')
+    .split('\n');
+  return padawansScores.map((elem) => Number(elem));
 }
 
 function getStats() {
-  const result = [];
-  for (let index = 0; index < padawansNames.length; index += 1) {
-    const newArr = [padawansNames[index], padawansScores[index]];
-    result.push(newArr);
+  const names = getPadawanNames();
+  const scores = getLightsaberScores();
+  const res = [];
+  for (let index = 0; index < names.length; index++) {
+    res.push([names[index], scores[index]]);
   }
-  return result;
+  return res;
 }
 
 function writeStats() {
-  for (let index = 0; index < padawansNames.length; index += 1) {
-    if (index !== padawansNames.length - 1) {
-      const row = `${padawansNames[index]} ${padawansScores[index]}\n`;
-      fs.appendFileSync('./data/stats.txt', row, 'utf-8');
-    } else if (index === padawansNames.length - 1) {
-      const row = `${padawansNames[index]} ${padawansScores[index]}`;
-      fs.appendFileSync('./data/stats.txt', row, 'utf-8');
-    }
-  }
+  const regExp = /,/g;
+  const stats = getStats().join('\n').replace(regExp, ' ');
+  fs.writeFileSync('./data/stats.txt', stats);
 }
 
 module.exports = {

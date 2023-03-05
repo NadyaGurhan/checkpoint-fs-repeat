@@ -6,15 +6,13 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: [
-    'airbnb-base',
-  ],
+  extends: ['airbnb-base', 'prettier'],
   parserOptions: {
     ecmaVersion: 12,
   },
-  plugins: [
-    'jest',
-  ],
+  plugins: ['jest'],
   rules: {
+    'no-console': 'off',
+    'no-plusplus': 'off',
   },
 };
