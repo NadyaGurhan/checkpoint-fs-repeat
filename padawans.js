@@ -28,16 +28,8 @@ function getStats() {
 // console.log(getStats());
 
 function writeStats() {
-  const data = getStats().join('\n');
-  let result = '';
-  for (let i = 0; i < data.length; i++) {
-    if (data[i] === ',') {
-      result += ' ';
-    } else {
-      result += data[i];
-    }
-  }
-  fs.writeFileSync('data/stats.txt', result, 'utf-8');
+  const data = getStats().join('\n').replaceAll(',',' ');
+  fs.writeFileSync('data/stats.txt', data, 'utf-8');
 }
 
 console.log(writeStats());
