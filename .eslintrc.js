@@ -7,7 +7,7 @@ module.exports = {
     jest: true,
   },
   extends: [
-    'airbnb-base',
+    ['airbnb-base','prettier']
   ],
   parserOptions: {
     ecmaVersion: 12,
