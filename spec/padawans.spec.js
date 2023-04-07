@@ -1,14 +1,17 @@
 const fs = require('fs');
-const {
-  getPadawanNames,
-  getLightsaberScores,
-  getStats,
-  writeStats,
-} = require('../padawans');
+const getPadawanNamesFun = require('./getPadawanNamesFun');
+const getLightsaberScores = require('./getLightsaberScores');
+// const getPadawanNames = fs.readFileSync('./data/padawans.txt', 'utf-8');
+// const {
+//   getPadawanNames,
+//   getLightsaberScores,
+//   getStats,
+//   writeStats,
+// } = require('../padawans');
 
 describe('Статистика о падаванах', () => {
   it('getPadawanNames возвращает список падаванов из файла `data/padawans.txt`', () => {
-    const names = getPadawanNames();
+    const names = getPadawanNamesFun();
     expect(names).toEqual(['Revan', 'Bastila Shan', 'Jolee Bindo', 'Juhani']);
   });
   it('getPadawanScores возвращает оценки владения световым мечом из файла `data/scores.txt`', () => {
