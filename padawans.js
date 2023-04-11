@@ -18,12 +18,11 @@ res.push([padawans[i], scores[i]])
 return res
 }
 
-function writeStats() {
-  const stat = getStats().map((e) => e.join(' ')).join('\n')
+function writeStats(stats) {
+  let stat = stats;
+  stat = getStats().map((e) => e.join(' ')).join('\n')
   return fs.writeFileSync('data/stats.txt', stat, 'utf-8')
 }
-
-console.log(writeStats());
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
