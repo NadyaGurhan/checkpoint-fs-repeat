@@ -15,19 +15,15 @@ function getLightsaberScores() {
   return result;
 }
 
-// function getStats() {
-//   const padawanNamesArr = fs
-//     .readFileSync('./data/padawans.txt', 'utf-8')
-//     .split('\n');
+function getStats() {
+  const padawanNamesArr = fs
+    .readFileSync('./data/padawans.txt', 'utf-8')
+    .split('\n');
 
-//   const scoresArr = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
+  const scoresArr = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
+}
 
-//   const result;
-
-//   return result;
-// }
-
-// function writeStats() {}
+function writeStats() {}
 
 module.exports = {
   getPadawanNames,
