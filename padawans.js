@@ -24,8 +24,15 @@ function getStats() {
   const padawanNamesArr = fs
     .readFileSync('./data/padawans.txt', 'utf-8')
     .split('\n');
-
   const scoresArr = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
+
+  const result = [];
+
+  for (let i = 0; i < scoresArr.length; i += 1) {
+    result.push([padawanNamesArr[i], Number(scoresArr[i])]);
+  }
+
+  return result;
 }
 
 function writeStats() {}
