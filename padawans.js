@@ -10,7 +10,12 @@ function getPadawanNames() {
 }
 
 function getLightsaberScores() {
-  const result = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
+  const scoresArr = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
+  const result = [];
+
+  for (let i = 0; i < scoresArr.length; i += 1) {
+    result.push(Number(scoresArr[i]));
+  }
 
   return result;
 }
