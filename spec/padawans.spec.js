@@ -12,8 +12,8 @@ describe('Статистика о падаванах', () => {
     expect(names).toEqual(['Revan', 'Bastila Shan', 'Jolee Bindo', 'Juhani']);
   });
   it('getPadawanScores возвращает оценки владения световым мечом из файла `data/scores.txt`', () => {
-    const names = getLightsaberScores();
-    expect(names).toEqual([99.9, 92, 87, 82]);
+    const scores = getLightsaberScores();
+    expect(scores).toEqual([99.9, 92, 87, 82]);
   });
   it('getStats возвращает таблицу соответствия падавана и оценки владения световым мечом', () => {
     const stats = getStats();
