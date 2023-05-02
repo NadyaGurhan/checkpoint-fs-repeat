@@ -33,7 +33,7 @@ function getStats() {
   let inerArr = []
   for (let i = 0; i < score.length; i++) {
     
-   inerArr.push(padawan[i]
+ 
    
   }
 return console.log(inerArr)
