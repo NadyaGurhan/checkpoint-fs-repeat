@@ -3,5 +3,31 @@ module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  writeStats,
+  // writeStats,
 };
+
+function getPadawanNames() {
+  return fs.readFileSync('./data/padawans.txt', 'utf8').trim().split('\n').map((item) => item.trim());
+}
+
+function getLightsaberScores() {
+  return fs.readFileSync('./data/scores.txt', 'utf8').trim().split('\n').map((item) => +item.trim());
+}
+
+function getStats() {
+  const result = [];
+  const padawans = getPadawanNames();
+  const scores = getLightsaberScores();
+  padawans.forEach((_, index) => {
+    result.push([padawans[index], scores[index]]);
+  });
+  return result;
+}
+
+function writeStats() {
+  const arr = getStats().map((item) => item.join(' ').join("\n"));
+  arr.map((item) => item.join(' '));
+  fs.writeFileSync('data/stats.txt', 'utf8', data);
+}
+
+console.log(getStats().map((item) => item.join(' ')).join("\n"));
