@@ -3,7 +3,7 @@ module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
 
 function getPadawanNames() {
@@ -25,9 +25,6 @@ function getStats() {
 }
 
 function writeStats() {
-  const arr = getStats().map((item) => item.join(' ').join("\n"));
-  arr.map((item) => item.join(' '));
-  fs.writeFileSync('data/stats.txt', 'utf8', data);
+  const data = getStats().map((item) => item.join(' ')).join("\n");
+  fs.writeFileSync('./data/stats.txt', data);
 }
-
-console.log(getStats().map((item) => item.join(' ')).join("\n"));
