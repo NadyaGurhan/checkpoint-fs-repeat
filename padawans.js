@@ -10,17 +10,15 @@ module.exports = {
 function getPadawanNames() {
   const filePath = './data/padawans.txt';
   const names = fs.readFileSync(filePath, 'utf8');
-  return names.split('\n');
+  return names.split('\r\n');
 }
 console.log(getPadawanNames());
 function getLightsaberScores() {
-  const arr = [];
   const filePath = './data/scores.txt';
   const scores = fs.readFileSync(filePath, 'utf8');
-  arr.push(scores);
-  return arr;
+  return scores.split('\r\n');
 }
-
+console.log(getLightsaberScores())
 // console.log(getLightsaberScores())
 
 function getStats() {
