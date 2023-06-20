@@ -31,7 +31,11 @@ function getStats() {
 }
 function writeStats(data) {
   for (let i = 0; i < data.length; i++) {
-    fs.appendFileSync("./data/stats.txt", `${data[i].join(" ").trim()}\n`, "utf8");
+    if (data[i + 1] != undefined) {
+      fs.appendFileSync("./data/stats.txt", `${data[i].join(" ")}\n`);
+    } else {
+      fs.appendFileSync("./data/stats.txt", `${data[i].join(" ")}`);
+    }
   }
 }
 
