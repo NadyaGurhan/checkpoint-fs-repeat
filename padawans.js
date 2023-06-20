@@ -14,7 +14,7 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  const stat = getPadawanNames().map(((el, i) => el + getLightsaberScores[i]));  // непойму почему возвращает undefined
+  const stat = getPadawanNames().map(((el, i) => el + getLightsaberScores[i]));  // непойму почему возвращает undefined во второй переменной
   return stat;
 }
 
