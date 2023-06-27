@@ -8,13 +8,13 @@ module.exports = {
 
 
 function getPadawanNames() {
-  const data = fs.readFileSync('./data/padawans.txt', 'utf8').split('\n')
+  const data = fs.readFileSync('./data/padawans.txt', 'utf8').split(' ')
   return data
 }
 
 
 function getLightsaberScores() {
-  const scores = fs.readFileSync('./data/scores.txt', 'utf8').split('\n ,');
+  const scores = fs.readFileSync('./data/scores.txt', 'utf8').split(' ');
   return scores
 }
 
