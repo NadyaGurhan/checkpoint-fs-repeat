@@ -27,7 +27,7 @@ const writeStats = () => {
   for (let i = 0; i < padawanNames.length; i++) {
     content += `${padawanNames[i]} ${lightaberScores[i]}\n`;
   }
-  // content = content.slice(0, -1);
+  content = content.slice(0, -1);
   fs.writeFileSync('./data/stats.txt', content);
 };
 
