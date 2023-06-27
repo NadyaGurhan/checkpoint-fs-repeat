@@ -5,3 +5,23 @@ module.exports = {
   getStats,
   writeStats,
 };
+
+
+function getPadawanNames() {
+  const data = fs.readFileSync('./data/padawans.txt', 'utf8').split('\n')
+  return data
+}
+
+
+function getLightsaberScores() {
+  const scores = fs.readFileSync('./data/scores.txt', 'utf8').split('\n ,');
+  return scores
+}
+
+function getStats() {
+
+}
+
+function writeStats() {
+
+}
