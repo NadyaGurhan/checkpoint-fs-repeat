@@ -24,14 +24,9 @@ function getStats(){
   }
   return stats
 }
-function writeStats(){
-  let stats = ''
-  const scoresNum = scores.map(str => parseFloat(str));
-  for (let i = 0; i < padawans.length; i++){
-    stats += padawans[i] + ' ' + scoresNum[i] +'\n'    
-  }
-  stats = stats.slice(0, -1);
-  return fs.writeFileSync(`./data/stats`,stats, 'utf8');
+function writeStats(stats){
+  const statsAll = stats.map(([name, score]) => `${name} ${score}`).join('\n');
+  return fs.writeFileSync(`./data/stats`,statsAll, 'utf8');
 }
 
 module.exports = {
