@@ -15,13 +15,11 @@ function getStats() {
   const padawans = getPadawanNames();
   const stats = [];
 
-  // Дополнительное решение
-  const stats1 = new Array(padawans.length).fill().map((el, i) => [...[padawans[i], scores[i]]]); 
+  // Альтернативное решение
+  const stats1 = new Array(padawans.length).fill().map((_, i) => ([padawans[i], scores[i]]));
 
   for (let i = 0; i < padawans.length; i += 1) {
-    const padawanScore = [];
-    padawanScore.push(padawans[i], scores[i]);
-    stats.push(padawanScore);
+    stats.push([padawans[i], scores[i]]);
   }
 
   return stats;
