@@ -2,29 +2,47 @@ const fs = require('fs');
 
 function getPadawanNames() {
   let names = fs.readFileSync('./data/padawans.txt', 'utf8');
-  let result = [];
-  let str = '';
 
-  //str = names.replace('/\n/g', '');
+  return names.trim().split('\n');
+}
+function getLightsaberScores() {
+  let mech = fs.readFileSync('./data/scores.txt', 'utf8');
 
-  for (let i = 0; i < names.length; i += 1) {
-    if (names[i] !== '\n') {
-      str += names[i];
-    } else {
-      str += ' ';
-    }
-  }
-
-  return str.split(' ');
+  return mech
+    .trim()
+    .split('\n')
+    .map((el) => Number(el));
 }
 
-function getLightsaberScores() {}
+function getStats() {
+  let names = fs.readFileSync('./data/padawans.txt', 'utf8');
+  let mech = fs.readFileSync('./data/scores.txt', 'utf8');
 
-function getStats() {}
+  const arrayOne = names.trim().split('\n');
+  const arrayTwo = mech
+    .trim()
+    .split('\n')
+    .map((el) => Number(el));
 
-function writeStats() {}
+  const arrayThree = [];
 
-console.log(getPadawanNames());
+  for (let i = 0; i < 4; i += 1) {
+    arrayThree.push([arrayOne[i], arrayTwo[i]]);
+  }
+
+  return arrayThree;
+}
+
+function writeStats() {
+  fs.openSync('./data/stats.txt', 'w');
+
+  let item = getStats().join('\n');
+  let newStr = '';
+
+  fs.appendFileSync('./data/stats.txt', `${item}`);
+}
+
+writeStats();
 
 module.exports = {
   getPadawanNames,
