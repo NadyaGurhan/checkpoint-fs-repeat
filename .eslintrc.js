@@ -16,5 +16,11 @@ module.exports = {
     'jest',
   ],
   rules: {
+    "linebreak-style": 0,
+    "no-plusplus": ["error", { allowForLoopAfterthoughts: true }],
+    "operator-assignment": ["error", "never"],
+    "prefer-template": "off",
+    quotes: "off",
+    "no-param-reassign": ["error", { props: false }],
   },
 };
