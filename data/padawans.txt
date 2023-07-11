@@ -1,4 +1,5 @@
-Revan
-Bastila Shan
-Jolee Bindo
-Juhani
+const padawans = [Revan,
+Bastila Shan,
+Jolee Bindo,
+Juhani];
+
