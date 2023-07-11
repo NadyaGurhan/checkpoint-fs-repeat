@@ -15,7 +15,7 @@ function getPadawanNames() {
     }
   }
 
-  return str;
+  return str.split(' ');
 }
 
 function getLightsaberScores() {}
