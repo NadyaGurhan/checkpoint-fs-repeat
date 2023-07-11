@@ -32,11 +32,13 @@ function getStats() {
 }
 function writeStats() {
   const arr = getStats();
+  console.log(`${arr[0][0]} ${arr[0][1]}\n`);
   let strFromArr = '';
   for (let i = 0; i < arr.length; i++) {
-    strFromArr += `${arr[i][0]} ${arr[i][1]}\n`;
+    strFromArr += `${arr[i][0]} ${arr[i][1]}`;
+    if (i < arr.length - 1) { strFromArr += '\n'; }
   }
-  fs.appendFileSync('data/stats.txt', strFromArr);
+  fs.writeFileSync('data/stats.txt', strFromArr);
 }
 
 module.exports = {
