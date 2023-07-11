@@ -11,8 +11,8 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  const scores = fs.readFileSync(`${__dirname}/data/scores.txt`, 'utf-8').trim().split('\n').map((el) => Number(el));
-  const padawans = fs.readFileSync(`${__dirname}/data/padawans.txt`, 'utf-8').trim().split('\n');
+  const scores = getLightsaberScores();
+  const padawans = getPadawanNames();
   const stats = [];
 
   for (let i = 0; i < padawans.length; i += 1) {
