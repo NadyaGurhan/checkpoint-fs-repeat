@@ -11,19 +11,21 @@ function getPadawanNames () {
   const zero = ""
   const result = []
   let string = fs.readFileSync('./data/padawans.txt', { encoding: 'utf8'})
-  result.push(string.split('\n'))
-  const resultFilter = result.filter((string) => string !== zero)
-  return resultFilter
+  let parse = string.split('\n')
+  for (let i =0; i<parse.length; i++) {
+    if (parse[i]!="") {
+      result.push(parse[i])
+    }
+  }
+  return result
 }
 function getLightsaberScores () {
   const result = []
   let string = fs.readFileSync('./data/scores.txt', { encoding: 'utf8'})
   let num = string.split('\n')
-  result.push(Number(num))
-  // for (let i=0; i<result.length; i+=1) {
-  //   +result[i]
-  // }
-  // let num = Number(string.split('\n'))
+  for (let i =0; i<num.length; i++) {
+    result.push(+num[i])
+  }
   return result
 }
 function getStats () {
