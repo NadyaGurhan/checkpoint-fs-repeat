@@ -21,15 +21,13 @@ function getStats() {
 
 function writeStats() {
   const fileNameSave = './data/stats.txt';
-  let saveStr = [];
+  const saveStr = [];
   const arrStat = getStats();
   for (let i = 0; i < arrStat.length; i += 1) {
     saveStr.push(`${arrStat[i][0]} ${arrStat[i][1]}`);
   }
   fs.writeFileSync(fileNameSave, saveStr.join('\n'), 'utf8');
 }
-
-writeStats();
 
 module.exports = {
   getPadawanNames,
