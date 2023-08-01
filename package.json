@@ -1,9 +1,10 @@
 {
   "name": "checkpoint-fs",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Начало работы",
   "main": "index.js",
   "scripts": {
+    "start": "node padawans.js",
     "test": "jest spec/*[sS]pec.js -i"
   },
   "repository": {
@@ -18,9 +19,9 @@
   },
   "homepage": "https://github.com/Elbrus-Bootcamp/checkpoint-fs#readme",
   "devDependencies": {
-    "eslint": "^8.17.0",
+    "eslint": "^8.46.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-jest": "^26.5.3",
     "jest": "^28.1.1"
   }
