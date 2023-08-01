@@ -19,8 +19,8 @@ function getStats() {
 }
 
 function writeStats() {
-  const dataF = getStats();
-  const newInfo = fs.writeFileSync('data/stats.txt', dataF, 'utf8');
+  const dataF = getStats().map((el) => el.join(' '));
+  const newInfo = fs.writeFileSync('data/stats.txt', dataF.join('\n'), 'utf8');
   return newInfo;
 }
 
