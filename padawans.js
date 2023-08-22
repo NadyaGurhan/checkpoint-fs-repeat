@@ -1,20 +1,25 @@
 const fs = require('fs');
 
-module.exports = {
-  function getPadawanNames() {
-   const names = getPadawanNames(fs.readFileSync(".data/padawans.txt", "New text"););
-   return $`[names]`;
+function getPadawanNames() {
+  const names = fs.readFileSync('./data/padawans.txt', 'utf-8');
+  return names.split('\n');
 }
-  function getLightsaberScores() {
-    const scores = getLightsaberScores(fs.readFileSync("data/scores.txt", "utf8");)
-    return $`[scores]`;
-  }
- function getStats(){
-  const names = getStats(fs.readFileSync(".data/padawans.txt", "New text");
-  const scores = getLightsaberScores(fs.readFileSync("data/scores.txt", "utf8");)
-  const stats = names.push('scores')
-  // Полагаю, что здесь следует использовать цикл, но сделать уже не успеваю)
+function getLightsaberScores() {
+  const scores = fs.readFileSync('./data/scores.txt', 'utf-8');
+  return scores.split('\n').map(Number);
+}
+function getStats() {
+  const names1 = getPadawanNames();
+  const scores1 = getLightsaberScores();
+  const stats = names1.map(scores1.push(scores1));
+}
+function writeStats() {
 
- }
-  writeStats,
 }
+
+module.exports = {
+  getPadawanNames,
+  getLightsaberScores,
+  getStats,
+  writeStats,
+};
