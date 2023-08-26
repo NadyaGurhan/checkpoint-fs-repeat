@@ -20,14 +20,14 @@ function getStats() {
   for (let i = 0; i < 4; i++) {
     result.push([getPadawanNames()[i], getLightsaberScores()[i]]);
   }
-  console.log(result)
+  console.log(result);
   return result;
 }
 
 function writeStats() {
-  const str = getStats().map(el=> el.join(' '));
-  console.log(str)
-  const write = fs.writeFileSync('data/stats.txt', str.join('\n'), 'utf8')
+  const str = getStats().map((el) => el.join(' '));
+  console.log(str);
+  const write = fs.writeFileSync('./data/stats.txt', str.join('\n'), 'utf8');
   return write;
 }
 
