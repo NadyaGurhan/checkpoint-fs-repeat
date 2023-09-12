@@ -41,8 +41,10 @@ function getStats(){
   }
   return res
 }
-function writeStats(){
 
+function writeStats(stats){
+  const res = stats.join('\n').replaceAll(',', " ");
+  fs.writeFileSync('./data/stats.txt', res);
 }
 module.exports = {
   getPadawanNames,
