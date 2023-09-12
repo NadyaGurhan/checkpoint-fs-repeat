@@ -47,7 +47,7 @@ function getStats() {
 };
 
 function writeStats() {
-  const data = fs.readFileSync('data/stats.txt', 'utf8')
+   fs.writeFileSync('./data/stats.txt', getStats().join('\n').replaceAll(',', ' '));
 };
 
 module.exports = {
