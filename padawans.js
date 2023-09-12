@@ -26,11 +26,10 @@ function getStats() {
   }
   return res;
 }
-function writeStats(){
-  let stats = getStats();
+function writeStats(stats){
   let text = '';
   for(let i = 0; i < stats.length; i++) {
-    text += `${stats[i]}`;
+    text += `${stats[i]}\n`;
   }
   fs.writeFileSync('./data/stats.txt', text);
 }
