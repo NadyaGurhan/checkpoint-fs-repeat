@@ -3,7 +3,9 @@ const fs = require('fs')
 function getPadawanNames() {
   // const arr = [];
   const list = fs.readFileSync('./data/padawans.txt', 'utf8');
-  const nameList = list.split('\n').splice(-1);
+  // console.log(typeof list);
+  const nameList = list.split('\n').slice(0,-1);
+  // nameList.pop()
   console.log(nameList);
 
   return nameList;
@@ -13,19 +15,44 @@ function getPadawanNames() {
 
 function getLightsaberScores() {
   // const arr = [];
-  const list = fs.readFileSync('./data/scores.txt', 'utf8');
-  const scoreList = list.split('\n');
+  const list2 = fs.readFileSync('./data/scores.txt', 'utf8');
+  const scoreList = list2.split('\n').map((el) => Number(el));
   
   console.log(scoreList);
 
-  return arr.push(scoreList);
+  return scoreList;
 
 };
 
+function getStats() {
+  const arr = [];
+  let tempArr = [];
+
+  const list = fs.readFileSync('./data/padawans.txt', 'utf8');
+  const list2 = fs.readFileSync('./data/scores.txt', 'utf8');
+  const nameList = list.split('\n').slice(0,-1);
+  const scoreList = list2.split('\n').map((el) => Number(el));
+  
+  for(let i = 0; i < nameList.length; i++) {
+    tempArr.push(nameList[i], scoreList[i]);
+    arr.push(tempArr);
+    tempArr = [];
+  }
+  
+
+  console.log(arr);
+
+  return arr;
+
+};
+
+function writeStats() {
+  const data = fs.readFileSync('data/stats.txt', 'utf8')
+};
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-  // getStats,
-  // writeStats,
+  getStats,
+  writeStats,
 };
