@@ -11,22 +11,21 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  const readPad = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n').map((el) => [el]);
+  const readPad = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n');
   const readScore = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n').map((el) => Number(el));
   console.log(readPad, readScore);
 
-  // const arrConc = readPad.concat(readPad, readScore);
-  // console.log(arrConc);
-
-  // for (let i = 0; i < readPad.length; i++) {
-  //   const newArr = readPad[i].push(readscore[i]);
-  // }console.log(newArr);
+  const readArr = readPad.map((el, i) => [el, readScore[i]]);
+  console.log(readArr);
+  return readArr;
 }
 
 function writeStats() {
-  const read = fs.writeFileSync('./data/stats.txt', 'utf8').split('\n');
-  console.log(read);
-  return read;
+  const readPad = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n');
+  const readScore = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n').map((el) => Number(el));
+  const readArr = readPad.map((el, i) => [el, readScore[i]]).join('\n').replaceAll(',', ' ');
+
+  fs.writeFileSync('./data/stats.txt', readArr, 'utf8');
 }
 
 module.exports = {
