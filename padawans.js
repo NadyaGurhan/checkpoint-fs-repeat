@@ -13,13 +13,13 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  const names = getPadawanNames();
-  const rate = getLightsaberScores();
+  // const names = getPadawanNames();
+  // const rate = getLightsaberScores();
   const res = [];
   let tempArr = [];//здесь let, т.к. это массив для временных данных
   
-  for(let i = 0; i < names.length; i++){
-    tempArr.push(names[i], rate[i]);
+  for(let i = 0; i < getPadawanNames().length; i++){
+    tempArr.push(getPadawanNames()[i], getLightsaberScores()[i]);
     res.push(tempArr);
     tempArr = [];//перезаписываем временный массив, где будут храниться данные каждой итерации цикла, иначе произойдёт наслоение
   };
