@@ -3,7 +3,7 @@ const {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  writeStats,
+  writeStats,  
 } = require('../padawans');
 
 describe('Статистика о падаванах', () => {
