@@ -19,7 +19,7 @@ function getStats() {
   const padawanNames = getPadawanNames();
   const lightsaberScores = getLightsaberScores();
   for (let i = 0; i < padawanNames.length; i++) {
-    result.push(`${padawanNames[i]}, lightsaberScores[i])
+    result.push(`${padawanNames[i]}`, lightsaberScores[i])
   }
   console.log(result);
 }
