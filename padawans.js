@@ -27,7 +27,7 @@ const writeStats = () => {
   const data2 = fs.readFileSync(path.resolve(__dirname, './data/padawans.txt'), "utf8").split('\r\n');
   data2.pop();
   const result = data2.map((el, index) => el = [el, data[index]]);
-  fs.writeFileSync(path.resolve(__dirname, './data/stats.txt'), result.join('\n'));
+  fs.writeFileSync(path.resolve(__dirname, './data/stats.txt'), result.join('\n').replaceAll(',', ' '));
 };
 
 
