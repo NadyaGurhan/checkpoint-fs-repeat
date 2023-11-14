@@ -25,12 +25,7 @@ function getStats() {
 }
 
 function writeStats(stats) {
-  const newStats = stats
-    .join('\n')
-    .replace(',', ' ')
-    .replace(',', ' ')
-    .replace(',', ' ')
-    .replace(',', ' ');
+  const newStats = stats.join('\n').replaceAll(',', ' ');
   fs.writeFileSync('./data/stats.txt', newStats);
 }
 module.exports = {
