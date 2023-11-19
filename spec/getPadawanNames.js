@@ -1,7 +1,6 @@
 function getPadawanNames() {
-    let filePath = "./padawans.txt";
-    newArr = [];
-    newArr.split(filePath);
+    const newArr = [];
+    newArr = fs.readFileSync("data/padawans.txt", "utf8").split(",");
+    return newArr;
 }
-console.log(getPadawanNames);
-module.exports = {getPadawanNames};
+module.exports = getPadawanNames;
