@@ -32,11 +32,13 @@ function getStats() {
 }
 
 function writeStats(stats) {
-  stats.forEach((stat) => {
-    fs.appendFile(``)
-  });
-  //console.log(stats.join(EOL));
-//const scores = fs.readFileSync('data/stats.txt', 'utf8').split(EOL);
+  const result = [];
+  stats.forEach((el) => {
+   result.push(el.join(' '))
+  })
+
+  fs.writeFileSync('./data/stats.txt', `${result.join('\n')}`)
+
 
 }
 
