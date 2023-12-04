@@ -24,6 +24,8 @@ function getStats() {
   return newArr
 }
 function writeStats() {
-  fs.writeFileSync('data/stats.txt', getStats().join('\n'), 'utf8')
-
+  const readFile = fs.writeFileSync('data/stats.txt',
+   getStats().map((el) => el.join(" ")).join('\n'),
+    'utf8')
+  return readFile
 }
