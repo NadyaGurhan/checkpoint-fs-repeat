@@ -16,8 +16,6 @@ const lightsaberScores = fs.readFileSync(pathScores, 'utf-8');
 function getPadawanNames() {
   return padawans.trim().split('\n');
 }
-// console.log(getPadawanNames());
-
 function getLightsaberScores() {
   const arrToNumber = lightsaberScores.trim().split('\n');
   return arrToNumber.map((item) => Number(item));
@@ -36,12 +34,14 @@ function getStats() {
   }
   return newArr;
 }
-console.log(getStats());
 
 function writeStats() {
   for (let i = 0; i < namePadawans.length; i += 1) {
     const result = `${namePadawans[i]} ${saberScore[i]}`;
-    fs.appendFileSync('./data/stats.txt', `${toString(result)}\n`);
+    if (i === 3) {
+      fs.appendFileSync('./data/stats.txt', `${result}`);
+    } else {
+      fs.appendFileSync('./data/stats.txt', `${result}\n`);
+    }
   }
 }
-console.log(writeStats());
