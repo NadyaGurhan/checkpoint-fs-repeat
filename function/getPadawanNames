@@ -1,0 +1,20 @@
+const fs = require('fs')
+
+/*function getPadawanNames() {
+  arr = [];
+  let name = require("./data/padawans.txt");
+  let list = arr.push(names);
+
+  return list;
+}
+console.log(getPadawanNames())
+*/
+
+function getPadawanNames() {
+    let path = require("./data/padawans.txt");
+    let data = fs.readSync(names, "utf8").split("\n");
+    return data
+}
+getPadawanNames()
+
+module.exports = getPadawanNames;
