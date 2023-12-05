@@ -32,7 +32,8 @@ function writeStats() {
   for (let i = 0; i < name.length; i += 1) {
     result += `${name[i]} ${score[i]}\n`;
   }
-  fs.writeFileSync('./data/stats.txt', `${result}`);
+
+  fs.writeFileSync('./data/stats.txt', `${result.trim()}`);
 }
 
 getPadawanNames();
