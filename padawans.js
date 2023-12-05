@@ -19,13 +19,15 @@ function getLightsaberScores() {
 }
 getLightsaberScores();
 
-function getStats() {
-  const arr1 = [];
+function getStats () {
+  const one = getPadawanNames();
+  const two = getLightsaberScores();
+  let arr1 = [];
   const arr2 = [];
-  for (let i = 0; i < getPadawanNames.length; i++) {
-    arr1.push(getPadawanNames[i]);
-    arr1.push(getLightsaberScores[i]);
+  for (let i = 0; i < one.length; i++) {
+    arr1.push(one[i], two[i]);
     arr2.push(arr1);
+    arr1 = [];
   }
   return arr2;
 }
@@ -34,6 +36,6 @@ getStats();
 function writeStats() {
   const stats = getStats();
   const data = fs.writeFileSync('data/stats.txt', `${stats}`);
-  return data;
+  
 }
 writeStats();
