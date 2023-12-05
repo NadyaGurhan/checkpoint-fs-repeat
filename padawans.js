@@ -21,12 +21,12 @@ function getStats() {
 }
 
 function writeStats(stats) {
-  const newStats = stats.map((el) => el.join(' '))
-fs.writeFileSync(
+  const newStats = stats.map((el) => el.join(' '));
+  fs.writeFileSync(
     path.join(__dirname, './data/stats.txt'),
     newStats.join('\n'),
-    'utf8'
-  )
+    'utf8',
+  );
 }
 
 module.exports = {
