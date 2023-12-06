@@ -1,15 +1,34 @@
 const { log } = require("console");
 const fs = require("fs");
 
-let str1 = fs.readFileSync("./data/padawans.txt", "utf8");
-let arr1 = str1.split("\n");
+function getPadawanNames() {
+	return fs.readFileSync("./data/padawans.txt", "utf8").trim().split("\n");
+}
 
-let str2 = fs.readFileSync("./data/scores.txt", "utf8");
-let arr2 = str2.split("\n");
+function getLightsaberScores() {
+	return fs
+		.readFileSync("./data/scores.txt", "utf8")
+		.split("\n")
+		.map((el) => Number(el));
+}
 
-const getPadawanNames = (arr) => arr;
+function getStats() {
+	let a = fs.readFileSync("./data/padawans.txt", "utf8").trim().split("\n");
+	let b = fs
+		.readFileSync("./data/scores.txt", "utf8")
+		.split("\n")
+		.map((el) => Number(el));
 
-const getLightsaberScores = (arr) => arr;
+	let arr = [];
+	for (let i = 0; i < a.length; i++) {
+		arr[i] = [a[i], b[i]];
+	}
+	return arr;
+}
+
+function writeStats(arr) {
+	fs.writeFileSync("./data/stats.txt", arr.join("\n").replaceAll(",", " "));
+}
 
 module.exports = {
 	getPadawanNames,
