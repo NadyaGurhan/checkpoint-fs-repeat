@@ -1,4 +1,5 @@
 const fs = require('fs');
+const padawans = fs.readFileSync('/home/vadim/checkpoint1/checkpoint-fs/data/padawans.txt', 'utf8')
 const {
   getPadawanNames,
   getLightsaberScores,
@@ -31,3 +32,5 @@ describe('Статистика о падаванах', () => {
     expect(data).toBe('Revan 99.9\nBastila Shan 92\nJolee Bindo 87\nJuhani 82');
   });
 });
+
+
