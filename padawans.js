@@ -14,14 +14,18 @@ function getLightsaberScores() {
 function getStats() {
   const padawans = getPadawanNames();
   const scores = getLightsaberScores();
-  let finalArr = [];
+  const finalArr = [];
   for (let i = 0; i < padawans.length; i++) {
     finalArr.push([padawans[i], scores[i]]);
   }
   return finalArr;
 }
 
-function writeStats() {}
+const writeStats = () => {
+  const stats = getStats();
+  const formattedData = stats.map(([name, score]) => `${name} ${score}`).join('\n');
+  fs.writeFileSync('./data/stats.txt', formattedData, 'utf-8');
+};
 
 module.exports = {
   getPadawanNames,
