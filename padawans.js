@@ -16,14 +16,11 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  const processData1 = fs.readFileSync(`${__dirname}/data/padawans.txt`, 'utf8');
-  const processData2 = fs.readFileSync(`${__dirname}/data/scores.txt`, 'utf8');
-  const dataArr1 = processData1.split('\n');
-  const dataArr2 = processData2.split('\n');
+  const padawans = getPadawanNames();
+  const scores = getLightsaberScores();
   let finalArr = [];
-  for (let i = 0; i < dataArr1.length; i++) {
-    finalArr[i] = dataArr1[i] + ' ' + dataArr2[i];
-    console.log(finalArr);
+  for (let i = 0; i < padawans.length; i++) {
+    finalArr.push([padawans[i], scores[i]]);
   }
   return finalArr;
 }
