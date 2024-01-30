@@ -5,3 +5,5 @@ module.exports = {
   getStats,
   writeStats,
 };
+
+const getPadawanNames = require("./data/")
