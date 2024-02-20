@@ -10,11 +10,11 @@ const getLightsaberScores = () => fs.readFileSync('./data/scores.txt', 'utf-8')
 
 // const getStats = (getPadawanNames(), getLightsaberScores()) => [getPadawanNames(), getLightsaberScores()];
 
-const writeStats = (getStats()) => fs.writeFileSync('./data/stats.txt', getStats());
+// const writeStats = (getStats()) => fs.writeFileSync('./data/stats.txt', getStats());
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-  // getStats,
-  writeStats,
+  // // getStats,
+  // writeStats,
 };
