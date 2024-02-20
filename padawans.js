@@ -28,7 +28,7 @@ function getStats() {
 getStats();
 
 function writeStats() {
-  const wirteStat = fs.writeFileSync('./data/stats.txt', `${getStats().join('\n')}`, 'utf8');
+  const wirteStat = fs.writeFileSync('./data/stats.txt', `${getStats().join('\n').replaceAll(',', ' ')}`, 'utf8');
   return wirteStat;
 }
 
