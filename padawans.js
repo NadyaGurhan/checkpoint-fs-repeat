@@ -29,9 +29,21 @@ const getLightsaberScores = () => {
 }
 console.log(getLightsaberScores())
 
+function getStats() {
+  const padawans = getPadawanNames()
+  const ligthsaber = getLightsaberScores()
+  const result = []
+  for(let i = 0; i < padawans.length; i++) {
+    result.push([padawans[i], ligthsaber[i]])
+  }
+
+  return result
+}
+console.log(getStats());
+
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-  // getStats,
+  getStats,
   // writeStats,
 };
