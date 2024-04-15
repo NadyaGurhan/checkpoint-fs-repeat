@@ -2,7 +2,7 @@ const fs = require('fs');
 
 function getPadawanNames() {
   const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8');
-  return padawans.split('\n');
+  return padawans.trim().split('\n');
 }
 
 function getLightsaberScores() {
