@@ -7,9 +7,19 @@ function getPadawanNames() {
   return arrReturn;
 }
 
+function getLightsaberScores() {
+  const scores = fs.readFileSync(`${__dirname}/data/scores.txt`, 'utf8');
+  const arrReturn = scores.split('\r\n');
+  for (let i = 0; i < arrReturn.length; i++) {
+    arrReturn[i] = Number(arrReturn[i]);
+  }
+  return arrReturn;
+}
+console.log(getLightsaberScores());
+
 module.exports = {
   getPadawanNames,
-  // getLightsaberScores,
+  getLightsaberScores,
   // getStats,
   // writeStats,
 };
