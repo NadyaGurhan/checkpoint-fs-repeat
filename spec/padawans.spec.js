@@ -1,4 +1,7 @@
 const fs = require('fs');
+const scoresData = fs.readFileSync(`${__dirname}/data/scores.txt`, `utf-8`);
+const padawansData = fs.readFileSync(`${__dirname}/data/padawans.txt`, `utf-8`);
+
 const {
   getPadawanNames,
   getLightsaberScores,
