@@ -32,9 +32,6 @@ function writeStats() {
   fs.writeFileSync('./data/stats.txt', `${stats}`, 'utf-8');
 }
 
-writeStats();
-
-
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
