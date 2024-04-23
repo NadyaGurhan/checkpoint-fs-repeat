@@ -18,7 +18,13 @@ function getLightsaberScores() {
 }
 
 function getStats () {
-
+  const array = [];
+  const arr1 = padawansTxt.trim().split('\n');
+  const arr2 = scoresTxt.trim().split('\n');
+  for (let i = 0; i < arr2.length; i ++) {
+    array.push([arr1[i], Number(arr2[i])]);
+  }
+  return array;
 }
 
 function writeStats () {
