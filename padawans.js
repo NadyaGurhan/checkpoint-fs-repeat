@@ -29,9 +29,16 @@ function getStats() {
   return arrReturn;
 }
 
+function writeStats() {
+  const stats = getStats();
+  const str = stats.join('\n');
+  const str2 = str.replace(/,/gi, ' ');
+  fs.writeFileSync('./data/stats.txt', `${str2}`);
+}
+
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
