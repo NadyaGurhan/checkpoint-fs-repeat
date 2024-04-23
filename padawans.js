@@ -15,11 +15,23 @@ function getLightsaberScores() {
   }
   return arrReturn;
 }
-console.log(getLightsaberScores());
+
+function getStats() {
+  const padNames = fs.readFileSync(`${__dirname}/data/padawans.txt`, 'utf8');
+  const scores = fs.readFileSync(`${__dirname}/data/scores.txt`, 'utf8');
+  const arr1 = padNames.split('\r\n');
+  arr1.pop();
+  const arr2 = scores.split('\r\n');
+  const arrReturn = [];
+  for (let i = 0; i < arr1.length; i++) {
+    arrReturn.push([arr1[i], Number(arr2[i])]);
+  }
+  return arrReturn;
+}
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-  // getStats,
+  getStats,
   // writeStats,
 };
