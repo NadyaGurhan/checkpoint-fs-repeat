@@ -1,4 +1,5 @@
-const fs = require('fs')
+const fs = require('fs');
+
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
@@ -6,16 +7,26 @@ module.exports = {
   writeStats,
 };
 
-function getPadawanNames(){
-  const ter = fs.readFileSync('./data/padawans.txt', "utf8")
-  return ter.split(' ')
+function getPadawanNames() {
+  return fs.readFileSync('data/padawans.txt', 'utf8').trim().split('\r\n');
 }
 
-
-
-function getLightsaberScores(){
-  const ret = fs.readFileSync('./data/score.txt', "utf8")
-  return ret.split(' ')
+function getLightsaberScores() {
+  const data = fs.readFileSync('data/scores.txt', 'utf8').trim();
+  return data.split('\r\n').map((el) => Number(el));
 }
 
-//все что осилил и то не работает ..... 
+function getStats() {
+  const arr = [];
+  const pad = getPadawanNames();
+  const score = getLightsaberScores();
+  for (let i = 0; i < pad.length; i++) {
+    arr.push([pad[i], score[i]]);
+  }
+  return arr;
+}
+
+function writeStats(){
+  const stat = getStats().join('\n').replace(/,/gi, ' ');
+  return fs.writeFileSync('data/stats.txt', stat)
+}
