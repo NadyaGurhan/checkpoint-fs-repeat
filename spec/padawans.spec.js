@@ -21,8 +21,7 @@ describe('Статистика о падаванах', () => {
       ['Revan', 99.9],
       ['Bastila Shan', 92],
       ['Jolee Bindo', 87],
-      ['Juhani', 82],
-    ]);
+      ['Juhani', 82], ]);
   });
   it('writeStats сохраняет статистику в файл `data/stats.txt`', () => {
     const stats = getStats();
@@ -30,4 +29,4 @@ describe('Статистика о падаванах', () => {
     const data = fs.readFileSync('data/stats.txt', 'utf8');
     expect(data).toBe('Revan 99.9\nBastila Shan 92\nJolee Bindo 87\nJuhani 82');
   });
-});
+ });
