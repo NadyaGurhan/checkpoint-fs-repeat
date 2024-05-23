@@ -1,10 +1,13 @@
 const fs = require("fs");
 
-const padavans = fs.readFileSync("./data/padawans.txt", "utf8");
+const padavans = fs
+  .readFileSync("./data/padawans.txt", "utf8")
+  .trim()
+  .split("\n");
 const scores = fs.readFileSync("./data/scores.txt", "utf8");
 
 function getPadawanNames() {
-  return padavans.split("\n ").splice(-1);
+  return padavans;
 }
 
 function getLightsaberScores() {
@@ -17,26 +20,18 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  const padavanNames = padavans.split("\n");
-  const stringScores = scores.split("\n");
+  const padawans = getPadawanNames();
+  const sabreScores = getLightsaberScores();
 
-  const swordScores = [];
-  for (let i = 0; i < stringScores.length; i++) {
-    swordScores.push(Number(stringScores[i]));
-  }
-  const result = [];
-  const [firstJedai, secondJedai, thirdJedai, fourthJedai] = padavanNames;
-  const [firstRait, secondRait, thirdRait, fourthRait] = swordScores;
-
-  result.push([firstJedai, firstRait]);
-  result.push([secondJedai, secondRait]);
-  result.push([thirdJedai, thirdRait]);
-  result.push([fourthJedai, fourthRait]);
-
-  return result;
+  return padawans.map((padawan, index) => [padawan, sabreScores[index]]);
 }
 
-function writeStats() {}
+function writeStats() {
+  const regExp = /(,)/gim;
+  const data = getStats().join("\n").replace(regExp, " ");
+  // const newData = data.replace(regExp, " ");
+  fs.writeFileSync("./data/stats.txt", data, "utf8");
+}
 
 module.exports = {
   getPadawanNames,
