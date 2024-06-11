@@ -1,7 +1,7 @@
 {
   "name": "checkpoint-fs",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Начало работы",
   "main": "index.js",
   "scripts": {
     "test": "jest -i"
