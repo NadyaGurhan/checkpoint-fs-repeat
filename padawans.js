@@ -1,39 +1,29 @@
-const fs = require('fs')
+const fs = require('fs');
 
-function getPadawanNames(){
-  const newNames = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n'); // уточнить почему с trim не работает
-  const result = [];
-  for (let i = 0; i < newNames.length-1; i ++){
-    result.push(newNames[i]);
-  }
-  return result;
+function getPadawanNames() {
+  return fs.readFileSync('./data/padawans.txt', 'utf-8').trim().split('\n'); 
+  // return fs.readFileSync("data/padawans.txt", "utf-8").split('\n').slice(0,-1); - 2 вариант
 }
 
-function getLightsaberScores(){
-  const newScores = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n'); // для себя - глянуть почему не работает с .map(Number);
-  const result = [];
-  for (let i = 0; i < newScores.length; i ++){
-    result.push(+newScores[i]);
-  }
-  return newScores;
+function getLightsaberScores() {
+  return fs.readFileSync('./data/scores.txt', 'utf-8').split('\n').map(Number);
 }
 
 function getStats() {
-  const newNames = fs.readFileSync('./data/padawans.txt', 'utf-8').split('\n'); 
-  const newScores = fs.readFileSync('./data/scores.txt', 'utf-8').split('\n');
+  const podawans = getPadawanNames();
+  const level = getLightsaberScores();
 
-  const result = [];
-  for (let i = 0; i < newScores.length; i ++){
-    result.push(newNames[i], +newScores[i] );
+  let arr = []
+  for (let i = 0; i < podawans.length; i++){
+    arr.push([podawans[i], level[i]]);
   }
-
-return result; 
+  return arr;
 }
 
 function writeStats() {
-//тут точно надо fs.appendFile
+  const stats = getStats().map((el) => el.join(' ')).join('\n');
+  return fs.writeFileSync('./data/stats.txt', stats);
 }
-
 
 module.exports = {
   getPadawanNames,
@@ -42,5 +32,4 @@ module.exports = {
   writeStats,
 };
 
-
-getStats()
+writeStats();
