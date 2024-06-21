@@ -1,45 +1,37 @@
 const fs = require("fs");
 
-module.exports = {
-  getPadawanNames,
-  getLightsaberScores,
-  getStats,
-  writeStats
-};
-
 const padawansData = fs
   .readFileSync("./data/padawans.txt", "utf-8")
+  .trim()
   .split("\n");
 const scoresData = fs.readFileSync("./data/scores.txt", "utf-8").split("\n");
 
 function getPadawanNames() {
-  const padawans = [];
-
-  for (let i = 0; i < padawansData.length - 1; i++) {
-    padawans.push(padawansData[i]);
-  }
-  return padawans;
+  return padawansData;
 }
 
 function getLightsaberScores() {
-  const scores = [];
-  for (let i = 0; i < scoresData.length; i++) {
-    scores.push(+scoresData[i]);
-  }
-  return scores;
+  return scoresData.map((el) => +el);
 }
 
 function getStats() {
-  const stats = [];
+  const result = [];
   for (let i = 0; i < scoresData.length; i++) {
-    stats.push([padawansData[i], +scoresData[i]]);
+    result.push([padawansData[i], +scoresData[i]]);
   }
-  return stats;
+  return result;
 }
 
 function writeStats() {
-  // надо ещё разделить с помощью \n не успел дописть...
-  fs.writeFileSync("./data/stats.txt", `${getStats()}`);
-};
+  const stats = getStats()
+    .map((el) => el.join(" "))
+    .join("\n");
+  fs.writeFileSync("./data/stats.txt", stats);
+}
 
-console.log(writeStats());
+module.exports = {
+  getPadawanNames,
+  getLightsaberScores,
+  getStats,
+  writeStats,
+};
