@@ -16,5 +16,6 @@ module.exports = {
     'jest',
   ],
   rules: {
+    'no-plusplus': 'off',
   },
 };
