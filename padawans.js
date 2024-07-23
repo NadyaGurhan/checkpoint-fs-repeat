@@ -12,7 +12,6 @@ function getStats () {
   const newArr = []
   for (let i = 0; i < padawansArr.length; i++){
     newArr.push([padawansArr[i], scoresArr[i]])
-    // console.log(padawansArr[])
   }
   return newArr
 }
