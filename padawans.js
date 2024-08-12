@@ -22,25 +22,24 @@ function getLightsaberScores() {
 function getStats() {
   const padawans = getPadawanNames();
   const scores = getLightsaberScores();
-  for (let i = 0; i < padawans.length; i++) {
-    padawans[i] = [padawans[i], scores[i]];
-  }
-  return padawans;
+  const stats = [];
+  padawans.forEach((element, i) => stats.push([padawans[i], scores[i]]));
+  return stats;
 }
 
 function writeStats() {
   const stats = getStats();
   const statsFile = fs.writeFileSync("./data/stats.txt", "");
-  for (let i = 0; i < stats.length; i++) {
+  stats.forEach((element, i) =>
     fs.appendFileSync(
       "./data/stats.txt",
-      stats[i].join(" ") + (i === stats.length - 1 ? "" : EOL)
-    );
-  }
+      element.join(" ") + (i === stats.length - 1 ? "" : EOL)
+    )
+  );
   return stats;
 }
 
-console.log(getLightsaberScores());
+console.log(writeStats());
 
 module.exports = {
   getPadawanNames,
