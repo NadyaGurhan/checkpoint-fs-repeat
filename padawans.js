@@ -1,4 +1,3 @@
-const { log } = require("console");
 const fs = require("fs");
 const { EOL } = require("os");
 
@@ -20,7 +19,7 @@ function getStats() {
   const names = getPadawanNames();
   const dates = getLightsaberScores();
   const result = [];
-  for (let i = 0; i < names.length; i++) {
+  for (let i = 0; i < names.length; i += 1) {
     result.push([names[i], dates[i]]);
   }
   return result;
@@ -28,9 +27,9 @@ function getStats() {
 
 function writeStats() {
   const result = getStats();
-  firstResults = result.map((i) => i.join(" "));
-  finalResults = firstResults.join('\n');
-  fs.writeFileSync('./data/stats.txt', finalResults);
+  const firstResults = result.map((i) => i.join(" "));
+  const finalResults = firstResults.join("\n");
+  fs.writeFileSync("./data/stats.txt", finalResults);
 }
 
 module.exports = {
