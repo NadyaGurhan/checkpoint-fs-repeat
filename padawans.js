@@ -5,3 +5,24 @@ module.exports = {
   getStats,
   writeStats,
 };
+
+const padawans = 
+
+function getPadawanNames() {
+  fs.readFileSync('/data/padawans.txt', function (data) {
+    console.log(data.toString)
+  });
+}
+
+
+function getLightsaberScores() {
+
+}
+
+function writeStats() {
+
+}
+
+function getStats() {
+
+}
