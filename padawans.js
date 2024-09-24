@@ -6,12 +6,12 @@ module.exports = {
   writeStats,
 };
 
-const padawans = 
+
 
 function getPadawanNames() {
-  fs.readFileSync('/data/padawans.txt', function (data) {
-    console.log(data.toString)
-  });
+  const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8');
+  return padawans
+
 }
 
 
