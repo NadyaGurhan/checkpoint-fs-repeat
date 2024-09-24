@@ -22,20 +22,22 @@ const scList = getLightsaberScores();
 console.log(nameList);
 console.log(scList);
 
-// function getStats() {
-//     let newArr = []
-//   //   // for(let i = 0; i < nameList.length; i++) {
-//   //      newArr.push(nameList[i])
-//   //    }
-//   //    return newArr
-//   // };
+function getStats() {
+  const newArr = [];
+  for (let i = 0; i < nameList.length; i++) {
+    const arr2 = [];
+    arr2.push(nameList[i], scList[i]);
+    newArr.push(arr2);
+  }
 
-// }
-//   console.log(getStats())
+  return newArr;
+}
+
+console.log(getStats());
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-  // getStats,
+  getStats,
   // writeStats,
 };
