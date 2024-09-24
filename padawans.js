@@ -2,12 +2,10 @@ const fs = require("fs");
 
 module.exports = {
   getPadawanNames,
-  // getLightsaberScores,
-  // getStats,
-  // writeStats,
+  getLightsaberScores,
+  getStats,
+  writeStats,
 };
-
-
 
 function getPadawanNames() {
   const padawans = fs.readFileSync("./data/padawans.txt", "utf8");
@@ -19,17 +17,18 @@ function getLightsaberScores() {
   return data.split("\n").map(Number);
 }
 
-
 function getStats() {
   const names = getPadawanNames();
   const scores = getLightsaberScores();
   return names.map((name, index) => [name, scores[index]]);
 }
 
-const stats = getStats()
+const resultData = getStats();
 
-function writeStats() {
-  const data = stats.map(([name, score]) => `${name} ${score}`).join('\r\n')
-  fs.writeFileSync("data/stats.txt", data);
+function writeStats(resultData) {
+  fs.writeFileSync(
+    "./data/stats.txt",
+    resultData.join("\n").replace(/,/g, " ")
+  );
 }
-console.log(writeStats());
+writeStats(resultData)
