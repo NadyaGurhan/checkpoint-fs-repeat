@@ -13,7 +13,7 @@ describe('Статистика о падаванах', () => {
   });
   it('getLightsaberScores возвращает оценки владения световым мечом из файла `data/scores.txt`', () => {
     const names = getLightsaberScores();
-    expect(names).toEqual([99.9, 92, 87, 82]);
+    expect(names).toEqual([ 99.9, 92, 87, 82 ]);
   });
   it('getStats возвращает таблицу соответствия падавана и оценки владения световым мечом', () => {
     const stats = getStats();
