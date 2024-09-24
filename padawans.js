@@ -30,11 +30,15 @@ function getStats() {
   return newArr;
 }
 
-console.log(getStats());
+const resultData = getStats();
+
+function writeStats(resultData) {
+  fs.writeFileSync("./data/stats.txt", resultData.join("\n").replace(/,/g, " "));
+}
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
