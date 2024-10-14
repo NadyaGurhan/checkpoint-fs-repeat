@@ -85,15 +85,12 @@ function writeStats() {
     }
   }
 
-  //newStr.trim()
   console.log(newStr)
 
   return fs.writeFileSync('./data/stats.txt', newStr);
 }
 
 console.log(writeStats())
-
-
 
 module.exports = {
   getPadawanNames,
