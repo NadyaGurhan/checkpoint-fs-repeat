@@ -14,7 +14,7 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  const text = fs.readFileSync('./data/padawans.txt', 'utf-8');
+fs.readFileSync('./data/padawans.txt', 'utf-8');
   const names = getPadawanNames();
   const num = getLightsaberScores();
 
