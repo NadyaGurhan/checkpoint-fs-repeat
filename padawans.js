@@ -1,7 +1,38 @@
-const fs = require('fs')
+const fs = require('fs');
+
+function getPadawanNames() {
+  return fs.readFileSync('data/padawans.txt', 'utf8').split('\r\n').slice(0, -1);
+}
+
+function getLightsaberScores() {
+  const arr = fs.readFileSync('data/scores.txt', 'utf8').split('\r\n');
+  return arr.map((el) => +el);
+}
+
+function getStats() {
+  const res = [];
+  const padavans = fs
+    .readFileSync('data/padawans.txt', 'utf8')
+    .split('\r\n')
+    .slice(0, -1);
+  const scores = fs.readFileSync('data/scores.txt', 'utf8').split('\r\n');
+
+  for (let i = 0; i < padavans.length; i++) {
+    res.push([padavans[i], +scores[i]]);
+  }
+
+  return res;
+}
+
+function writeStats(stats) {
+  const str = stats.map(([padawan, score]) => `${padawan} ${score}`).join('\n');
+  fs.writeFileSync('data/stats.txt', str);
+}
+
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
   writeStats,
 };
+
