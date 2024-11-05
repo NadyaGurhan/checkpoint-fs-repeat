@@ -12,10 +12,7 @@ function getLightsaberScores() {
 
 function getStats() {
   const res = [];
-  const padavans = fs
-    .readFileSync('data/padawans.txt', 'utf8')
-    .split('\r\n')
-    .slice(0, -1);
+  const padavans = fs.readFileSync('data/padawans.txt', 'utf8').split(EOL).slice(0, -1);
   const scores = fs.readFileSync('data/scores.txt', 'utf8').split(EOL);
 
   for (let i = 0; i < padavans.length; i++) {
@@ -25,7 +22,8 @@ function getStats() {
   return res;
 }
 
-function writeStats(stats) {
+function writeStats() {
+  const stats = getStats();
   const str = stats.map(([padawan, score]) => `${padawan} ${score}`).join('\n');
   fs.writeFileSync('data/stats.txt', str);
 }
