@@ -3,8 +3,8 @@ const fs = require('fs');
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-  /* getStats,
-  writeStats, */
+   getStats,
+ /* writeStats, */
 };
 
 function getPadawanNames() {
@@ -20,6 +20,14 @@ function getLightsaberScores() {
 }
 
 function getStats() {
-  const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8');
-  const scores = fs.readFileSync('./data/scores.txt', 'utf-8');
+
+const name = getPadawanNames();
+const scores = getLightsaberScores();
+
+const arr =[];
+for (let i = 0; i< name.length; i++) {
+  arr.push([name[i], scores[i]])
+}
+return arr
+
 }
