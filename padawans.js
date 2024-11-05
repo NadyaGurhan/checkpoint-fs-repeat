@@ -1,11 +1,12 @@
 const fs = require('fs');
+const { EOL } = require('os');
 
 function getPadawanNames() {
-  return fs.readFileSync('data/padawans.txt', 'utf8').split('\r\n').slice(0, -1);
+  return fs.readFileSync('data/padawans.txt', 'utf8').split(EOL).slice(0, -1);
 }
 
 function getLightsaberScores() {
-  const arr = fs.readFileSync('data/scores.txt', 'utf8').split('\r\n');
+  const arr = fs.readFileSync('data/scores.txt', 'utf8').split(EOL);
   return arr.map((el) => +el);
 }
 
@@ -15,7 +16,7 @@ function getStats() {
     .readFileSync('data/padawans.txt', 'utf8')
     .split('\r\n')
     .slice(0, -1);
-  const scores = fs.readFileSync('data/scores.txt', 'utf8').split('\r\n');
+  const scores = fs.readFileSync('data/scores.txt', 'utf8').split(EOL);
 
   for (let i = 0; i < padavans.length; i++) {
     res.push([padavans[i], +scores[i]]);
@@ -35,4 +36,3 @@ module.exports = {
   getStats,
   writeStats,
 };
-
