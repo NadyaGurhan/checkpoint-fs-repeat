@@ -1,10 +1,10 @@
 const fs = require('fs');
-
+const { EOL } = require('os');
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-   getStats,
- /* writeStats, */
+  getStats,
+  writeStats,
 };
 
 function getPadawanNames() {
@@ -20,14 +20,18 @@ function getLightsaberScores() {
 }
 
 function getStats() {
+  const name = getPadawanNames();
+  const scores = getLightsaberScores();
 
-const name = getPadawanNames();
-const scores = getLightsaberScores();
-
-const arr =[];
-for (let i = 0; i< name.length; i++) {
-  arr.push([name[i], scores[i]])
+  const arr = [];
+  for (let i = 0; i < name.length; i++) {
+    arr.push([name[i], scores[i]]);
+  }
+  return arr;
 }
-return arr
 
+function writeStats(stats) {
+
+  const str= stats.map((el) => el.join(' ')).join('\n');
+  fs.writeFileSync('data/stats.txt', str)
 }
