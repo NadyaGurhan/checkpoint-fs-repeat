@@ -16,16 +16,14 @@ function getStats() {
   const scores = getLightsaberScores()
   const newData = [];  
   for (let i = 0; i < names.length; i++) {
-    newData.push([names[i]]);    
+    newData.push([names[i], scores[i]]);    
   }
-  newData.forEach((el, i) => el.push(scores[i]))
   return newData
 } 
 
 function writeStats(newData) {
   fs.writeFileSync('./data/stats.txt', newData.map(el => el.join(' ')).join('\n'))
 }
-
 
 module.exports = {
   getPadawanNames,
