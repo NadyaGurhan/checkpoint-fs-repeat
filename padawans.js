@@ -16,11 +16,17 @@ function getPadawanNames() {
 }
 
 function getLightsaberScores() {
+  const result = [];
   const scoresString = getListOf(scores).map((num) => {
     const numNumber = Number(num);
+    // проверка на наличие пустых или не численных строк
     return Number.isNaN(numNumber) ? '' : numNumber;
   });
-  return scoresString;
+  scoresString.forEach((score) => {
+    // избавляемся от пустых строк
+    if (score !== '') result.push(score);
+  });
+  return result;
 }
 
 function getStats() {
