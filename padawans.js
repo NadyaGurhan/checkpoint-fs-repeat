@@ -18,22 +18,22 @@ function getLightsaberScores() {
   return newArr;
 }
 
-function getStats() {
-  const list = fs.readFileSync('./data/padawans.txt', 'utf-8');
-  const scores = fs.readFileSync('./data/scores.txt', 'utf-8');
-  const result = [];
-  const newArr = list
-    .split('\n')
-    .map((el) => el.trim())
-    .filter((el) => el !== '');
-  const scoresArr = scores
-  .split('\n')
-  .map((score) => score.trim())
-  .map((score) => Number(score));
-}
+// function getStats() {
+//   const list = fs.readFileSync('./data/padawans.txt', 'utf-8');
+//   const scores = fs.readFileSync('./data/scores.txt', 'utf-8');
+//   const result = [];
+//   const newArr = list
+//     .split('\n')
+//     .map((el) => el.trim())
+//     .filter((el) => el !== '');
+//   const scoresArr = scores
+//   .split('\n')
+//   .map((score) => score.trim())
+//   .map((score) => Number(score));
+// }
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
-  getStats,
+  // getStats,
   // writeStats,
 };
