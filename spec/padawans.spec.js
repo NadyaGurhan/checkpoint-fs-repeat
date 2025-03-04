@@ -6,17 +6,20 @@ const {
   writeStats,
 } = require('../padawans');
 
+const padawans = fs.readFileSync('./data/padawans.txt', 'utf-8');
+const scores = fs.readFileSync('./data/scores.txt', 'utf-8');
+
 describe('Статистика о падаванах', () => {
   it('getPadawanNames возвращает список падаванов из файла `data/padawans.txt`', () => {
-    const names = getPadawanNames();
+    const names = getPadawanNames(padawans);
     expect(names).toEqual(['Revan', 'Bastila Shan', 'Jolee Bindo', 'Juhani']);
   });
   it('getLightsaberScores возвращает оценки владения световым мечом из файла `data/scores.txt`', () => {
-    const names = getLightsaberScores();
+    const names = getLightsaberScores(scores);
     expect(names).toEqual([99.9, 92, 87, 82]);
   });
   it('getStats возвращает таблицу соответствия падавана и оценки владения световым мечом', () => {
-    const stats = getStats();
+    const stats = getStats(getPadawanNames(padawans), getLightsaberScores(scores));
     expect(stats).toEqual([
       ['Revan', 99.9],
       ['Bastila Shan', 92],
@@ -25,7 +28,7 @@ describe('Статистика о падаванах', () => {
     ]);
   });
   it('writeStats сохраняет статистику в файл `data/stats.txt`', () => {
-    const stats = getStats();
+    const stats = getStats(getPadawanNames(padawans), getLightsaberScores(scores));
     writeStats(stats);
     const data = fs.readFileSync('data/stats.txt', 'utf8');
     expect(data).toBe('Revan 99.9\nBastila Shan 92\nJolee Bindo 87\nJuhani 82');
