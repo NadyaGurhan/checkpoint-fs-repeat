@@ -4,29 +4,22 @@ const padawnsList = fs.readFileSync('./data/padawans.txt', 'utf-8');
 const grades = fs.readFileSync('./data/scores.txt', 'utf-8');
 
 function getPadawanNames() {
-  const padArr = padawnsList.trim().split(EOL);
-  return padArr;
+  return padawnsList.trim().split(EOL);
 }
 
 function getLightsaberScores() {
-  const gradesArr = grades.split(EOL).map(Number);
-  return gradesArr;
+  return grades.split(EOL).map(Number);
 }
 
 function getStats() {
-  const stats = getPadawanNames().map((name, index) => [
+  return getPadawanNames().map((name, index) => [
     name,
     Number(getLightsaberScores()[index]),
   ]);
-  return stats;
 }
 
 function writeStats() {
-  const write = fs.writeFileSync(
-    './data/stats.txt',
-    getStats().join(EOL).replace(/,/g, ' '),
-  );
-  return write;
+  return fs.writeFileSync('./data/stats.txt', getStats().join(EOL).replace(/,/g, ' '));
 }
 console.log(writeStats());
 
