@@ -1,19 +1,38 @@
+const fs = require('fs');
 const { EOL } = require('os');
-const fs = require('fs')
-const data = fs.readFileSync('./data/padawans.txt', 'utf-8')
-const dataArr = data.split(EOL)
-console.log(dataArr)
+const padawnsList = fs.readFileSync('./data/padawans.txt', 'utf-8');
+const grades = fs.readFileSync('./data/scores.txt', 'utf-8');
 
 function getPadawanNames() {
-  let padawansArr = [] 
-  padawansArr.push(data)
-  return padawansArr
+  const padArr = padawnsList.trim().split(EOL);
+  return padArr;
 }
-// console.log(getPadawanNames())
+
+function getLightsaberScores() {
+  const gradesArr = grades.split(EOL).map(Number);
+  return gradesArr;
+}
+
+function getStats() {
+  const stats = getPadawanNames().map((name, index) => [
+    name,
+    Number(getLightsaberScores()[index]),
+  ]);
+  return stats;
+}
+
+function writeStats() {
+  const write = fs.writeFileSync(
+    './data/stats.txt',
+    getStats().join(EOL).replace(/,/g, ' '),
+  );
+  return write;
+}
+console.log(writeStats());
 
 module.exports = {
   getPadawanNames,
-  // getLightsaberScores,
-  // getStats,
-  // writeStats,
+  getLightsaberScores,
+  getStats,
+  writeStats,
 };
