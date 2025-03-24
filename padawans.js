@@ -33,3 +33,15 @@ function getStats() {
   return newArr;
 }
 console.log(getStats());
+
+
+const stats = getStats();
+
+
+function writeStats() {
+const statsStr = stats.join('\n')
+
+fs.writeFileSync(`./data/stats.txt`, `${statsStr.replace(/,/g, ' ')}`)
+}
+
+writeStats();
