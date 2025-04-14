@@ -4,7 +4,8 @@ const {
   getLightsaberScores,
   getStats,
   writeStats,
-} = require('../padawans');
+} = require('../padawans.js');
+const { isInt16Array } = require('util/types');
 
 describe('Статистика о падаванах', () => {
   it('getPadawanNames возвращает список падаванов из файла `data/padawans.txt`', () => {
