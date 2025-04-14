@@ -8,7 +8,11 @@ const  getPadawanNames = () => {
   return padawans;
 };
 
+
+
 const getLightsaberScores = () => {
+  const scores = fs.readFileSync('./data/scores.txt', 'utf-8').split(EOL);
+  return scores.map((el) => Number(el));
 
 }
  const getStats = () => {
