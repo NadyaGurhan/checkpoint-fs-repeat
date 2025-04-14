@@ -22,9 +22,10 @@ const getLightsaberScores = () => {
   return result; 
 
  }
-
+ 
  const writeStats = () => {
-
+  const data = getStats().join(EOL).replaceALL(',', ' ');
+fs.writeFileSync('./data/stats.txt', data);
  }
 
 
