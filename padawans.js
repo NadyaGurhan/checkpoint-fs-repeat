@@ -16,6 +16,10 @@ const getLightsaberScores = () => {
 
 }
  const getStats = () => {
+  const padawans = getPadawanNames();
+  const scores = getLightsaberScores();
+  const result = padawans.map((padawan, index) => [padawan, scores[index]]);
+  return result; 
 
  }
 
