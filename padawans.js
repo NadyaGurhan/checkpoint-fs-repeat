@@ -24,7 +24,7 @@ const getLightsaberScores = () => {
  }
  
  const writeStats = () => {
-  const data = getStats().join(EOL).replaceALL(',', ' ');
+  const data = getStats().join('\n').replaceAll(',', ' ');
 fs.writeFileSync('./data/stats.txt', data);
  }
 
