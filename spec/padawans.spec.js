@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { EOL } = require('os');
 const {
   getPadawanNames,
   getLightsaberScores,
@@ -28,6 +29,6 @@ describe('Статистика о падаванах', () => {
     const stats = getStats();
     writeStats(stats);
     const data = fs.readFileSync('data/stats.txt', 'utf8');
-    expect(data).toBe('Revan 99.9\nBastila Shan 92\nJolee Bindo 87\nJuhani 82');
+    expect(data).toBe(`Revan 99.9${EOL}Bastila Shan 92${EOL}Jolee Bindo 87${EOL}Juhani 82${EOL}`);
   });
 });
