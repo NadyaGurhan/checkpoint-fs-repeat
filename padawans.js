@@ -9,11 +9,16 @@ function getPadawanNames() {
 function getLightsaberScores() {
   const data = fs.readFileSync('./data/scores.txt', 'utf-8');
   const result = data.trim().split('\r\n').map(Number);
-  console.log (result)
   return result;
 }
 
-
+function getStats (){
+const dirPadawans = getPadawanNames()
+const dirScores = getLightsaberScores()
+const newdir = dirPadawans.map((names, index) => [names, dirScores[index]])
+console.log (newdir)
+return newdir 
+}
 
 
 module.exports = {
