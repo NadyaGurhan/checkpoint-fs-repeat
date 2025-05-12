@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { EOL } = require('os');
 
 function getPadawanNames() {
   const file = fs.readFileSync('./data/padawans.txt', 'utf-8');
@@ -20,10 +21,16 @@ console.log (newdir)
 return newdir 
 }
 
+function writeStats() {
+const stats = getStats()
+const file = stats.map(item => item.join(' ')).join(EOL)
+fs.writeFileSync('./data/stats.txt', file);
+}
+console.log (writeStats)
 
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
   getStats,
-  // writeStats,
+  writeStats,
 };
