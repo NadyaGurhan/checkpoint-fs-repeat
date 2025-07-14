@@ -3,14 +3,14 @@ const fs = require('fs')
 const { EOL } = require('os');
 
 const dataPadawans = fs.readFileSync('./data/padawans.txt', 'utf8')
-const arrayPadawans = dataPadawans.split(EOL)
+const arrayPadawans = dataPadawans.split(EOL).filter((el)=> el !== '')
 
 const dataScores = fs.readFileSync('./data/scores.txt', 'utf8')
 const arrayScores = dataScores.split(EOL).map(el => +el)
 
 
 function getPadawanNames(){
-  return arrayPadawans.filter((el)=> el !== '')
+  return arrayPadawans
 }
 
 function getLightsaberScores(){
@@ -18,15 +18,12 @@ function getLightsaberScores(){
 }
 
 function getStats(){
-  // const arrStats = []
-  // arrayScores.forEach((el,index)=>{
-  //   arrStats.push([...el, arrayPadawans[index]])
-  // })
-  // return arrStats
+  const arrStats = []
+  arrayPadawans.forEach((el,index)=>{
+    arrStats.push([el, arrayScores[index]])
+  })
+  return arrStats
 }
-
-console.log(getStats());
-
 
 
 function writeStats(){}
