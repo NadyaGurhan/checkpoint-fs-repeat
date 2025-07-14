@@ -25,15 +25,10 @@ function getStats(){
   return arrStats
 }
 
-
-function writeStats(){}
-
-
-
-
-
-
-
+function writeStats(){
+  const newStats =  getStats().map(el => el.join(' '))
+  fs.writeFileSync('./data/stats.txt', newStats.join(EOL) + EOL)
+}
 
 module.exports = {
   getPadawanNames,
