@@ -24,7 +24,7 @@ function getStats() {
 function writeStats() {
 //   let stat = getStats();
 //   stat 
-// }
+}
 
 module.exports = {
   getPadawanNames,
