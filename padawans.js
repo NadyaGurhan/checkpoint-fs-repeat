@@ -1,4 +1,5 @@
 const fs = require('fs')
+const { EOL } = require('os')
 
 function getPadawanNames() { 
   const padawans = fs.readFileSync("./data/padawans.txt", "utf-8")
@@ -16,14 +17,25 @@ function getStats() {
   const pad = getPadawanNames();
   const result = [];
   for(let i = 0; i < scor.length; i++) {
-    result.push([pad[i],scor[i]])
+    result.push([pad[i], scor[i]])
   }
   return result
 }
 
+function getStatss() {
+  const scor = getLightsaberScores();
+  const pad = getPadawanNames();
+  const result = [];
+  for(let i = 0; i < scor.length; i++) {
+    result.push([`${pad[i]} ${scor[i]}`])
+  }
+  return result
+}
+
+console.log(getStats())
 function writeStats() {
-//   let stat = getStats();
-//   stat 
+
+  fs.writeFileSync('./data/stats.txt', getStatss().join(EOL)+EOL);
 }
 
 module.exports = {
