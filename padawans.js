@@ -1,33 +1,26 @@
-const fs = require('fs')
-const { EOL } = require('os')
-const {padawans} = require("/data/padawns.txt")
-const {scores} = require('/data/scores.txt')
-const getPadawanNames(padawans) {
-   const names = []
-  for (let i = 0; i < padawans.length; i++) {
-    const name = padawans[i]
-    if (name) { 
-      names.push(name)
- }
+const fs = require('fs');
+const { EOL } = require('os');
+function getPadawanNames() {
+  const afterRead = fs.readFileSync('data/padawans.txt', 'utf-8');
+  const newArray = afterRead.split(EOL).filter((name) => name.trim());
+  return newArray;
 }
-    return names;
+function getLightsaberScores() {
+  const afterRead = fs.readFileSync('data/scores.txt', 'utf-8');
+  const newArray = afterRead.split(EOL).map((el) => Number(el));
+  return newArray;
 }
-const getLightsaberScores(scores){
-const score = [];
-for (let i = 0; i < scores.length; i++) {
-  const score = scores[i]
-  if (line) {
-  const score = Number(line)
-  if (!isNaN(score)) {
-    score.push(score);
-            }
-        }
-    }
-    
-    return scores;
+function getStats() {
+  const names = getPadawanNames();
+  const scores = getLightsaberScores();
+
+  return names.map((name, id) => [name, scores[id]]);
 }
-const getStats()
-const writeStats()
+
+function writeStats(stats) {
+  const newContent = stats.map((stat) => stat.join(' ')).join(EOL) + EOL;
+  fs.writeFileSync('data/stats.txt', newContent);
+}
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
