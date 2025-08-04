@@ -29,6 +29,9 @@ describe('Статистика о падаванах', () => {
     const stats = getStats();
     writeStats(stats);
     const data = fs.readFileSync('data/stats.txt', 'utf8');
-    expect(data).toBe(`Revan 99.9${EOL}Bastila Shan 92${EOL}Jolee Bindo 87${EOL}Juhani 82${EOL}`);
+    console.log(data);
+    expect(data).toBe(
+      `Revan 99.9${EOL}Bastila Shan 92${EOL}Jolee Bindo 87${EOL}Juhani 82${EOL}`,
+    );
   });
 });
