@@ -3,6 +3,7 @@ const { toNamespacedPath } = require('path/win32');
 module.exports = {
   getPadawanNames,
   getLightsaberScores,
+  getStats,
 };
 
 function getPadawanNames(){
