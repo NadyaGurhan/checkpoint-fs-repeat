@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { EOL } = require('os');
+
 const {
   getPadawanNames,
   getLightsaberScores,
