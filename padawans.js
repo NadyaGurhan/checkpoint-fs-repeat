@@ -33,7 +33,7 @@ function writeStats(arr) {
   for (let i = 0; i < arr.length; i++) {
     const name = arr[i][0];
     const score = arr[i][1];
-    string += `${name} ${score}`;
+    string += `${name} ${score}${EOL}`;
   }
   fs.writeFileSync('./data/stats.txt', string);
 }
